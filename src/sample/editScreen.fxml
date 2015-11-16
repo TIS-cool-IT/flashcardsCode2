@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="636.0" prefWidth="1005.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.EditScreenController">
+  <children>
+    <Label alignment="CENTER" cache="false" contentDisplay="CENTER" disable="false" focusTraversable="false" layoutX="391.0" layoutY="33.0" opacity="1.0" prefHeight="43.0" prefWidth="224.0" text="Edit Screen" textAlignment="CENTER" underline="false" visible="true">
+      <font>
+        <Font name="HelveticaLTStd-Fraction" size="15.0" />
+      </font>
+    </Label>
+    <TextField layoutX="252.0" layoutY="76.0" prefHeight="35.0" prefWidth="638.0" promptText="Name of category" text="" />
+    <TableView layoutX="117.0" layoutY="123.0" prefHeight="294.0" prefWidth="774.0">
+      <columns>
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="46.0" text="" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="586.0" text="name of category" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="141.0" text="number of flashcards" />
+      </columns>
+    </TableView>
+    <Button layoutX="426.0" layoutY="434.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Add new " />
+    <Button layoutX="426.0" layoutY="477.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Edit" />
+    <Button layoutX="426.0" layoutY="525.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Save changes" />
+    <Label alignment="CENTER" cache="false" contentDisplay="LEFT" disable="false" focusTraversable="false" layoutX="116.0" layoutY="72.0" opacity="1.0" prefHeight="43.0" prefWidth="118.0" text="Name of category:" textAlignment="LEFT" underline="false" visible="true" wrapText="false">
+      <font>
+        <Font name="HelveticaLTStd-Fraction" size="13.0" />
+      </font>
+    </Label>
+    <Button fx:id="backBtn" cancelButton="false" defaultButton="false" layoutX="0.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#finishEditing" prefHeight="49.0" prefWidth="1005.0" text="Finish editing" textFill="BLACK">
+      <font>
+        <Font name="HelveticaLTStd-Fraction" size="12.0" />
+      </font>
+    </Button>
+  </children>
+</Pane>
