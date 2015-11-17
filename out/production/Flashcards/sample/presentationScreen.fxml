@@ -27,17 +27,17 @@
         <Font name="HelveticaLTStd-Fraction" size="12.0" fx:id="x1" />
       </font>
     </Button>
-    <Group id="Group" fx:id="rectTwoImages" layoutX="249.0" layoutY="141.0" visible="false">
+    <Group id="Group" fx:id="rectTwoImages" layoutX="249.0" layoutY="141.0" visible="true">
       <children>
         <Rectangle id="rect2images" fx:id="rect2" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="192.00009999999747" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="554.0001220703125" />
         <ImageView fx:id="image1" fitHeight="164.35997038902508" fitWidth="260.0632629394531" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
           <image>
-            <Image url="file:/C:/Users/stiFFix/IdeaProjects/Flashcards/src/image1.png" />
+            <Image url="@../image1.png" />
           </image>
         </ImageView>
         <ImageView fx:id="imageview2" fitHeight="164.35995483398438" fitWidth="260.0632383270452" layoutX="283.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
           <image>
-            <Image url="file:/C:/Users/stiFFix/IdeaProjects/Flashcards/src/image2.png" />
+            <Image url="@../image2.png" />
           </image>
         </ImageView>
         <Label fx:id="aqLabel" alignment="CENTER" contentDisplay="BOTTOM" font="$x1" layoutX="12.0" layoutY="118.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="531.063232421875" style="" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false" />
@@ -45,12 +45,12 @@
     </Group>
     <Button fx:id="wrongBtn" layoutX="236.0" layoutY="375.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="199.0" text="I was wrong" />
     <Button fx:id="rightBtn" layoutX="574.0" layoutY="375.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="199.0" text="I was right " />
-    <Group id="Group" fx:id="rectOneImage" layoutX="344.0" layoutY="142.0">
+    <Group id="Group" fx:id="rectOneImage" layoutX="344.0" layoutY="142.0" visible="false">
       <children>
         <Rectangle id="rect2images" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="219.00010681152344" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="318.0001220703125" />
         <ImageView id="image1" fitHeight="184.5440852350409" fitWidth="292.0001220703125" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
           <image>
-            <Image url="file:/C:/Users/stiFFix/IdeaProjects/Flashcards/src/image1.png" />
+            <Image url="@../image1.png" />
           </image>
         </ImageView>
         <Label id="aqLabel" alignment="CENTER" contentDisplay="BOTTOM" font="$x1" layoutX="12.0" layoutY="118.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="292.0001220703125" style="" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false" />

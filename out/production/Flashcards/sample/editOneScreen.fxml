@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="636.0" prefWidth="1005.0" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.EditOneScreenController">
+  <children>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" height="181.0" layoutX="117.0" layoutY="287.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="774.0">
+      <fill>
+        <Color blue="0.875" green="0.875" red="0.875" fx:id="x1" />
+      </fill>
+    </Rectangle>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x1" height="164.0" layoutX="116.0" layoutY="116.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="774.0" />
+    <Label alignment="CENTER" cache="false" contentDisplay="CENTER" disable="false" focusTraversable="false" layoutX="391.0" layoutY="33.0" opacity="1.0" prefHeight="43.0" prefWidth="224.0" text="Edit flashcard" textAlignment="CENTER" underline="false" visible="true">
+      <font>
+        <Font name="HelveticaLTStd-Fraction" size="15.0" />
+      </font>
+    </Label>
+    <Button id="backBtn" cancelButton="false" defaultButton="false" layoutX="0.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#finishEditing" prefHeight="49.0" prefWidth="1005.0" text="Finish editing" textFill="BLACK">
+      <font>
+        <Font name="HelveticaLTStd-Fraction" size="12.0" fx:id="x2" />
+      </font>
+    </Button>
+    <Group id="Group" layoutX="344.0" layoutY="142.0" visible="false">
+      <children>
+        <Rectangle id="rect2images" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="219.00010681152344" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="318.0001220703125" />
+        <ImageView id="image1" fitHeight="184.5440852350409" fitWidth="292.0001220703125" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="file:/C:/Users/stiFFix/Desktop/sch00l/BETKA_FOLDER/flashcardsCode2/src/image1.png" />
+          </image>
+        </ImageView>
+        <Label id="aqLabel" alignment="CENTER" contentDisplay="BOTTOM" font="$x2" layoutX="12.0" layoutY="118.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="292.0001220703125" style="" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false" />
+      </children>
+    </Group>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" height="29.5999755859375" layoutX="116.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="774.0">
+      <fill>
+        <Color blue="1.000" green="0.855" red="0.600" fx:id="x4" />
+      </fill>
+    </Rectangle>
+    <Label layoutX="130.0" layoutY="86.0" prefHeight="36.60000038146973" prefWidth="253.0" text="You are editing flashcard in category &quot;...&quot; " textAlignment="LEFT">
+      <font>
+        <Font name="HelveticaLTStd-Fraction" size="13.0" fx:id="x6" />
+      </font>
+    </Label>
+    <Label layoutX="130.0" layoutY="126.0" prefHeight="36.60000038146973" prefWidth="253.0" text="Question" textAlignment="LEFT">
+      <font>
+        <Font name="HelveticaLTStd-FractionBold" size="14.0" fx:id="x3" />
+      </font>
+    </Label>
+    <Label font="$x3" layoutX="130.0" layoutY="287.0" prefHeight="36.60000038146973" prefWidth="56.0" text="Answer" textAlignment="LEFT" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x4" height="6.9998779296875" layoutX="116.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="774.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" height="56.0" layoutX="116.0" layoutY="468.0" stroke="BLACK" strokeType="INSIDE" width="774.0">
+      <fill>
+        <Color blue="1.000" green="0.855" red="0.600" fx:id="x7" />
+      </fill>
+    </Rectangle>
+    <Label layoutX="172.0" layoutY="155.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Text" textAlignment="LEFT">
+      <font>
+        <Font name="HelveticaLTStd-FractionBold" size="13.0" fx:id="x5" />
+      </font>
+    </Label>
+    <Label font="$x5" layoutX="172.0" layoutY="192.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Image" textAlignment="LEFT" />
+    <Label font="$x5" layoutX="172.0" layoutY="229.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Sound" textAlignment="LEFT" />
+    <TextField id="InputQText" fx:id="inputQText" layoutX="257.0" layoutY="162.0" prefWidth="560.0" />
+    <Button id="BtnQImage1" fx:id="btnQImage1" layoutX="257.0" layoutY="200.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+    <Button id="BtnQSound1" fx:id="btnQSound1" layoutX="257.0" layoutY="237.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+    <Button id="BtnQImage2" fx:id="btnQImage2" layoutX="416.0" layoutY="200.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+    <Button id="BtnQSound2" fx:id="btnQSound2" layoutX="416.0" layoutY="237.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+    <Label font="$x5" layoutX="172.0" layoutY="320.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Text" textAlignment="LEFT" />
+    <Label font="$x5" layoutX="172.0" layoutY="357.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Image" textAlignment="LEFT" />
+    <Label font="$x5" layoutX="172.0" layoutY="394.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Sound" textAlignment="LEFT" />
+    <TextField id="BtnAText" fx:id="inputAText" layoutX="257.0" layoutY="327.0" prefWidth="560.0" />
+    <Button id="BtnAImage1" fx:id="btnAImage1" layoutX="257.0" layoutY="365.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+    <Button id="BtnASound1" fx:id="btnASound1" layoutX="257.0" layoutY="402.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+    <Button id="BtnAImage2" fx:id="btnAImage2" layoutX="416.0" layoutY="365.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+    <Button id="BtnASound2" fx:id="btnASound2" layoutX="416.0" layoutY="402.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+    <Label font="$x3" layoutX="130.0" layoutY="478.0" prefHeight="36.60000038146973" prefWidth="56.0" text="Help" textAlignment="LEFT" />
+    <Button id="BtnQRecord" fx:id="btnQRecord" layoutX="586.0" layoutY="237.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" />
+    <Button id="BtnARecord" fx:id="btnARecord" layoutX="586.0" layoutY="402.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" />
+    <Button fx:id="btnOpenBook" layoutX="257.0" layoutY="488.0" mnemonicParsing="false" prefWidth="112.0" text="Open book" />
+    <Button fx:id="btnOpenAudioBook" layoutX="416.0" layoutY="488.0" mnemonicParsing="false" prefWidth="112.0" text="Open audiobook" />
+    <CheckBox fx:id="checkboxReverse" font="$x6" layoutX="130.0" layoutY="444.0" mnemonicParsing="false" text="Flashcard can be used reversed" />
+    <Button id="addBtn" layoutX="443.0" layoutY="539.0" mnemonicParsing="false" prefHeight="36.5999755859375" prefWidth="119.0" text="Save changes" />
+    <Polygon fill="$x7" layoutX="950.0" layoutY="570.0" rotate="90.0" scaleX="0.43" scaleY="0.4344000091552735" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+      <points>
+        <Double fx:value="-50.0" />
+        <Double fx:value="40.0" />
+        <Double fx:value="50.0" />
+        <Double fx:value="40.0" />
+        <Double fx:value="0.0" />
+        <Double fx:value="-60.0" />
+      </points>
+    </Polygon>
+    <Polygon fill="$x7" layoutX="50.0" layoutY="570.0" rotate="270.0" scaleX="0.43" scaleY="0.4344000091552735" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+      <points>
+        <Double fx:value="-50.0" />
+        <Double fx:value="40.0" />
+        <Double fx:value="50.0" />
+        <Double fx:value="40.0" />
+        <Double fx:value="0.0" />
+        <Double fx:value="-60.0" />
+      </points>
+    </Polygon>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x7" height="15.5999755859375" layoutX="61.0" layoutY="552.0" stroke="BLACK" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="56.000099999997474" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x7" height="15.5999755859375" layoutX="879.0" layoutY="552.0" stroke="BLACK" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="56.000099999997474" />
+  </children>
+</Pane>

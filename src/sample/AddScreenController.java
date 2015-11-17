@@ -4,14 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
+import static sample.Main.toEditScreen;
+
 public class AddScreenController {
 
-    @FXML
-    Label myLabel;
+    public void finishAdding(){
+        toEditScreen();
 
-    public void changeT(MouseEvent m){
 
-        myLabel.setText("bum");
-        System.out.println("clicked change text");
     }
 }

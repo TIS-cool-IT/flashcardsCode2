@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public static Stage primStage = null;
     public static Scene editScene = null;
+    public static Scene editOneScene = null;
     public static Scene launcherScene = null;
     public static Scene addScene = null;
     public static Scene presentationScene = null;
@@ -18,6 +19,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         addScene = new Scene(FXMLLoader.load(getClass().getResource("addscreen.fxml")));
         editScene = new Scene(FXMLLoader.load(getClass().getResource("editScreen.fxml")));
+        editOneScene = new Scene(FXMLLoader.load(getClass().getResource("editOneScreen.fxml")));
         presentationScene = new Scene(FXMLLoader.load(getClass().getResource("presentationScreen.fxml")));
         launcherScene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
         primaryStage.setTitle("Flashcards");
@@ -36,12 +38,21 @@ public class Main extends Application {
         primStage.setScene(launcherScene);
     }
 
+
     public static void toEditScreen(){
         primStage.setScene(editScene);
     }
 
     public static void toPresentationScreen(){
         primStage.setScene(presentationScene);
+    }
+
+    public static void toAddScreen(){
+        primStage.setScene(addScene);
+    }
+
+    public static void toEditOneScreen(){
+        primStage.setScene(editOneScene);
     }
 
 
