@@ -14,10 +14,10 @@ public class EditOneScreenController {
     @FXML
     ImageView leftArrow;
 
-    Image l1 = new Image("l1.png");
-    Image l2 = new Image("l2.png");
-    Image r1 = new Image("r1.png");
-    Image r2 = new Image("r2.png");
+    private Image l1 = new Image("l1.png");
+    private Image l2 = new Image("l2.png");
+    private Image r1 = new Image("r1.png");
+    private Image r2 = new Image("r2.png");
 
     public void finishEditing(){
         toEditScreen();

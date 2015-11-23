@@ -3,9 +3,11 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import static sample.Main.backToLauncher;
-import static sample.Main.toSettingsScreen;
+
 
 public class PresentationScreenController {
     @FXML
@@ -23,6 +25,12 @@ public class PresentationScreenController {
     @FXML
     Group settingsGroup;
 
+    @FXML
+    ImageView settings;
+
+    private Image s1 = new Image("s1.png");
+    private Image s2 = new Image("s2.png");
+
     public void finishPresentation(){
         backToLauncher();
     }
@@ -38,5 +46,13 @@ public class PresentationScreenController {
         }
 
 
+    }
+
+    public void onSettingsPressed(){
+        settings.setImage(s2);
+    }
+
+    public void onSettingsReleased(){
+        settings.setImage(s1);
     }
 }

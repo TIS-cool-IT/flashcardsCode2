@@ -95,9 +95,9 @@
     </Group>
   </center>
   <left>
-    <ImageView fitHeight="100.0" fitWidth="100.0" onMouseClicked="#onSettingsClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT">
+    <ImageView fx:id="settings" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#onSettingsClicked" onMousePressed="#onSettingsPressed" onMouseReleased="#onSettingsReleased" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT">
       <image>
-        <Image url="@../settings.png" />
+        <Image url="@../s1.png" />
       </image>
       <BorderPane.margin>
         <Insets left="20.0" />
