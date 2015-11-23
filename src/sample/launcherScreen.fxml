@@ -1,44 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import javafx.geometry.Insets?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 
-<Pane fx:id="panel" prefHeight="636.0" prefWidth="1005.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.LauncherScreenController">
-  <children>
-    <Label alignment="CENTER" cache="false" contentDisplay="CENTER" disable="false" focusTraversable="false" layoutX="391.0" layoutY="37.0" opacity="1.0" prefHeight="35.0" prefWidth="224.0" text="Welcome!" textAlignment="CENTER" underline="false" visible="true">
-      <font>
-        <Font name="HelveticaLTStd-Fraction" size="16.0" />
-      </font>
-    </Label>
-    <Label alignment="CENTER" cache="false" contentDisplay="CENTER" disable="false" focusTraversable="false" layoutX="391.0" layoutY="65.0" opacity="1.0" prefHeight="35.0" prefWidth="224.0" text="Let´s create some flashcards" textAlignment="CENTER" underline="false" visible="true">
-      <font>
-        <Font name="HelveticaLTStd-Fraction" size="13.0" />
-      </font>
-    </Label>
-    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99daff" height="67.0" layoutX="116.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" width="774.0" />
-    <TextField layoutX="135.0" layoutY="125.0" prefHeight="35.0" prefWidth="279.0" promptText="Name of category" text="" />
-    <Button alignment="CENTER" cancelButton="false" contentDisplay="CENTER" defaultButton="false" focusTraversable="true" layoutX="766.0" layoutY="128.0" mnemonicParsing="false" prefHeight="30.000006675720215" prefWidth="96.0" text="add category" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" visible="true" wrapText="false">
-      <font>
-        <Font name="HelveticaLTStd-Light" size="12.0" />
-      </font>
-    </Button>
-    <TableView layoutX="116.0" layoutY="188.0" prefHeight="330.0" prefWidth="774.0">
-      <columns>
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="46.0" text="" />
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="586.0" text="name of category" />
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="141.0" text="number of flashcards" />
-      </columns>
-    </TableView>
-    <Button layoutX="239.0" layoutY="538.0" mnemonicParsing="false" onMouseClicked="#presentationBtnClicked" prefHeight="35.0" prefWidth="157.0" text="Presentation" />
-    <Button layoutX="424.0" layoutY="538.0" mnemonicParsing="false" onMouseClicked="#editBtnClicked" prefHeight="35.0" prefWidth="157.0" text="Edit" />
-    <Button layoutX="608.0" layoutY="538.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Delete" />
-  </children>
-</Pane>
+<BorderPane prefHeight="640.0" prefWidth="1100.0" style="" styleClass="borderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.LauncherScreenController">
+  <bottom>
+    <Group id="Group" autoSizeChildren="true" BorderPane.alignment="BOTTOM_CENTER">
+      <children>
+        <Button layoutX="0.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#presentationBtnClicked" prefHeight="35.0" prefWidth="157.0" text="Presentation" />
+        <Button layoutX="185.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#editBtnClicked" prefHeight="35.0" prefWidth="157.0" text="Edit" />
+        <Button layoutX="369.0" layoutY="0.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Delete" />
+      </children>
+      <BorderPane.margin>
+        <Insets bottom="20.0" top="20.0" />
+      </BorderPane.margin>
+    </Group>
+  </bottom>
+  <center>
+    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="" BorderPane.alignment="CENTER">
+      <children>
+        <Label alignment="CENTER" cache="false" contentDisplay="CENTER" disable="false" focusTraversable="false" layoutX="391.0" layoutY="37.0" opacity="1.0" prefHeight="35.0" prefWidth="224.0" styleClass="title" text="Welcome!" textAlignment="CENTER" underline="false" visible="true">
+          <font>
+            <Font size="16.0" />
+          </font>
+        </Label>
+        <Label alignment="CENTER" cache="false" contentDisplay="CENTER" disable="false" focusTraversable="false" layoutX="391.0" layoutY="65.0" opacity="1.0" prefHeight="35.0" prefWidth="224.0" text="Let´s create some flashcards" textAlignment="CENTER" underline="false" visible="true">
+          <font>
+            <Font size="13.0" />
+          </font>
+        </Label>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99daff" height="67.0" layoutX="116.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="774.0" />
+        <TextField layoutX="135.0" layoutY="125.0" prefHeight="35.0" prefWidth="279.0" promptText="Name of category" text="" />
+        <Button alignment="CENTER" cancelButton="false" contentDisplay="CENTER" defaultButton="false" focusTraversable="true" layoutX="766.0" layoutY="128.0" mnemonicParsing="false" prefHeight="30.000006675720215" prefWidth="96.0" text="add category" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" visible="true" wrapText="false">
+          <font>
+            <Font size="12.0" />
+          </font>
+        </Button>
+        <TableView layoutX="116.0" layoutY="188.0" maxHeight="-1.0" prefHeight="374.0" prefWidth="774.0000999999975">
+          <columns>
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="46.0" text="" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="586.0" text="name of category" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="141.0" text="number of flashcards" />
+          </columns>
+        </TableView>
+      </children>
+    </Pane>
+  </center>
+  <stylesheets>
+    <URL value="@style.css" />
+  </stylesheets>
+</BorderPane>

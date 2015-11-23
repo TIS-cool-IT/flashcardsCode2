@@ -1,4 +1,9 @@
 .title {
-    color: red;
-	 background: Fuchsia;
+    -fx-font: 14px "Kartika";
+}
+
+.borderPane {
+    -fx-min-width: 1100px;
+    -fx-min-height: 700px;
+
 }

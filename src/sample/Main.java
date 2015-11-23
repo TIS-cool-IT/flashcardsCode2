@@ -8,24 +8,29 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public static Stage primStage = null;
-    public static Scene editScene = null;
-    public static Scene editOneScene = null;
-    public static Scene launcherScene = null;
-    public static Scene addScene = null;
-    public static Scene presentationScene = null;
+    public static Parent editParent = null;
+    public static Parent editOneParent = null;
+    public static Parent launcherParent = null;
+    public static Parent addParent = null;
+    public static Parent presentationParent = null;
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        addScene = new Scene(FXMLLoader.load(getClass().getResource("addscreen.fxml")));
-        editScene = new Scene(FXMLLoader.load(getClass().getResource("editScreen.fxml")));
-        editOneScene = new Scene(FXMLLoader.load(getClass().getResource("editOneScreen.fxml")));
-        presentationScene = new Scene(FXMLLoader.load(getClass().getResource("presentationScreen.fxml")));
-        launcherScene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
+        addParent = FXMLLoader.load(getClass().getResource("addscreen.fxml"));
+        editParent = FXMLLoader.load(getClass().getResource("editScreen.fxml"));
+        editOneParent = FXMLLoader.load(getClass().getResource("editOneScreen.fxml"));
+        presentationParent = FXMLLoader.load(getClass().getResource("presentationScreen.fxml"));
+        launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
+
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
         primaryStage.setTitle("Flashcards");
-        primaryStage.setScene(launcherScene);
+        primaryStage.setScene(scene);
         primaryStage.show();
+
+
         primStage = primaryStage;
+
     }
 
 
@@ -35,25 +40,26 @@ public class Main extends Application {
 
 
     public static void backToLauncher(){
-        primStage.setScene(launcherScene);
+        primStage.getScene().setRoot(launcherParent);
     }
 
 
     public static void toEditScreen(){
-        primStage.setScene(editScene);
+        primStage.getScene().setRoot(editParent);
     }
 
     public static void toPresentationScreen(){
-        primStage.setScene(presentationScene);
+        primStage.getScene().setRoot(presentationParent);
     }
 
     public static void toAddScreen(){
-        primStage.setScene(addScene);
+        primStage.getScene().setRoot(addParent);
     }
 
     public static void toEditOneScreen(){
-        primStage.setScene(editOneScene);
+        primStage.getScene().setRoot(editOneParent);
     }
+
 
 
 
