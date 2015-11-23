@@ -27,4 +27,9 @@ public class LauncherScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    public void addCategoryBtnClicked(){
+        // TODO add category
+        System.out.println("brn clicked");
+    }
 }
