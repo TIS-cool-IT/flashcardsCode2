@@ -79,7 +79,7 @@
         <Button fx:id="btnOpenBook" layoutX="257.0" layoutY="455.0" mnemonicParsing="false" prefWidth="112.0" text="Open book" />
         <Button fx:id="btnOpenAudioBook" layoutX="416.0" layoutY="455.0" mnemonicParsing="false" prefWidth="112.0" text="Open audiobook" />
         <CheckBox fx:id="checkboxReverse" font="$x5" layoutX="130.0" layoutY="411.0" mnemonicParsing="false" text="Flashcard can be used reversed" />
-        <Button id="addBtn" fx:id="btnAdd" layoutX="443.0" layoutY="506.0" mnemonicParsing="false" prefHeight="36.5999755859375" prefWidth="119.0" text="Add" />
+        <Button id="addBtn" fx:id="btnAdd" onMouseClicked="#addBtnClicked" layoutX="443.0" layoutY="506.0" mnemonicParsing="false" prefHeight="36.5999755859375" prefWidth="119.0" text="Add" />
       </children>
     </Group>
   </center>

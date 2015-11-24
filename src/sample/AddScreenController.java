@@ -9,8 +9,12 @@ import static sample.Main.toEditScreen;
 public class AddScreenController {
 
     public void finishAdding(){
-        toEditScreen();
-
-
+        toEditScreen(); //TODO poslat id kategorie
     }
+
+    public void addBtnClicked() {
+        // TODO vytvorit flashcardu, ulozit
+        toEditScreen(); // TODO poslat id kategorie
+    }
+
 }

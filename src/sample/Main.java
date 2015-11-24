@@ -14,7 +14,8 @@ public class Main extends Application {
     public static Parent addParent = null;
     public static Parent presentationParent = null;
 
-
+    // passing id
+    public static int categoryId;
     @Override
     public void start(Stage primaryStage) throws Exception{
         addParent = FXMLLoader.load(getClass().getResource("addscreen.fxml"));
