@@ -1,9 +1,10 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -28,10 +29,7 @@ public class Main extends Application {
         primaryStage.setTitle("Flashcards");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
         primStage = primaryStage;
-
     }
 
 
@@ -39,6 +37,20 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static Scene getSounderScene(){
+        return sounder;
+    }
+
+    public static Scene getAddScene(){
+        return addScene;
+    }
+
+    public static void openAudioBook(){
+        sounderStage = new Stage();
+        sounderStage.setTitle("Sounder");
+        sounderStage.setScene(sounder);
+        sounderStage.show();
+    }
 
     public static void backToLauncher(){
         primStage.getScene().setRoot(launcherParent);
@@ -60,7 +72,6 @@ public class Main extends Application {
     public static void toEditOneScreen(){
         primStage.getScene().setRoot(editOneParent);
     }
-
 
 
 

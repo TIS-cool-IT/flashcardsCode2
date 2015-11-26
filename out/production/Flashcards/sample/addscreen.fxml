@@ -74,10 +74,10 @@
         <Button id="BtnAImage2" fx:id="btnAImage2" layoutX="416.0" layoutY="332.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
         <Button id="BtnASound2" fx:id="btnASound2" layoutX="416.0" layoutY="369.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
         <Label font="$x2" layoutX="130.0" layoutY="445.0" prefHeight="36.60000038146973" prefWidth="56.0" text="Help" textAlignment="LEFT" />
-        <Button id="BtnQRecord" fx:id="btnQRecord" layoutX="586.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" />
-        <Button id="BtnARecord" fx:id="btnARecord" layoutX="586.0" layoutY="369.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" />
+        <Button id="BtnQRecord" fx:id="btnQRecord" layoutX="586.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" onMouseClicked="#recordSoundQ"/>
+        <Button id="BtnARecord" fx:id="btnARecord" layoutX="586.0" layoutY="369.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" onMouseClicked="#recordSoundA"/>
         <Button fx:id="btnOpenBook" layoutX="257.0" layoutY="455.0" mnemonicParsing="false" prefWidth="112.0" text="Open book" />
-        <Button fx:id="btnOpenAudioBook" layoutX="416.0" layoutY="455.0" mnemonicParsing="false" prefWidth="112.0" text="Open audiobook" />
+        <Button fx:id="btnOpenAudioBook" layoutX="416.0" layoutY="455.0" mnemonicParsing="false" prefWidth="112.0" text="Open audiobook" onMouseClicked="#openAudioBook"/>
         <CheckBox fx:id="checkboxReverse" font="$x5" layoutX="130.0" layoutY="411.0" mnemonicParsing="false" text="Flashcard can be used reversed" />
         <Button id="addBtn" fx:id="btnAdd" layoutX="443.0" layoutY="506.0" mnemonicParsing="false" prefHeight="36.5999755859375" prefWidth="119.0" text="Add" />
       </children>
