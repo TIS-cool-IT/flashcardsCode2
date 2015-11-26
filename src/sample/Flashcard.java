@@ -11,6 +11,7 @@ public class Flashcard {
     private Category category;
     private FlashcardFace answer;
     private FlashcardFace question;
+    private String flashcardDirectory;
 
 
     Flashcard(int id, String title, boolean reversed, Category category,
@@ -21,6 +22,7 @@ public class Flashcard {
         this.category = category;
         this.answer = answer;
         this.question = question;
+        this.flashcardDirectory = category.getCategoryDirectory() + "\\" + Integer.toString(this.id);
     }
 
 
@@ -64,7 +66,11 @@ public class Flashcard {
         this.question = question;
     }
 
+    public String getFlashcardDirectory() {
+        return flashcardDirectory;
+    }
 
-
-
+    public void setFlashcardDirectory(String flashcardDirectory) {
+        this.flashcardDirectory = flashcardDirectory;
+    }
 }

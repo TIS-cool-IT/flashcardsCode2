@@ -11,13 +11,15 @@ public class Category {
     private int idOfCategory;
     private String titleOfCategory;
     private ArrayList<Flashcard> listOfFlashcards = new ArrayList<Flashcard>();
+    private String categoryDirectory;
     private final String DIRECTORY = "C:\\FlashCard\\Categories\\"; //TODO DIRECTORY ukladania dať do hlavnej triedy
 
 
     public Category(int id, String title) {
         idOfCategory = id;
         titleOfCategory = title;
-        makeDirectory(Integer.toString(idOfCategory));
+        categoryDirectory = Integer.toString(idOfCategory);
+        makeDirectory(categoryDirectory);
     }
 
     public int getId() {
@@ -27,7 +29,7 @@ public class Category {
 
     public void addFlashcard(Flashcard flashcard) {
         listOfFlashcards.add(flashcard);
-        makeDirectory(Integer.toString(idOfCategory) + "\\" + Integer.toString(flashcard.getId()));
+        makeDirectory(flashcard.getFlashcardDirectory());
     }
 
     public int getCount() {
@@ -44,6 +46,14 @@ public class Category {
 
     public String getTitleOfCategory() {
         return titleOfCategory;
+    }
+
+    public String getCategoryDirectory() {
+        return categoryDirectory;
+    }
+
+    public void setCategoryDirectory(String categoryDirectory) {
+        this.categoryDirectory = categoryDirectory;
     }
 
     public boolean makeDirectory(String dir) {
