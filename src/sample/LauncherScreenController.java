@@ -66,7 +66,7 @@ public class LauncherScreenController implements Initializable {
 //                    loader.<EditScreenController>getController();
 //            controller.initData(category);
 
-            categoryId = category.getId();
+            //categoryId = category.getId();
             //musim refreshnut controler kvoli aktualizacii dat
             FXMLLoader.load(getClass().getResource("editScreen.fxml"));
             toEditScreen();

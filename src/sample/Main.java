@@ -56,6 +56,13 @@ public class Main extends Application {
         primStage.getScene().setRoot(launcherParent);
     }
 
+    public static Scene getSounderScene(){
+        return sounder;
+    }
+
+    public static Scene getAddScene(){
+        return addScene;
+    }
 
     public static void toEditScreen(){
         primStage.getScene().setRoot(editParent);
@@ -73,6 +80,12 @@ public class Main extends Application {
         primStage.getScene().setRoot(editOneParent);
     }
 
+    public static void openAudioBook(){
+        sounderStage = new Stage();
+        sounderStage.setTitle("Sounder");
+        sounderStage.setScene(sounder);
+        sounderStage.show();
+    }
 
 
 

@@ -52,7 +52,7 @@ public class EditScreenController{
     }
 
     public EditScreenController() {
-        idCategory = categoryId;
+        //idCategory = categoryId;
         System.out.print(idCategory);
 //        table.getItems().setAll(this.flashcardsForActualCategory);
     }

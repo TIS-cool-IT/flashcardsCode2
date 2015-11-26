@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.SounderScreenController">
+  <children>
+    <Pane layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+      <children>
+        <Button fx:id="openButton" layoutX="224.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#otvor" prefHeight="71.9609375" prefWidth="152.0" text="Click here to open a file!" />
+        <Slider fx:id="startOf" layoutX="87.0" layoutY="193.0" onMouseDragged="#dragStartSlider" prefWidth="425.0" />
+        <Slider fx:id="endOf" layoutX="87.0" layoutY="254.0" onMouseDragged="#dragEndTime" prefWidth="425.0" />
+        <Label fx:id="startLabel" layoutX="30.0" layoutY="177.0" text="start" />
+        <Label fx:id="endLabel" layoutX="30.0" layoutY="238.0" text="end" />
+        <Button fx:id="playButton" layoutX="92.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#play" prefHeight="49.9609375" prefWidth="80.0" text="play" />
+        <Button fx:id="cutAndSaveButton" layoutX="410.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#saveAndCut" prefHeight="49.9609375" prefWidth="102.0" text="cut &amp; save" />
+        <Label fx:id="startOfLabelTime" layoutX="30.0" layoutY="191.0" prefWidth="49.0" text="" />
+        <Label fx:id="endOfLabelTime" layoutX="30.0" layoutY="253.0" prefWidth="49.0" text="" />
+        <Button fx:id="stopButton" layoutX="196.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#stopPlaying" prefHeight="49.9609375" prefWidth="68.0" text="stop" />
+        <Label fx:id="nameLabel" layoutX="30.0" layoutY="135.0" prefWidth="525.9999084472656" text="" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>
