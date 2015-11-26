@@ -27,36 +27,20 @@ public class AddScreenController {
         toEditScreen(); //TODO poslat id kategorie
     }
 
-    public void addBtnClicked() {
+    public void addBtnClicked() throws IOException, LineUnavailableException {
         // TODO vytvorit flashcardu, ulozit
         // na vytvorenie flashcard treba skontrolovat, ci sa moze vytvorit tj. novu funkciu
         // treba vytvorit 2 FlashcardFace -> najpr skontrolovat, ci sa mozu vytvorit tj. dalsia funkcia
-    @FXML synchronized
-    public void recordSoundQ() throws IOException, LineUnavailableException {
-        Scene addScene = Main.getAddScene();
-        if(!recording) {
-            Button but = (Button) addScene.lookup("#BtnQRecord");
-            but.setStyle("-fx-text-fill: red;");
-            recording = true;
-            recorder.beginRecording(new File("C:\\Users\\stefa\\Documents\\GitHub\\flashcardsCode2\\src\\nahravka.wav"));
-            System.out.println("recording started!!!!");
-        }
-        else{
-            Button but = (Button) addScene.lookup("#BtnQRecord");
-            but.setStyle("-fx-text-fill: #292929;");
-            recorder.endRecording();
-            recording = false;
-            System.out.println("recording stopped!!!!");
-        }
+
     }
     @FXML synchronized
     public void recordSoundQ() throws IOException, LineUnavailableException {
-        Scene addScene = Main.getAddScene();
+        Scene addScene = Main.getPrimaryStage().getScene();
         if(!recording) {
             Button but = (Button) addScene.lookup("#BtnQRecord");
             but.setStyle("-fx-text-fill: red;");
             recording = true;
-            recorder.beginRecording(new File("C:\\Users\\stefa\\Documents\\GitHub\\flashcardsCode2\\src\\nahravka.wav"));
+            recorder.beginRecording(new File("C:\\FlashCard\\nahravka.wav"));
             System.out.println("recording started!!!!");
         }
         else{
@@ -70,32 +54,14 @@ public class AddScreenController {
 
         // uladanie suborov FlashcardFace (text, obrazky, zvuky) -> kam dat takuto funkciu?? sem alebo Flashcard?
 
-        toEditScreen(); // TODO poslat id kategorie
     @FXML synchronized
     public void recordSoundA() throws IOException, LineUnavailableException {
-        Scene addScene = Main.getAddScene();
+        Scene addScene = Main.getPrimaryStage().getScene();
         if(!recording) {
             Button but = (Button) addScene.lookup("#BtnARecord");
             but.setStyle("-fx-text-fill: red;");
             recording = true;
-            recorder.beginRecording(new File("C:\\Users\\stefa\\Documents\\GitHub\\flashcardsCode2\\src\\nahravka.wav"));
-            System.out.println("recording started!!!!");
-        }
-        else{
-            Button but = (Button) addScene.lookup("#BtnARecord");
-            but.setStyle("-fx-text-fill: #292929;");
-            recorder.endRecording();
-            recording = false;
-            System.out.println("recording stopped!!!!");
-        }
-    @FXML synchronized
-    public void recordSoundA() throws IOException, LineUnavailableException {
-        Scene addScene = Main.getAddScene();
-        if(!recording) {
-            Button but = (Button) addScene.lookup("#BtnARecord");
-            but.setStyle("-fx-text-fill: red;");
-            recording = true;
-            recorder.beginRecording(new File("C:\\Users\\stefa\\Documents\\GitHub\\flashcardsCode2\\src\\nahravka.wav"));
+            recorder.beginRecording(new File("C:\\FlashCard\\nahravka.wav"));
             System.out.println("recording started!!!!");
         }
         else{
@@ -108,15 +74,10 @@ public class AddScreenController {
     }
 
     @FXML
-    public void openAudioBook(){
+    public void openAudio() throws IOException {
         Main.openAudioBook();
     }
 
-
-    @FXML
-    public void openAudioBook(){
-        Main.openAudioBook();
-    }
 
 
 

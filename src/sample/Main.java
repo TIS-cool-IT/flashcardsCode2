@@ -3,17 +3,23 @@ package sample;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Main extends Application {
     public static Stage primStage = null;
+    public static Stage sounderStage = null;
     public static Parent editParent = null;
     public static Parent editOneParent = null;
     public static Parent launcherParent = null;
     public static Parent addParent = null;
     public static Parent presentationParent = null;
+    public static Scene sounderScene = null;
+    //public static Scene skuska = null;
 
     // passing id
     public static int categoryId;
@@ -24,8 +30,10 @@ public class Main extends Application {
         editOneParent = FXMLLoader.load(getClass().getResource("editOneScreen.fxml"));
         presentationParent = FXMLLoader.load(getClass().getResource("presentationScreen.fxml"));
         launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
+        sounderScene = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
 
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
+        //skuska = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
         primaryStage.setTitle("Flashcards");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -37,18 +45,19 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static Stage getPrimaryStage(){
+        return primStage;
+    }
+
     public static Scene getSounderScene(){
-        return sounder;
+        return sounderScene;
     }
 
-    public static Scene getAddScene(){
-        return addScene;
-    }
 
-    public static void openAudioBook(){
+    public static void openAudioBook() throws IOException {
         sounderStage = new Stage();
         sounderStage.setTitle("Sounder");
-        sounderStage.setScene(sounder);
+        sounderStage.setScene(sounderScene);
         sounderStage.show();
     }
 
@@ -56,13 +65,13 @@ public class Main extends Application {
         primStage.getScene().setRoot(launcherParent);
     }
 
-    public static Scene getSounderScene(){
+    /*public static Scene getSounderParent(){
         return sounder;
     }
 
-    public static Scene getAddScene(){
+    public static Scene getAddParent(){
         return addScene;
-    }
+    }*/
 
     public static void toEditScreen(){
         primStage.getScene().setRoot(editParent);
@@ -80,13 +89,13 @@ public class Main extends Application {
         primStage.getScene().setRoot(editOneParent);
     }
 
-    public static void openAudioBook(){
+    /*public static void openAudioBook(){
         sounderStage = new Stage();
         sounderStage.setTitle("Sounder");
-        sounderStage.setScene(sounder);
+        sounderStage.setScene(new Scene(sounder);
         sounderStage.show();
     }
-
+*/
 
 
 

@@ -52,7 +52,7 @@ class Sounder {
         double[][] samples = audiosample.getSamplesChannelSegregated(start, end);
         audiosample.setSamples(samples);
         if(checkBeforeSave(audiosample)) {
-            audiosample.saveAudio(new File("C:\\Users\\stefa\\Documents\\GitHub\\flashcardsCode2\\src\\hbojiik.wav"), true, AudioFileFormat.Type.WAVE, false);
+            audiosample.saveAudio(new File("C:\\FlashCard\\vystrihnute.wav"), true, AudioFileFormat.Type.WAVE, false);
             return true;
         }
         return false;
