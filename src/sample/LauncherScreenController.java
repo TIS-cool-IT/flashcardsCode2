@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -36,20 +37,22 @@ public class LauncherScreenController implements Initializable {
     @FXML
     TableColumn titleCol;
 
+    private final ObservableList<Category> categories = FXCollections.observableArrayList();
 
-
-    private final ObservableList<Category> categories = FXCollections.observableArrayList(
-            new Category(1, "test"),
-            new Category(2, "first cat"),
-            new Category(3, "first cat")
-    );
-
-
-
-
-    public void addCategoryBtnClicked(){
+    public void addCategoryBtnClicked() throws IOException {
         System.out.println(categoryName.getText());
-        categories.add(new Category(1, categoryName.getText())); // TODO id namiesto 1
+        Main.addCategory((new Category(categories.size()+1, categoryName.getText())));
+        JOptionPane.showMessageDialog(new JFrame(), "Category '" + categoryName.getText() + "' was saved!");
+        table.getItems().clear();
+        try {
+            for(Category cat : Main.getCategories()){
+                if(!categories.contains(cat)) categories.add(cat);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        table.setItems(categories);
+
         //TODO reinicalizovat controler?
 
     }
@@ -80,7 +83,15 @@ public class LauncherScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        table.getItems().setAll(this.categories);
+        try {
+            for(Category cat : Main.getCategories()){
+                categories.add(cat);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("je tu " + categories.size() + " kategorii");
+        table.getItems().setAll(categories);
 
 //        table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 //            @Override

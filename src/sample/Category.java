@@ -1,13 +1,14 @@
 package sample;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Category class
  */
 
-public class Category {
+public class Category implements Serializable{
     private int idOfCategory;
     private String titleOfCategory;
     private ArrayList<Flashcard> listOfFlashcards = new ArrayList<Flashcard>();
@@ -20,6 +21,7 @@ public class Category {
         titleOfCategory = title;
         categoryDirectory = Integer.toString(idOfCategory);
         makeDirectory(categoryDirectory);
+        //Main.addCategory(this);
     }
 
     public int getId() {

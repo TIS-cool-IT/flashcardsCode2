@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,9 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
-public class Main extends Application {
+public class Main extends Application implements Serializable{
     public static Stage primStage = null;
     public static Stage sounderStage = null;
     public static Parent editParent = null;
@@ -19,9 +22,10 @@ public class Main extends Application {
     public static Parent addParent = null;
     public static Parent presentationParent = null;
     public static Scene sounderScene = null;
-    //public static Scene skuska = null;
+    private static ArrayList<Category> categories = new ArrayList<>();
+            //public static Scene skuska = null;
 
-    // passing id
+            // passing id
     public static int categoryId;
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -38,8 +42,43 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         primStage = primaryStage;
+        //loadCategories();
     }
 
+    public static void addCategory(Category cat) throws IOException {
+        categories.add(cat);
+        try {
+            saveCategories();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        loadCategories();
+    }
+
+    public static ArrayList<Category> getCategories() throws IOException {
+        loadCategories();
+        return categories;
+    }
+
+    public static void saveCategories() throws IOException {
+        FileOutputStream fos = new FileOutputStream("C:\\FlashCard\\categories.bin");
+        ObjectOutputStream out = new ObjectOutputStream(fos);
+        out.writeObject(categories);
+        fos.close();
+        out.close();
+    }
+
+    public static void loadCategories() throws IOException {
+        FileInputStream fos = new FileInputStream("C:\\FlashCard\\categories.bin");
+        ObjectInputStream out = new ObjectInputStream(fos);
+        try {
+            categories = (ArrayList<Category>)out.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        fos.close();
+        out.close();
+    }
 
     public static void main(String[] args) {
         launch(args);
