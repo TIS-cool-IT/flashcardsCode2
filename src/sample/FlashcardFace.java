@@ -10,8 +10,15 @@ import java.util.ArrayList;
 public class FlashcardFace {
 
     private ArrayList<Image> images = new ArrayList<Image>();
-    private ArrayList sounds = new ArrayList<>(); // TODO pridat nazov triedy na spravu zvuku
+    private ArrayList<Sounder> sounds = new ArrayList<Sounder>(); // TODO pridat nazov triedy na spravu zvuku
     private String text;
+
+    public FlashcardFace(String text, ArrayList<Image> images, ArrayList<Sounder> sounds) {
+        this.text = text;
+        this.images = images;
+        this.sounds = sounds;
+    }
+
 
     public ArrayList<Image> getImages() {
         return images;

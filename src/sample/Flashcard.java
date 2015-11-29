@@ -6,7 +6,6 @@ package sample;
 public class Flashcard {
 
     private int id;
-    private String titleOfFlashcard;
     private boolean reversed;
     private Category category;
     private FlashcardFace answer;
@@ -14,14 +13,13 @@ public class Flashcard {
     private String flashcardDirectory;
 
 
-    Flashcard(int id, String title, boolean reversed, Category category,
-              FlashcardFace answer, FlashcardFace question) {
+    Flashcard(int id, boolean reversed, Category category,
+              FlashcardFace question, FlashcardFace answer) {
         this.id = id;
-        this.titleOfFlashcard = title;
         this.reversed = reversed;
         this.category = category;
-        this.answer = answer;
         this.question = question;
+        this.answer = answer;
         this.flashcardDirectory = category.getCategoryDirectory() + "\\" + Integer.toString(this.id);
     }
 
@@ -34,13 +32,6 @@ public class Flashcard {
         return id;
     }
 
-    public String getTitleOfFlashcard() {
-        return titleOfFlashcard;
-    }
-
-    public void setTitleOfFlashcard(String newTitleOfFlashcard) {
-        titleOfFlashcard = newTitleOfFlashcard;
-    }
 
     public Category getFlashcardCategory() {
         return category;
