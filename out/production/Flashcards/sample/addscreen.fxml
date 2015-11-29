@@ -61,25 +61,25 @@
         <Label font="$x5" layoutX="172.0" layoutY="159.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Image" textAlignment="LEFT" />
         <Label font="$x5" layoutX="172.0" layoutY="196.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Sound" textAlignment="LEFT" />
         <TextField id="InputQText" fx:id="inputQText" layoutX="257.0" layoutY="129.0" prefWidth="560.0" />
-        <Button id="BtnQImage1" fx:id="btnQImage1" layoutX="257.0" layoutY="167.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
-        <Button id="BtnQSound1" fx:id="btnQSound1" layoutX="257.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
-        <Button id="BtnQImage2" fx:id="btnQImage2" layoutX="416.0" layoutY="167.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
-        <Button id="BtnQSound2" fx:id="btnQSound2" layoutX="416.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+        <Button id="BtnQImage1" fx:id="btnQImage1" layoutX="257.0" layoutY="167.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQImage1" />
+        <Button id="BtnQSound1" fx:id="btnQSound1" layoutX="257.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQSound1" />
+        <Button id="BtnQImage2" fx:id="btnQImage2" layoutX="416.0" layoutY="167.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQImage2"/>
+        <Button id="BtnQSound2" fx:id="btnQSound2" layoutX="416.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQSound1" />
         <Label font="$x5" layoutX="172.0" layoutY="287.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Text" textAlignment="LEFT" />
         <Label font="$x5" layoutX="172.0" layoutY="324.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Image" textAlignment="LEFT" />
         <Label font="$x5" layoutX="172.0" layoutY="361.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Sound" textAlignment="LEFT" />
         <TextField id="BtnAText" fx:id="inputAText" layoutX="257.0" layoutY="294.0" prefWidth="560.0" />
-        <Button id="BtnAImage1" fx:id="btnAImage1" layoutX="257.0" layoutY="332.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
-        <Button id="BtnASound1" fx:id="btnASound1" layoutX="257.0" layoutY="369.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
-        <Button id="BtnAImage2" fx:id="btnAImage2" layoutX="416.0" layoutY="332.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
-        <Button id="BtnASound2" fx:id="btnASound2" layoutX="416.0" layoutY="369.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
+        <Button id="BtnAImage1" fx:id="btnAImage1" layoutX="257.0" layoutY="332.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addAImage1"/>
+        <Button id="BtnASound1" fx:id="btnASound1" layoutX="257.0" layoutY="369.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addASound1"/>
+        <Button id="BtnAImage2" fx:id="btnAImage2" layoutX="416.0" layoutY="332.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addAImage2"/>
+        <Button id="BtnASound2" fx:id="btnASound2" layoutX="416.0" layoutY="369.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addASound2"/>
         <Label font="$x2" layoutX="130.0" layoutY="445.0" prefHeight="36.60000038146973" prefWidth="56.0" text="Help" textAlignment="LEFT" />
         <Button id="BtnQRecord" fx:id="btnQRecord" layoutX="586.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" onMouseClicked="#recordSoundQ"/>
         <Button id="BtnARecord" fx:id="btnARecord" layoutX="586.0" layoutY="369.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" onMouseClicked="#recordSoundA"/>
         <Button fx:id="btnOpenBook" layoutX="257.0" layoutY="455.0" mnemonicParsing="false" prefWidth="112.0" text="Open book" />
         <Button fx:id="btnOpenAudioBook" layoutX="416.0" layoutY="455.0" mnemonicParsing="false" prefWidth="112.0" text="Open audiobook" onMouseClicked="#openAudio"/>
         <CheckBox fx:id="checkboxReverse" font="$x5" layoutX="130.0" layoutY="411.0" mnemonicParsing="false" text="Flashcard can be used reversed" />
-        <Button id="addBtn" fx:id="btnAdd" layoutX="443.0" layoutY="506.0" mnemonicParsing="false" prefHeight="36.5999755859375" prefWidth="119.0" text="Add" />
+        <Button id="addBtn" fx:id="btnAdd" layoutX="443.0" layoutY="506.0" mnemonicParsing="false" prefHeight="36.5999755859375" prefWidth="119.0" text="Add" onMouseClicked="#addBtnClicked"/>
       </children>
     </Group>
   </center>
