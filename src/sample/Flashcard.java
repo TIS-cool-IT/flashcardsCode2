@@ -1,5 +1,9 @@
 package sample;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
 /**
  * Basic Flashcard class
  */
@@ -21,6 +25,7 @@ public class Flashcard {
         this.question = question;
         this.answer = answer;
         this.flashcardDirectory = category.getCategoryDirectory() + "\\" + Integer.toString(this.id);
+        category.makeDirectory(flashcardDirectory);
     }
 
 
@@ -64,4 +69,6 @@ public class Flashcard {
     public void setFlashcardDirectory(String flashcardDirectory) {
         this.flashcardDirectory = flashcardDirectory;
     }
+
+
 }

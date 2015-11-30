@@ -22,7 +22,7 @@
   <center>
     <Group id="Group" BorderPane.alignment="CENTER">
       <children>
-        <TextField layoutX="252.0" layoutY="43.0" prefHeight="35.0" prefWidth="638.0" promptText="Name of category" text="" />
+        <TextField fx:id="nameOfCategory" layoutX="252.0" layoutY="43.0" prefHeight="35.0" prefWidth="638.0" promptText="Name of category" text="" />
         <Button layoutX="426.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#openAddScreen" prefHeight="35.0" prefWidth="157.0" text="Add new " />
         <Button layoutX="426.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#openEditOneScreen" prefHeight="35.0" prefWidth="157.0" text="Edit" />
         <Button layoutX="426.0" layoutY="492.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Save changes" />

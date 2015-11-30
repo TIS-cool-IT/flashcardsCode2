@@ -14,6 +14,7 @@ import javax.sound.sampled.LineUnavailableException;
 import java.io.File;
 import java.io.IOException;
 
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,11 +48,12 @@ public class AddScreenController {
 
     public void addBtnClicked(){
 
-        Category selectCategory = new Category(2, "title"); // TODO nahradit vybratou kategoriou z LauncherScreenController (Betka?)
+        Category selectCategory = new Category(3, "title"); // TODO nahradit vybratou kategoriou z LauncherScreenController (Betka?)
 
-        if (correctInput()) {
+       // if (correctInput()) {
+        if (true) {
 
-            new Flashcard(1, checkboxReverse.isSelected(), selectCategory,
+            Flashcard card = new Flashcard(1, checkboxReverse.isSelected(), selectCategory,
                     new FlashcardFace(inputQText.getText(), new ArrayList<>(), new ArrayList<>()),
                     new FlashcardFace(inputAText.getText(), new ArrayList<>(), new ArrayList<>())
             );//TODO filedialog - images, sounds
@@ -66,13 +68,25 @@ public class AddScreenController {
             // TODO category - pozriet do suboru, kde su vsetky kategorie a porovnat na zaklade premennej categoryID
             // TODO ulozit flashcardu do suboru
 
+            saveFaceFile(inputFiles.get("QImage1"), "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
+
             toEditScreen();
         }
         else {
-            // TODO chybova hlaska
+            // TODO chybova hlaska v GUI
             System.out.println("Nastala chyba pri vytvarani falshcard");
+
         }
 
+    }
+
+    public void saveFaceFile(File source, String dir){
+        File dest = new File(dir + "\\" + source.getName());
+        try {
+            Files.copy(source.toPath(), dest.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean correctInput() {

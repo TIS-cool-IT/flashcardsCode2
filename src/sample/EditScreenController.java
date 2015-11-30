@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
@@ -33,6 +34,9 @@ public class EditScreenController{
     TableColumn idCol;
     @FXML
     TableColumn titleCol;
+    @FXML
+    TextField nameOfCategory;
+
 
 
         // TODO nahadzat prvky do flashcardsForactualCategory - hadze error - nejak to osefovat
@@ -65,6 +69,8 @@ public class EditScreenController{
     public EditScreenController() {
         if (editCategory != null) {
             System.out.println("zvolena kategoria id: " + editCategory.getId());
+            System.out.print(editCategory.getTitleOfCategory());
+            // nameOfCategory.setText(editCategory.getTitleOfCategory()); TODO opravit
         }
 
 //        table.getItems().setAll(this.flashcardsForActualCategory);
