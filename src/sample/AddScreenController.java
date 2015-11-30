@@ -48,10 +48,9 @@ public class AddScreenController {
 
     public void addBtnClicked(){
 
-        Category selectCategory = new Category(3, "title"); // TODO nahradit vybratou kategoriou z LauncherScreenController (Betka?)
+        Category selectCategory = new Category(2, "title"); // TODO nahradit vybratou kategoriou z LauncherScreenController (Betka?)
 
-       // if (correctInput()) {
-        if (true) {
+        if (correctInput()) {
 
             Flashcard card = new Flashcard(1, checkboxReverse.isSelected(), selectCategory,
                     new FlashcardFace(inputQText.getText(), new ArrayList<>(), new ArrayList<>()),
@@ -66,9 +65,13 @@ public class AddScreenController {
             }
             // TODO id priradovat podla posledneho id v subore + 1
             // TODO category - pozriet do suboru, kde su vsetky kategorie a porovnat na zaklade premennej categoryID
-            // TODO ulozit flashcardu do suboru
 
-            saveFaceFile(inputFiles.get("QImage1"), "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
+            // saving files to directory
+            for (File input : inputFiles.values()){
+                if (input != null) {
+                    saveFaceFile(input, "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
+                }
+            }
 
             toEditScreen();
         }
