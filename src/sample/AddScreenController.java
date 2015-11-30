@@ -3,19 +3,21 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 
 import javax.sound.sampled.LineUnavailableException;
 
 import java.io.File;
 import java.io.IOException;
 
-import javax.sound.sampled.LineUnavailableException;
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-import static sample.Main.toEditScreen;
+import static sample.Main.*;
 
 public class AddScreenController {
 
@@ -23,16 +25,224 @@ public class AddScreenController {
     @FXML
     private JavaSoundRecorder recorder = new JavaSoundRecorder();
 
+    @FXML
+    TextField inputQText;
+    @FXML
+    TextField inputAText;
+    @FXML
+    CheckBox checkboxReverse;
+    @FXML
+    Button btnQImage1, btnQSound1, btnQImage2, btnQSound2;
+    @FXML
+    Button btnAImage1, btnASound1, btnAImage2, btnASound2;
+    HashMap<String, File> inputFiles = new HashMap<String, File>() {{
+        put("QImage1",null); put("QSound1", null); put("QImage2", null); put("QSound2", null);
+        put("AImage1",null); put("ASound1", null); put("AImage2", null); put("ASound2", null);
+    }};
+
     public void finishAdding(){
         toEditScreen(); //TODO poslat id kategorie
     }
 
-    public void addBtnClicked() throws IOException, LineUnavailableException {
-        // TODO vytvorit flashcardu, ulozit
-        // na vytvorenie flashcard treba skontrolovat, ci sa moze vytvorit tj. novu funkciu
-        // treba vytvorit 2 FlashcardFace -> najpr skontrolovat, ci sa mozu vytvorit tj. dalsia funkcia
+
+    public void addBtnClicked(){
+
+        Category selectCategory = new Category(2, "title"); // TODO nahradit vybratou kategoriou z LauncherScreenController (Betka?)
+
+        if (correctInput()) {
+
+            // TODO treba vytvorit 2 FlashcardFace -> najpr skontrolovat, ci sa mozu vytvorit
+
+            new Flashcard(1, checkboxReverse.isSelected(), selectCategory,
+                    new FlashcardFace(inputQText.getText(), new ArrayList<>(), new ArrayList<>()),
+                    new FlashcardFace(inputAText.getText(), new ArrayList<>(), new ArrayList<>())
+            );//TODO filedialog - images, sounds
+
+            if (checkboxReverse.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
+                new Flashcard(1, checkboxReverse.isSelected(), selectCategory,
+                        new FlashcardFace(inputAText.getText(), new ArrayList<>(), new ArrayList<>()),
+                        new FlashcardFace(inputQText.getText(), new ArrayList<>(), new ArrayList<>())
+                );
+            }
+            // TODO id priradovat podla posledneho id v subore + 1
+            // TODO category - pozriet do suboru, kde su vsetky kategorie a porovnat na zaklade premennej categoryID
+            // TODO ulozit flashcardu do suboru
+
+            toEditScreen();
+        }
+        else {
+            // TODO chybova hlaska
+        }
 
     }
+
+    private boolean correctInput() {
+        if (inputQText.getText().equals(""))
+            if (inputFiles.get("QImage1") == null)
+                if (inputFiles.get("QImage2") == null)
+                    if (inputFiles.get("QSound1") == null)
+                        if (inputFiles.get("QSound2") == null)
+                            return false;
+        if (inputAText.getText().equals(""))
+            if (inputFiles.get("AImage1") == null)
+                if (inputFiles.get("AImage2") == null)
+                    if (inputFiles.get("ASound1") == null)
+                        if (inputFiles.get("ASound2") == null)
+                            return false;
+        return true;
+    }
+
+    @FXML
+    public void addQImage1() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Pictures");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        if (selectedFile != null) {
+            inputFiles.put("QImage1", selectedFile);
+            System.out.println(inputFiles.get("QImage1"));
+
+            btnQImage1.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addQImage2() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Pictures");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        if (selectedFile != null) {
+            inputFiles.put("QImage2", selectedFile);
+            btnQImage2.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addQSound1() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Sounds");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("MP3", "*.mp3")
+        );
+        if (selectedFile != null) {
+            inputFiles.put("QSound1", selectedFile);
+            btnQSound1.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addQSound2() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Sounds");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("MP3", "*.mp3")
+        );
+        if (selectedFile != null) {
+            inputFiles.put("QSound2", selectedFile);
+            btnQSound2.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addAImage1() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Pictures");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        if (selectedFile != null) {
+            inputFiles.put("AImage1", selectedFile);
+            btnAImage1.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addAImage2() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Pictures");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        if (selectedFile != null) {
+            inputFiles.put("AImage2", selectedFile);
+            btnAImage2.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addASound1() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Sounds");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("MP3", "*.mp3")
+        );
+        if (selectedFile != null) {
+            inputFiles.put("ASound1", selectedFile);
+            btnASound1.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addASound2() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Sounds");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("MP3", "*.mp3")
+        );
+        if (selectedFile != null) {
+            inputFiles.put("ASound2", selectedFile);
+            btnASound2.setText(selectedFile.getName());
+        }
+    }
+
+
     @FXML synchronized
     public void recordSoundQ() throws IOException, LineUnavailableException {
         Scene addScene = Main.getPrimaryStage().getScene();
@@ -51,8 +261,6 @@ public class AddScreenController {
             System.out.println("recording stopped!!!!");
         }
     }
-
-        // uladanie suborov FlashcardFace (text, obrazky, zvuky) -> kam dat takuto funkciu?? sem alebo Flashcard?
 
     @FXML synchronized
     public void recordSoundA() throws IOException, LineUnavailableException {
