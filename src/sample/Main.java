@@ -72,6 +72,14 @@ public class Main extends Application implements Serializable{
     }
 
     public static void loadCategories() throws IOException {
+        File binFile = new File("C:\\FlashCard\\categories.bin");
+        // create a bin file
+        if (!binFile.exists()) {
+            System.out.print("creating file: categories.bin ");
+            System.out.println(binFile.createNewFile());
+            saveCategories();
+        }
+
         FileInputStream fos = new FileInputStream("C:\\FlashCard\\categories.bin");
         ObjectInputStream out = new ObjectInputStream(fos);
         try {
