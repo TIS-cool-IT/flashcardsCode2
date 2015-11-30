@@ -26,7 +26,10 @@ public class Main extends Application implements Serializable{
             //public static Scene skuska = null;
 
             // passing id
-    public static int categoryId;
+    //public static int categoryId;
+
+    public static Category editCategory;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         addParent = FXMLLoader.load(getClass().getResource("addscreen.fxml"));

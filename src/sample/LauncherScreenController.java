@@ -53,23 +53,14 @@ public class LauncherScreenController implements Initializable {
         }
         table.setItems(categories);
 
-        //TODO reinicalizovat controler?
 
     }
 
 
     public void editBtnClicked() throws IOException {
         if (table.getSelectionModel().getSelectedItem() != null) {
-            Category category = table.getSelectionModel().getSelectedItem();
-            //System.out.print(category.getId());
-
-//            FXMLLoader loader = new FXMLLoader(
-//                    getClass().getResource("editscreen.fxml"));
-//            EditScreenController controller =
-//                    loader.<EditScreenController>getController();
-//            controller.initData(category);
-
-            //categoryId = category.getId();
+            //ukladam si kategoriu do statickej premennej editCategory
+            editCategory = table.getSelectionModel().getSelectedItem();
             //musim refreshnut controler kvoli aktualizacii dat
             FXMLLoader.load(getClass().getResource("editScreen.fxml"));
             toEditScreen();

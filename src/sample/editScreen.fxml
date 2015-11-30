@@ -10,6 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <BorderPane prefHeight="640.0" prefWidth="1100.0" styleClass="borderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.EditScreenController">
   <bottom>
     <Button fx:id="backBtn" cancelButton="false" defaultButton="false" mnemonicParsing="false" onMouseClicked="#finishEditing" prefHeight="65.0" prefWidth="1100.0" text="Finish editing" textFill="BLACK" BorderPane.alignment="CENTER">
@@ -22,13 +23,6 @@
     <Group id="Group" BorderPane.alignment="CENTER">
       <children>
         <TextField layoutX="252.0" layoutY="43.0" prefHeight="35.0" prefWidth="638.0" promptText="Name of category" text="" />
-        <TableView fx:id="table" layoutX="117.0" layoutY="90.0" prefHeight="294.0" prefWidth="774.0">
-          <columns>
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="46.0" text="" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="586.0" text="name of category" fx:id="nameColumn" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="141.0" text="number of flashcards" fx:id="countColumn" />
-          </columns>
-        </TableView>
         <Button layoutX="426.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#openAddScreen" prefHeight="35.0" prefWidth="157.0" text="Add new " />
         <Button layoutX="426.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#openEditOneScreen" prefHeight="35.0" prefWidth="157.0" text="Edit" />
         <Button layoutX="426.0" layoutY="492.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Save changes" />
@@ -37,6 +31,26 @@
             <Font size="13.0" />
           </font>
         </Label>
+        <Pane layoutX="116.0" layoutY="82.0" prefHeight="302.0" prefWidth="774.0">
+          <children>
+            <TableView layoutX="0.0" layoutY="0.0" prefHeight="312.0" prefWidth="774.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ID">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="id" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Question" />
+                <TableColumn prefWidth="75.0" text="Answer" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="136.0" text="Question images" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="119.0" text="Answer Images" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Question Sounds" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="103.0" text="Answer sounds" />
+                <TableColumn prefWidth="75.0" text="Reversed" />
+              </columns>
+            </TableView>
+          </children>
+        </Pane>
       </children>
     </Group>
   </center>

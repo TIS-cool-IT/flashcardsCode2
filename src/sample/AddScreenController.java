@@ -51,8 +51,6 @@ public class AddScreenController {
 
         if (correctInput()) {
 
-            // TODO treba vytvorit 2 FlashcardFace -> najpr skontrolovat, ci sa mozu vytvorit
-
             new Flashcard(1, checkboxReverse.isSelected(), selectCategory,
                     new FlashcardFace(inputQText.getText(), new ArrayList<>(), new ArrayList<>()),
                     new FlashcardFace(inputAText.getText(), new ArrayList<>(), new ArrayList<>())
@@ -72,6 +70,7 @@ public class AddScreenController {
         }
         else {
             // TODO chybova hlaska
+            System.out.println("Nastala chyba pri vytvarani falshcard");
         }
 
     }
