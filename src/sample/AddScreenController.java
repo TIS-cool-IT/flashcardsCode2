@@ -48,25 +48,29 @@ public class AddScreenController {
 
     public void addBtnClicked(){
 
-        Category selectCategory = new Category(2, "title"); // TODO nahradit vybratou kategoriou z LauncherScreenController (Betka?)
+        Category selectCategory = new Category(2, "title"); // TODO nahradit vybratou kategoriou z LauncherScreenController
 
         if (correctInput()) {
 
-            Flashcard card = new Flashcard(1, checkboxReverse.isSelected(), selectCategory,
-                    new FlashcardFace(inputQText.getText(), new ArrayList<>(), new ArrayList<>()),
-                    new FlashcardFace(inputAText.getText(), new ArrayList<>(), new ArrayList<>())
-            );//TODO filedialog - images, sounds
+            FlashcardFace questionFace = new FlashcardFace(inputQText.getText(),
+                    new ArrayList() { {add(inputFiles.get("QImage1")); add(inputFiles.get("QImage2"));} },
+                    new ArrayList() { {add(inputFiles.get("QSound1")); add(inputFiles.get("QSound2"));} });
+            FlashcardFace answerFace = new FlashcardFace(inputAText.getText(),
+                    new ArrayList() { {add(inputFiles.get("AImage1")); add(inputFiles.get("AImage2"));} },
+                    new ArrayList() { {add(inputFiles.get("ASound1")); add(inputFiles.get("ASound2"));} });
+
+            Flashcard card = new Flashcard(1, checkboxReverse.isSelected(), selectCategory, questionFace, answerFace);
 
             if (checkboxReverse.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
-                new Flashcard(1, checkboxReverse.isSelected(), selectCategory,
-                        new FlashcardFace(inputAText.getText(), new ArrayList<>(), new ArrayList<>()),
-                        new FlashcardFace(inputQText.getText(), new ArrayList<>(), new ArrayList<>())
-                );
+                new Flashcard(1, checkboxReverse.isSelected(), selectCategory, answerFace, questionFace);
             }
+            // save a flashcard to the category
+            selectCategory.addFlashcard(card);
+
             // TODO id priradovat podla posledneho id v subore + 1
             // TODO category - pozriet do suboru, kde su vsetky kategorie a porovnat na zaklade premennej categoryID
 
-            // saving files to directory
+            // save files to directory
             for (File input : inputFiles.values()){
                 if (input != null) {
                     saveFaceFile(input, "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());

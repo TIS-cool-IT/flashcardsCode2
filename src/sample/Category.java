@@ -31,7 +31,6 @@ public class Category implements Serializable{
 
     public void addFlashcard(Flashcard flashcard) {
         listOfFlashcards.add(flashcard);
-        makeDirectory(flashcard.getFlashcardDirectory());
     }
 
     public int getCount() {
