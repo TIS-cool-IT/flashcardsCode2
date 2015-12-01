@@ -24,19 +24,18 @@ import static sample.Main.*;
 public class AddScreenController implements Serializable{
 
     private boolean recording = false;
-    @FXML
-    private JavaSoundRecorder recorder = new JavaSoundRecorder();
+    //private JavaSoundRecorder recorder = new JavaSoundRecorder();
 
-    @FXML
+    /*@FXML
     TextField inputQText;
     @FXML
     TextField inputAText;
     @FXML
-    CheckBox checkboxReverse;
-    @FXML
+    CheckBox checkboxReverse;*/
+    /*@FXML
     Button btnQImage1, btnQSound1, btnQImage2, btnQSound2;
     @FXML
-    Button btnAImage1, btnASound1, btnAImage2, btnASound2;
+    Button btnAImage1, btnASound1, btnAImage2, btnASound2;*/
     HashMap<String, File> inputFiles = new HashMap<String, File>() {{
         put("QImage1",null); put("QSound1", null); put("QImage2", null); put("QSound2", null);
         put("AImage1",null); put("ASound1", null); put("AImage2", null); put("ASound2", null);
@@ -49,6 +48,12 @@ public class AddScreenController implements Serializable{
 
     public void addBtnClicked() throws IOException {
 
+        Scene addScene = Main.getPrimaryStage().getScene();
+        TextField inputQText = (TextField) addScene.lookup("#InputQText");
+        TextField inputAText = (TextField) addScene.lookup("#BtnAText");
+        CheckBox check = (CheckBox) addScene.lookup("#CheckboxReverse");
+        System.out.println(inputAText.getText() + "hnojkox");
+
 
         if (correctInput()) {
 
@@ -59,25 +64,24 @@ public class AddScreenController implements Serializable{
                     new ArrayList() { {add(inputFiles.get("AImage1")); add(inputFiles.get("AImage2"));} },
                     new ArrayList() { {add(inputFiles.get("ASound1")); add(inputFiles.get("ASound2"));} });
 
-            Flashcard card = new Flashcard(1, checkboxReverse.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
+            Flashcard card = new Flashcard(1, check.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
 
-            if (checkboxReverse.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
-                new Flashcard(1, checkboxReverse.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), answerFace, questionFace);
+            if (check.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
+                new Flashcard(1, check.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), answerFace, questionFace);
             }
             // save a flashcard to the category
             //int index = Main.getCategories().indexOf(editCategory);
             System.out.println("addScreenController - id " + (idOfSelectedCategory-1));
             ArrayList<Category> al = Main.getCategories();
-            Category cat = al.get(idOfSelectedCategory-1);
-            cat.addFlashcard(card);
-            al.set(idOfSelectedCategory-1,cat);
+
+            al.get(idOfSelectedCategory-1).addFlashcard(card);
+            Main.saveCategories();
+            //cat.addFlashcard(card);
+            //al.set(idOfSelectedCategory-1,cat);
             System.out.println("pocet flascards v al: " + al.get(idOfSelectedCategory-1).getFlashcards().size());
             Main.setCategories(idOfSelectedCategory-1,al.get(idOfSelectedCategory-1));
-            //Main.getCategories().get(idOfSelectedCategory-1).addFlashcard(card);
             System.out.println("pocet flascards v main: " + Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size());
-            //Main.getCategories().get(idOfSelectedCategory-1).addFlashcard(card);
-            //editCategory.addFlashcard(card);
-            //editCategory.saveCategories();
+            //Flashcard fc = new Flashcard(1, checkboxReverse.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
 
             // TODO id priradovat podla posledneho id v subore + 1
             // TODO category - pozriet do suboru, kde su vsetky kategorie a porovnat na zaklade premennej categoryID
@@ -88,6 +92,8 @@ public class AddScreenController implements Serializable{
                     saveFaceFile(input, "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
                 }
             }
+
+            //Main.getCategories().get(idOfSelectedCategory-1).saveCategories();
             //editCategory.saveCategories();
             toEditScreen();
         }
@@ -109,6 +115,9 @@ public class AddScreenController implements Serializable{
     }
 
     private boolean correctInput() {
+        Scene addScene = Main.getPrimaryStage().getScene();
+        TextField inputQText = (TextField) addScene.lookup("#InputQText");
+        TextField inputAText = (TextField) addScene.lookup("#BtnAText");
         if (inputQText.getText().equals(""))
             if (inputFiles.get("QImage1") == null)
                 if (inputFiles.get("QImage2") == null)
@@ -141,7 +150,7 @@ public class AddScreenController implements Serializable{
             inputFiles.put("QImage1", selectedFile);
             System.out.println(inputFiles.get("QImage1"));
 
-            btnQImage1.setText(selectedFile.getName());
+            //btnQImage1.setText(selectedFile.getName());
         }
     }
 
@@ -160,7 +169,7 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("QImage2", selectedFile);
-            btnQImage2.setText(selectedFile.getName());
+            //btnQImage2.setText(selectedFile.getName());
         }
     }
 
@@ -178,7 +187,7 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("QSound1", selectedFile);
-            btnQSound1.setText(selectedFile.getName());
+            //btnQSound1.setText(selectedFile.getName());
         }
     }
 
@@ -196,7 +205,7 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("QSound2", selectedFile);
-            btnQSound2.setText(selectedFile.getName());
+            //btnQSound2.setText(selectedFile.getName());
         }
     }
 
@@ -215,7 +224,7 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("AImage1", selectedFile);
-            btnAImage1.setText(selectedFile.getName());
+            //btnAImage1.setText(selectedFile.getName());
         }
     }
 
@@ -234,7 +243,7 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("AImage2", selectedFile);
-            btnAImage2.setText(selectedFile.getName());
+            //btnAImage2.setText(selectedFile.getName());
         }
     }
 
@@ -252,7 +261,7 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("ASound1", selectedFile);
-            btnASound1.setText(selectedFile.getName());
+            //btnASound1.setText(selectedFile.getName());
         }
     }
 
@@ -270,7 +279,7 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("ASound2", selectedFile);
-            btnASound2.setText(selectedFile.getName());
+            //btnASound2.setText(selectedFile.getName());
         }
     }
 
@@ -278,6 +287,7 @@ public class AddScreenController implements Serializable{
     @FXML synchronized
     public void recordSoundQ() throws IOException, LineUnavailableException {
         Scene addScene = Main.getPrimaryStage().getScene();
+        JavaSoundRecorder recorder = new JavaSoundRecorder();
         if(!recording) {
             Button but = (Button) addScene.lookup("#BtnQRecord");
             but.setStyle("-fx-text-fill: red;");
@@ -297,6 +307,7 @@ public class AddScreenController implements Serializable{
     @FXML synchronized
     public void recordSoundA() throws IOException, LineUnavailableException {
         Scene addScene = Main.getPrimaryStage().getScene();
+        JavaSoundRecorder recorder = new JavaSoundRecorder();
         if(!recording) {
             Button but = (Button) addScene.lookup("#BtnARecord");
             but.setStyle("-fx-text-fill: red;");
@@ -317,8 +328,5 @@ public class AddScreenController implements Serializable{
     public void openAudio() throws IOException {
         Main.openAudioBook();
     }
-
-
-
 
 }

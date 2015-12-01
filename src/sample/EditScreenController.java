@@ -29,7 +29,7 @@ public class EditScreenController{
 
 
     @FXML
-    private TableView<Category> table;
+    private TableView<Flashcard> table1;
 
     @FXML
     TableColumn idCol;
@@ -41,7 +41,7 @@ public class EditScreenController{
 
 
         // TODO nahadzat prvky do flashcardsForactualCategory - hadze error - nejak to osefovat
-    private final ObservableList<Flashcard> flashcardsForActualCategory = FXCollections.observableArrayList();
+    private ObservableList<Flashcard> flashcardsForActualCategory = FXCollections.observableArrayList();
 
 
 
@@ -63,17 +63,22 @@ public class EditScreenController{
             System.out.println("zvolena kategoria id: " + Main.getCategories().get(idOfSelectedCategory-1).getId());
             System.out.println(Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
             // nameOfCategory.setText(editCategory.getTitleOfCategory()); // TODO opravit
-            Main.saveCategories();
+            System.out.println("ukladaam to teraz");
+            //Main.saveCategories();
             Main.loadCategories();
-            System.out.println(Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size());
-            for(Category fc : Main.getCategories()){
+            System.out.println("id: " + (idOfSelectedCategory-1));
+            System.out.println("flashcards v id: " + Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size());
+            for(Flashcard fc : Main.getCategories().get(idOfSelectedCategory-1).getFlashcards()){
 
-                //flashcardsForActualCategory.add(fc);
-                System.out.println(fc.getFlashcards().size());
+                flashcardsForActualCategory.add(fc);
+                System.out.println("added");
             }
+            //TODO spravit zobrazovanie v table1
+            //table1.getItems().setAll(flashcardsForActualCategory);
+            //table1.setItems(flashcardsForActualCategory);
         }
 
-//        table.getItems().setAll(this.flashcardsForActualCategory);
+
     }
 
     @FXML

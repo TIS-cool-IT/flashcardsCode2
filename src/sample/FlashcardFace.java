@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 public class FlashcardFace implements Serializable{
 
-    private ArrayList<Image> images = new ArrayList<Image>();
-    private ArrayList<Sounder> sounds = new ArrayList<Sounder>(); // TODO pridat nazov triedy na spravu zvuku
+    private ArrayList<Image> images = new ArrayList<>();
+    private ArrayList<Sounder> sounds = new ArrayList<>(); // TODO pridat nazov triedy na spravu zvuku
     private String text;
 
     public FlashcardFace(String text, ArrayList<Image> images, ArrayList<Sounder> sounds) {

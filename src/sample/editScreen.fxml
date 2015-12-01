@@ -33,7 +33,7 @@
         </Label>
         <Pane layoutX="116.0" layoutY="82.0" prefHeight="302.0" prefWidth="774.0">
           <children>
-            <TableView layoutX="0.0" layoutY="0.0" prefHeight="312.0" prefWidth="774.0">
+            <TableView fx:id="table1" layoutX="0.0" layoutY="0.0" prefHeight="312.0" prefWidth="774.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="ID">
                   <cellValueFactory>

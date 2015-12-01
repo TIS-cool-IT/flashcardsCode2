@@ -59,7 +59,12 @@ public class Main extends Application implements Serializable{
         loadCategories();
     }
 
-    public static ArrayList<Category> getCategories() throws IOException {
+    public static ArrayList<Category> getCategories() {
+        //loadCategories();
+        return categories;
+    }
+
+    public static ArrayList<Category> getLoadedCategories() throws IOException {
         loadCategories();
         return categories;
     }
@@ -132,8 +137,10 @@ public class Main extends Application implements Serializable{
         primStage.getScene().setRoot(editOneParent);
     }
 
-    public static void setCategories(int index, Category cat){
+    public static void setCategories(int index, Category cat) throws IOException {
         categories.set(index,cat);
+        System.out.println("V " + cat.getTitleOfCategory() + " je " + categories.get(index).getFlashcards().size());
+        saveCategories();
     }
 
 

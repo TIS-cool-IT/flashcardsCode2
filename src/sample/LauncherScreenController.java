@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,12 +38,8 @@ public class LauncherScreenController implements Initializable {
         Main.addCategory((new Category(categories.size()+1, categoryName.getText())));
         JOptionPane.showMessageDialog(new JFrame(), "Category '" + categoryName.getText() + "' was saved!");
         table.getItems().clear();
-        try {
-            for(Category cat : Main.getCategories()){
-                if(!categories.contains(cat)) categories.add(cat);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        for(Category cat : Main.getCategories()){
+            if(!categories.contains(cat)) categories.add(cat);
         }
         table.setItems(categories);
     }
@@ -68,7 +65,13 @@ public class LauncherScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            for(Category cat : Main.getCategories()){
+            //Main.saveCategories();
+            Main.loadCategories();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            for(Category cat : Main.getLoadedCategories()){
                 categories.add(cat);
             }
         } catch (IOException e) {

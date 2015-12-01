@@ -13,7 +13,7 @@ import static sample.Main.*;
 public class Category implements Serializable{
     private int idOfCategory;
     private String titleOfCategory;
-    private ArrayList<Flashcard> listOfFlashcards = new ArrayList<Flashcard>();
+    private ArrayList<Flashcard> listOfFlashcards = new ArrayList<>();
     private String categoryDirectory;
     private final String DIRECTORY = "C:\\FlashCard\\Categories\\"; //TODO DIRECTORY ukladania dať do hlavnej triedy
 
@@ -82,12 +82,5 @@ public class Category implements Serializable{
         return result;
     }
 
-    public void saveCategories(){
-        try {
-            Main.saveCategories();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 }
