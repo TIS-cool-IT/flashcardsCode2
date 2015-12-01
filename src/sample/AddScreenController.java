@@ -14,13 +14,14 @@ import javax.sound.sampled.LineUnavailableException;
 import java.io.File;
 import java.io.IOException;
 
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import static sample.Main.*;
 
-public class AddScreenController {
+public class AddScreenController implements Serializable{
 
     private boolean recording = false;
     @FXML
@@ -46,9 +47,8 @@ public class AddScreenController {
     }
 
 
-    public void addBtnClicked(){
+    public void addBtnClicked() throws IOException {
 
-        Category selectCategory = new Category(2, "title"); // TODO nahradit vybratou kategoriou z LauncherScreenController
 
         if (correctInput()) {
 
@@ -59,13 +59,25 @@ public class AddScreenController {
                     new ArrayList() { {add(inputFiles.get("AImage1")); add(inputFiles.get("AImage2"));} },
                     new ArrayList() { {add(inputFiles.get("ASound1")); add(inputFiles.get("ASound2"));} });
 
-            Flashcard card = new Flashcard(1, checkboxReverse.isSelected(), selectCategory, questionFace, answerFace);
+            Flashcard card = new Flashcard(1, checkboxReverse.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
 
             if (checkboxReverse.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
-                new Flashcard(1, checkboxReverse.isSelected(), selectCategory, answerFace, questionFace);
+                new Flashcard(1, checkboxReverse.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), answerFace, questionFace);
             }
             // save a flashcard to the category
-            selectCategory.addFlashcard(card);
+            //int index = Main.getCategories().indexOf(editCategory);
+            System.out.println("addScreenController - id " + (idOfSelectedCategory-1));
+            ArrayList<Category> al = Main.getCategories();
+            Category cat = al.get(idOfSelectedCategory-1);
+            cat.addFlashcard(card);
+            al.set(idOfSelectedCategory-1,cat);
+            System.out.println("pocet flascards v al: " + al.get(idOfSelectedCategory-1).getFlashcards().size());
+            Main.setCategories(idOfSelectedCategory-1,al.get(idOfSelectedCategory-1));
+            //Main.getCategories().get(idOfSelectedCategory-1).addFlashcard(card);
+            System.out.println("pocet flascards v main: " + Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size());
+            //Main.getCategories().get(idOfSelectedCategory-1).addFlashcard(card);
+            //editCategory.addFlashcard(card);
+            //editCategory.saveCategories();
 
             // TODO id priradovat podla posledneho id v subore + 1
             // TODO category - pozriet do suboru, kde su vsetky kategorie a porovnat na zaklade premennej categoryID
@@ -76,7 +88,7 @@ public class AddScreenController {
                     saveFaceFile(input, "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
                 }
             }
-
+            //editCategory.saveCategories();
             toEditScreen();
         }
         else {

@@ -1,8 +1,10 @@
 package sample;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import static sample.Main.*;
 
 /**
  * Category class
@@ -78,6 +80,14 @@ public class Category implements Serializable{
             System.out.println("DIR exists");
         }
         return result;
+    }
+
+    public void saveCategories(){
+        try {
+            Main.saveCategories();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

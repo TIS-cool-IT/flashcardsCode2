@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,21 +41,12 @@ public class EditScreenController{
 
 
         // TODO nahadzat prvky do flashcardsForactualCategory - hadze error - nejak to osefovat
-//    private final List<Category> flashcardsForActualCategory = FXCollections.observableArrayList(
-//            new Flashcard(1, true, editCategory,
-//                    new FlashcardFace("question", FXCollections.observableArrayList(new ArrayList<E>()), FXCollections.observableArrayList(new ArrayList<E>())),
-//                    new FlashcardFace("answer", FXCollections.observableArrayList(new ArrayList<E>()), FXCollections.observableArrayList(new ArrayList<E>()))
-//            ),
-//            new Flashcard(1, true, editCategory,
-//                    new FlashcardFace("question", FXCollections.observableArrayList(new ArrayList<E>()), FXCollections.observableArrayList(new ArrayList<E>())),
-//                    new FlashcardFace("answer", FXCollections.observableArrayList(new ArrayList<E>()), FXCollections.observableArrayList(new ArrayList<E>()))
-//            )
-//
-//    );
+    private final ObservableList<Flashcard> flashcardsForActualCategory = FXCollections.observableArrayList();
 
 
 
-    public void finishEditing(){
+    public void finishEditing() throws IOException {
+        FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
         backToLauncher();
     }
 
@@ -66,15 +58,27 @@ public class EditScreenController{
         toEditOneScreen();
     }
 
-    public EditScreenController() {
-        if (editCategory != null) {
-            System.out.println("zvolena kategoria id: " + editCategory.getId());
-            System.out.print(editCategory.getTitleOfCategory());
-            // nameOfCategory.setText(editCategory.getTitleOfCategory()); TODO opravit
+    public EditScreenController() throws IOException {
+        if (idOfSelectedCategory != -1) {
+            System.out.println("zvolena kategoria id: " + Main.getCategories().get(idOfSelectedCategory-1).getId());
+            System.out.println(Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
+            // nameOfCategory.setText(editCategory.getTitleOfCategory()); // TODO opravit
+            Main.saveCategories();
+            Main.loadCategories();
+            System.out.println(Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size());
+            for(Category fc : Main.getCategories()){
+
+                //flashcardsForActualCategory.add(fc);
+                System.out.println(fc.getFlashcards().size());
+            }
         }
 
 //        table.getItems().setAll(this.flashcardsForActualCategory);
+    }
 
+    @FXML
+    public void setCategoryName() throws IOException {
+        nameOfCategory.setText(Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
     }
 
 }

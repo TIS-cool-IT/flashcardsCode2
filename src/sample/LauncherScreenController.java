@@ -1,23 +1,16 @@
 package sample;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 import static sample.Main.*;
@@ -52,15 +45,15 @@ public class LauncherScreenController implements Initializable {
             e.printStackTrace();
         }
         table.setItems(categories);
-
-
     }
 
 
     public void editBtnClicked() throws IOException {
         if (table.getSelectionModel().getSelectedItem() != null) {
             //ukladam si kategoriu do statickej premennej editCategory
-            editCategory = table.getSelectionModel().getSelectedItem();
+            //editCategory = table.getSelectionModel().getSelectedItem();
+            idOfSelectedCategory = table.getSelectionModel().getSelectedItem().getId();
+            //editCategory = Main.getCategories().get(skuska.getId()-1);
             //musim refreshnut controler kvoli aktualizacii dat
             FXMLLoader.load(getClass().getResource("editScreen.fxml"));
             toEditScreen();

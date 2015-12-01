@@ -28,7 +28,8 @@ public class Main extends Application implements Serializable{
             // passing id
     //public static int categoryId;
 
-    public static Category editCategory;
+    //public static Category editCategory;
+    public static int idOfSelectedCategory = -1;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -115,14 +116,6 @@ public class Main extends Application implements Serializable{
         primStage.getScene().setRoot(launcherParent);
     }
 
-    /*public static Scene getSounderParent(){
-        return sounder;
-    }
-
-    public static Scene getAddParent(){
-        return addScene;
-    }*/
-
     public static void toEditScreen(){
         primStage.getScene().setRoot(editParent);
     }
@@ -139,13 +132,9 @@ public class Main extends Application implements Serializable{
         primStage.getScene().setRoot(editOneParent);
     }
 
-    /*public static void openAudioBook(){
-        sounderStage = new Stage();
-        sounderStage.setTitle("Sounder");
-        sounderStage.setScene(new Scene(sounder);
-        sounderStage.show();
+    public static void setCategories(int index, Category cat){
+        categories.set(index,cat);
     }
-*/
 
 
 

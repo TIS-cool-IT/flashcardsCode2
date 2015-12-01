@@ -2,12 +2,13 @@ package sample;
 
 import javafx.scene.image.Image;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Class for managing flashcard attributes
  */
-public class FlashcardFace {
+public class FlashcardFace implements Serializable{
 
     private ArrayList<Image> images = new ArrayList<Image>();
     private ArrayList<Sounder> sounds = new ArrayList<Sounder>(); // TODO pridat nazov triedy na spravu zvuku
