@@ -49,8 +49,8 @@ public class Main extends Application implements Serializable{
         //loadCategories();
     }
 
-    public static void addCategory(Category cat) throws IOException {
-        categories.add(cat);
+    public static void addCategory(Category category) throws IOException {
+        categories.add(category);
         try {
             saveCategories();
         } catch (IOException e) {

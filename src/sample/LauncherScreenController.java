@@ -12,13 +12,13 @@ import javax.swing.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static sample.Main.*;
 
 
 public class LauncherScreenController implements Initializable {
-
 
     @FXML
     TextField categoryName;
@@ -28,8 +28,11 @@ public class LauncherScreenController implements Initializable {
 
     @FXML
     TableColumn idCol;
+
     @FXML
     TableColumn titleCol;
+
+   // private ArrayList<Category> categories = new ArrayList<Category>();
 
     private final ObservableList<Category> categories = FXCollections.observableArrayList();
 
@@ -38,6 +41,8 @@ public class LauncherScreenController implements Initializable {
         Main.addCategory((new Category(categories.size()+1, categoryName.getText())));
         JOptionPane.showMessageDialog(new JFrame(), "Category '" + categoryName.getText() + "' was saved!");
         table.getItems().clear();
+        //TODO zda sa ze toto vymazavanie nefunguje po pridani mi ukaze tie co boli pred tym dva krat
+        // TODO co je toto vo forcykle robit vkuse dopyt po categoriach...treba ulozit do premennej..
         for(Category cat : Main.getCategories()){
             if(!categories.contains(cat)) categories.add(cat);
         }
@@ -46,19 +51,25 @@ public class LauncherScreenController implements Initializable {
 
 
     public void editBtnClicked() throws IOException {
-        if (table.getSelectionModel().getSelectedItem() != null) {
-            //ukladam si kategoriu do statickej premennej editCategory
-            //editCategory = table.getSelectionModel().getSelectedItem();
-            idOfSelectedCategory = table.getSelectionModel().getSelectedItem().getId();
-            //editCategory = Main.getCategories().get(skuska.getId()-1);
-            //musim refreshnut controler kvoli aktualizacii dat
+        if (savedSelectedCategoryId()){
             FXMLLoader.load(getClass().getResource("editScreen.fxml"));
             toEditScreen();
         }
     }
 
+    public boolean savedSelectedCategoryId() {
+        if (table.getSelectionModel().getSelectedItem() != null) {
+            idOfSelectedCategory = table.getSelectionModel().getSelectedItem().getId();
+            return true;
+        }
+        return false;
+    }
+
     public void presentationBtnClicked(){
-        toPresentationScreen();
+        if (savedSelectedCategoryId()) {
+            System.out.println("btn clicked id:" + idOfSelectedCategory);
+            toPresentationScreen();
+        }
     }
 
 

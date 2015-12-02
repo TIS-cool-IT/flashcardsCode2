@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import sun.rmi.runtime.Log;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,24 +22,25 @@ import java.util.ResourceBundle;
 
 import static sample.Main.*;
 
-public class EditScreenController{
-    int idCategory;
+public class EditScreenController implements Initializable{
+
+    private int idCategory;
+    private String title;
 
     @FXML
     Button backBtn;
-
 
     @FXML
     private TableView<Flashcard> table1;
 
     @FXML
     TableColumn idCol;
+
     @FXML
     TableColumn titleCol;
+
     @FXML
-    TextField nameOfCategory;
-
-
+    TextField nameOfCategoryInput;
 
         // TODO nahadzat prvky do flashcardsForactualCategory - hadze error - nejak to osefovat
     private ObservableList<Flashcard> flashcardsForActualCategory = FXCollections.observableArrayList();
@@ -58,18 +60,16 @@ public class EditScreenController{
         toEditOneScreen();
     }
 
-    public EditScreenController() throws IOException {
+
+
+    public EditScreenController() throws IOException{
         if (idOfSelectedCategory != -1) {
-            System.out.println("zvolena kategoria id: " + Main.getCategories().get(idOfSelectedCategory-1).getId());
-            System.out.println(Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
-            // nameOfCategory.setText(editCategory.getTitleOfCategory()); // TODO opravit
-            System.out.println("ukladaam to teraz");
+            System.out.println("inicializujem screen");
             //Main.saveCategories();
             Main.loadCategories();
             System.out.println("id: " + (idOfSelectedCategory-1));
             System.out.println("flashcards v id: " + Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size());
             for(Flashcard fc : Main.getCategories().get(idOfSelectedCategory-1).getFlashcards()){
-
                 flashcardsForActualCategory.add(fc);
                 System.out.println("added");
             }
@@ -81,9 +81,17 @@ public class EditScreenController{
 
     }
 
-    @FXML
-    public void setCategoryName() throws IOException {
-        nameOfCategory.setText(Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
-    }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("EdiScreenCont INITIALIZE");
+        if (idOfSelectedCategory != -1) {
+            idCategory = Main.getCategories().get(idOfSelectedCategory - 1).getId();
+            title = Main.getCategories().get(idOfSelectedCategory - 1).getTitleOfCategory();
+            System.out.println("zvolena kategoria id: " + idCategory + ",title: " + title);
+            // TODO nefunguje nastavenie textu v textfielde...
+            nameOfCategoryInput.setText(title);
+        }
+    }
 }
