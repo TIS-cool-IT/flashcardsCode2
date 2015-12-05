@@ -139,7 +139,11 @@ public class Main extends Application implements Serializable{
 
     public static void setCategories(int index, Category cat) throws IOException {
         categories.set(index,cat);
-        System.out.println("V " + cat.getTitleOfCategory() + " je " + categories.get(index).getFlashcards().size());
+        saveCategories();
+    }
+
+    public static void setNewCategories(ArrayList<Category> cat) throws IOException {
+        categories = cat;
         saveCategories();
     }
 

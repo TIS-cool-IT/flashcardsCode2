@@ -21,7 +21,7 @@
       <children>
         <Button layoutX="0.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#presentationBtnClicked" prefHeight="35.0" prefWidth="157.0" text="Presentation" />
         <Button layoutX="185.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#editBtnClicked" prefHeight="35.0" prefWidth="157.0" text="Edit" />
-        <Button layoutX="369.0" layoutY="0.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Delete" />
+        <Button layoutX="369.0" layoutY="0.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Delete" onMouseClicked="#deleteCategory"/>
       </children>
       <BorderPane.margin>
         <Insets bottom="20.0" top="20.0" />
@@ -52,15 +52,19 @@
           <children>
             <TableView fx:id="table" prefHeight="342.0" prefWidth="774.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-
                 <TableColumn prefWidth="75.0" text="ID" fx:id="idCol">
                   <cellValueFactory>
-                    <PropertyValueFactory property="id" />
+                    <PropertyValueFactory property="id"/>
                   </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="Title" fx:id="titleCol">
                   <cellValueFactory>
                     <PropertyValueFactory property="titleOfCategory" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Count" fx:id="countCol">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="count" />
                   </cellValueFactory>
                 </TableColumn>
               </columns>

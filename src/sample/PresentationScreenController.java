@@ -74,11 +74,17 @@ public class PresentationScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        category = Main.getCategories().get(idOfSelectedCategory-1);
+        if(idOfSelectedCategory != -1) category = Main.getCategories().get(idOfSelectedCategory-1);
+        correctAnswers = 0;
     }
 
     public void rightAnswer(){
         correctAnswers++;
+        updatePresentationStatus();
+    }
+
+    public void wrongAnswer(){
+        correctAnswers--;
         updatePresentationStatus();
     }
 

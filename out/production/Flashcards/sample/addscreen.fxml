@@ -64,7 +64,7 @@
         <Button id="BtnQImage1" fx:id="btnQImage1" layoutX="257.0" layoutY="167.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQImage1" />
         <Button id="BtnQSound1" fx:id="btnQSound1" layoutX="257.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQSound1" />
         <Button id="BtnQImage2" fx:id="btnQImage2" layoutX="416.0" layoutY="167.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQImage2"/>
-        <Button id="BtnQSound2" fx:id="btnQSound2" layoutX="416.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQSound1" />
+        <Button id="BtnQSound2" fx:id="btnQSound2" layoutX="416.0" layoutY="204.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addQSound2" />
         <Label font="$x5" layoutX="172.0" layoutY="287.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Text" textAlignment="LEFT" />
         <Label font="$x5" layoutX="172.0" layoutY="324.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Image" textAlignment="LEFT" />
         <Label font="$x5" layoutX="172.0" layoutY="361.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Sound" textAlignment="LEFT" />

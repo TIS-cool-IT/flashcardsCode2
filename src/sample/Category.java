@@ -1,5 +1,13 @@
 package sample;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -12,6 +20,7 @@ import static sample.Main.*;
 
 public class Category implements Serializable{
     private int idOfCategory;
+    private int countOfFlashcars;
     private String titleOfCategory;
     private ArrayList<Flashcard> listOfFlashcards = new ArrayList<>();
     private String categoryDirectory;
@@ -23,6 +32,7 @@ public class Category implements Serializable{
         titleOfCategory = title;
         categoryDirectory = Integer.toString(idOfCategory);
         makeDirectory(categoryDirectory);
+        countOfFlashcars = 0;
         //Main.addCategory(this);
     }
 
@@ -33,10 +43,11 @@ public class Category implements Serializable{
 
     public void addFlashcard(Flashcard flashcard) {
         listOfFlashcards.add(flashcard);
+        countOfFlashcars++;
     }
 
     public int getCount() {
-        return listOfFlashcards.size();
+        return countOfFlashcars;
     }
 
     public ArrayList<Flashcard> getFlashcards() {
@@ -80,6 +91,11 @@ public class Category implements Serializable{
             System.out.println("DIR exists");
         }
         return result;
+    }
+
+    public void removeFlashcard(Flashcard card){
+        listOfFlashcards.remove(card);
+        countOfFlashcars--;
     }
 
 

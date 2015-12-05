@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import javax.sound.sampled.LineUnavailableException;
+import javax.swing.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +53,6 @@ public class AddScreenController implements Serializable{
         TextField inputQText = (TextField) addScene.lookup("#InputQText");
         TextField inputAText = (TextField) addScene.lookup("#BtnAText");
         CheckBox check = (CheckBox) addScene.lookup("#CheckboxReverse");
-        System.out.println(inputAText.getText() + "hnojkox");
 
 
         if (correctInput()) {
@@ -64,23 +64,20 @@ public class AddScreenController implements Serializable{
                     new ArrayList() { {add(inputFiles.get("AImage1")); add(inputFiles.get("AImage2"));} },
                     new ArrayList() { {add(inputFiles.get("ASound1")); add(inputFiles.get("ASound2"));} });
 
-            Flashcard card = new Flashcard(1, check.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
+            Flashcard card = new Flashcard(Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size()+1, check.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
 
             if (check.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
                 new Flashcard(1, check.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), answerFace, questionFace);
             }
             // save a flashcard to the category
             //int index = Main.getCategories().indexOf(editCategory);
-            System.out.println("addScreenController - id " + (idOfSelectedCategory-1));
             ArrayList<Category> al = Main.getCategories();
 
             al.get(idOfSelectedCategory-1).addFlashcard(card);
             Main.saveCategories();
             //cat.addFlashcard(card);
             //al.set(idOfSelectedCategory-1,cat);
-            System.out.println("pocet flascards v al: " + al.get(idOfSelectedCategory-1).getFlashcards().size());
             Main.setCategories(idOfSelectedCategory-1,al.get(idOfSelectedCategory-1));
-            System.out.println("pocet flascards v main: " + Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size());
             //Flashcard fc = new Flashcard(1, checkboxReverse.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
 
             // TODO id priradovat podla posledneho id v subore + 1
@@ -89,12 +86,16 @@ public class AddScreenController implements Serializable{
             // save files to directory
             for (File input : inputFiles.values()){
                 if (input != null) {
-                    saveFaceFile(input, "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
+                    File duplikat = new File("C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory()+"\\"+input.getName());
+                    if(!duplikat.exists()) {
+                        saveFaceFile(input, "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " already exists !!!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
-
-            //Main.getCategories().get(idOfSelectedCategory-1).saveCategories();
-            //editCategory.saveCategories();
+            JOptionPane.showMessageDialog(new JFrame(), "Flashcard was saved !!!");
             toEditScreen();
         }
         else {
@@ -149,8 +150,8 @@ public class AddScreenController implements Serializable{
         if (selectedFile != null) {
             inputFiles.put("QImage1", selectedFile);
             System.out.println(inputFiles.get("QImage1"));
-
-            //btnQImage1.setText(selectedFile.getName());
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage1");
+            but.setText(selectedFile.getName());
         }
     }
 
@@ -169,7 +170,8 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("QImage2", selectedFile);
-            //btnQImage2.setText(selectedFile.getName());
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage2");
+            but.setText(selectedFile.getName());
         }
     }
 
@@ -187,7 +189,8 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("QSound1", selectedFile);
-            //btnQSound1.setText(selectedFile.getName());
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound1");
+            but.setText(selectedFile.getName());
         }
     }
 
@@ -205,7 +208,8 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("QSound2", selectedFile);
-            //btnQSound2.setText(selectedFile.getName());
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound2");
+            but.setText(selectedFile.getName());
         }
     }
 
@@ -224,7 +228,8 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("AImage1", selectedFile);
-            //btnAImage1.setText(selectedFile.getName());
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage1");
+            but.setText(selectedFile.getName());
         }
     }
 
@@ -243,7 +248,8 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("AImage2", selectedFile);
-            //btnAImage2.setText(selectedFile.getName());
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage2");
+            but.setText(selectedFile.getName());
         }
     }
 
@@ -261,7 +267,8 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("ASound1", selectedFile);
-            //btnASound1.setText(selectedFile.getName());
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound1");
+            but.setText(selectedFile.getName());
         }
     }
 
@@ -279,7 +286,8 @@ public class AddScreenController implements Serializable{
         );
         if (selectedFile != null) {
             inputFiles.put("ASound2", selectedFile);
-            //btnASound2.setText(selectedFile.getName());
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound2");
+            but.setText(selectedFile.getName());
         }
     }
 

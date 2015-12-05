@@ -24,6 +24,38 @@
   <center>
     <Group id="Group" visible="true">
       <children>
+        <Pane layoutX="30.0" layoutY="-60.0" prefHeight="456.0" prefWidth="721.4999389648438">
+          <children>
+            <Group id="Group" fx:id="rectTwoImages" layoutX="-1.0" layoutY="25.0">
+              <children>
+                <Rectangle id="rect2images" fx:id="rect2" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="243.00010681152344" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="721.5" />
+                <ImageView fx:id="image1" fitHeight="214.91997230828028" fitWidth="340.063232421875" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../image1.png" />
+                  </image>
+                </ImageView>
+                <ImageView fx:id="imageview2" fitHeight="213.6559484151632" fitWidth="338.0632019042969" layoutX="369.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../image2.png" />
+                  </image>
+                </ImageView>
+                <Label fx:id="aqLabel" alignment="CENTER" contentDisplay="BOTTOM" layoutX="12.0" layoutY="155.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="695.063232421875" style="-fx-background-color: white;" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false">
+                  <font>
+                    <Font size="12.0" fx:id="x1" />
+                  </font>
+                </Label>
+              </children>
+            </Group>
+            <Label alignment="CENTER" cache="false" contentDisplay="LEFT" disable="false" focusTraversable="false" font="$x1" layoutX="249.0" layoutY="-6.0" opacity="1.0" prefHeight="31.0" prefWidth="223.99991689452872" text="Click for flipping the flashcard" textAlignment="CENTER" textFill="GREY" underline="false" visible="true" wrapText="false" />
+            <Button fx:id="wrongBtn" layoutX="87.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#wrongAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: red;" text="I was wrong" />
+            <Button fx:id="rightBtn" layoutX="425.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#rightAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: green;" text="I was right " />
+            <Label fx:id="presentationStatus" layoutX="340.0" layoutY="362.0" text="0/0">
+              <font>
+                <Font size="15.0" fx:id="x2" />
+              </font>
+            </Label>
+          </children>
+        </Pane>
         <Group id="Group" fx:id="settingsGroup" layoutX="303.0" layoutY="172.0" scaleX="1.0" scaleY="1.0" visible="false">
           <children>
             <Label layoutX="41.0" layoutY="92.0" text="Font size">
@@ -46,42 +78,11 @@
         </Group>
         <Group id="Group" fx:id="presentationGroup" layoutX="236.0" layoutY="80.0" visible="true">
           <children>
-            <Label alignment="CENTER" cache="false" contentDisplay="LEFT" disable="false" focusTraversable="false" layoutX="174.0" layoutY="0.0" opacity="1.0" prefHeight="29.0" prefWidth="188.99997792968497" text="Click for flipping the flashcard" textAlignment="CENTER" textFill="GREY" underline="false" visible="true" wrapText="false">
-              <font>
-                <Font size="12.0" fx:id="x1" />
-              </font>
-            </Label>
-            <Group id="Group" fx:id="rectTwoImages" layoutX="13.0" layoutY="28.0" visible="true">
-              <children>
-                <Rectangle id="rect2images" fx:id="rect2" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="192.00009999999747" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="554.0001220703125" />
-                <ImageView fx:id="image1" fitHeight="164.35997038902508" fitWidth="260.0632629394531" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@../image1.png" />
-                  </image>
-                </ImageView>
-                <ImageView fx:id="imageview2" fitHeight="164.35995483398438" fitWidth="260.0632383270452" layoutX="283.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@../image2.png" />
-                  </image>
-                </ImageView>
-                <Label fx:id="aqLabel" alignment="CENTER" contentDisplay="BOTTOM" font="$x1" layoutX="12.0" layoutY="118.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="531.063232421875" style="-fx-background-color: white;" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false" />
-              </children>
-            </Group>
-            <Group id="Group" layoutX="0.0" layoutY="262.0">
-              <children>
-                <Button fx:id="wrongBtn" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: red;" text="I was wrong" />
-                <Button fx:id="rightBtn" layoutX="338.0" layoutY="0.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: green;" text="I was right " />
-                <Label fx:id="presentationStatus" layoutX="253.0" layoutY="17.0" text="0/0">
-                  <font>
-                    <Font size="15.0" fx:id="x2" />
-                  </font>
-                </Label>
-              </children>
-            </Group>
-            <Group id="Group" fx:id="rectOneImage" layoutX="125.0" layoutY="46.0">
+            <Group id="Group" layoutX="0.0" layoutY="262.0" />
+            <Group id="Group" fx:id="rectOneImage" layoutX="125.0" layoutY="46.0" visible="false">
               <children>
                 <Rectangle id="rect2images" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="219.00010681152344" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="318.0001220703125" />
-                <ImageView id="image1" fitHeight="184.5440852350409" fitWidth="292.0001220703125" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView id="image1" fitHeight="184.5440852350409" fitWidth="292.0001220703125" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" visible="true">
                   <image>
                     <Image url="@../image1.png" />
                   </image>

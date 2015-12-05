@@ -29,6 +29,10 @@ public class Flashcard implements Serializable{
         category.makeDirectory(flashcardDirectory);
     }
 
+    public boolean getReversed(){
+        return reversed;
+    }
+
 
     public void setId(int id) {
         this.id = id;
