@@ -10,10 +10,9 @@ import javafx.stage.FileChooser;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
-import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,6 +90,11 @@ public class AddScreenController implements Serializable{
                     }
                 }
             }
+
+            // save txt files to directory
+            saveTxtFile("question", inputQText.getText(), "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
+            saveTxtFile("answer", inputAText.getText(), "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
+
             JOptionPane.showMessageDialog(new JFrame(), "Flashcard was saved!");
             toEditScreen();
         }
@@ -107,6 +111,31 @@ public class AddScreenController implements Serializable{
             Files.copy(source.toPath(), dest.toPath());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void saveTxtFile(String nameOfFile, String text, String dir) {
+        FileOutputStream fop = null;
+        File file = new File(dir + "\\" + nameOfFile + ".txt");
+        try {
+            fop = new FileOutputStream(file);
+            if (!file.exists()) {
+                file.createNewFile();
+                System.out.println("TXT file created");
+            }
+            fop.write(text.getBytes());
+            fop.flush();
+            fop.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fop != null) {
+                    fop.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
