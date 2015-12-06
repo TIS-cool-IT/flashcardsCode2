@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -80,28 +78,25 @@ public class AddScreenController implements Serializable{
             Main.setCategories(idOfSelectedCategory-1,al.get(idOfSelectedCategory-1));
             //Flashcard fc = new Flashcard(1, checkboxReverse.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
 
-            // TODO id priradovat podla posledneho id v subore + 1
-            // TODO category - pozriet do suboru, kde su vsetky kategorie a porovnat na zaklade premennej categoryID
 
             // save files to directory
             for (File input : inputFiles.values()){
                 if (input != null) {
-                    File duplikat = new File("C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory()+"\\"+input.getName());
-                    if(!duplikat.exists()) {
+                    File duplicate = new File("C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory()+"\\"+input.getName());
+                    if(!duplicate.exists()) {
                         saveFaceFile(input, "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
                     }
                     else{
-                        JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " already exists !!!", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " can't be added twice.", "Warning", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             }
-            JOptionPane.showMessageDialog(new JFrame(), "Flashcard was saved !!!");
+            JOptionPane.showMessageDialog(new JFrame(), "Flashcard was saved!");
             toEditScreen();
         }
         else {
-            // TODO chybova hlaska v GUI
+            JOptionPane.showMessageDialog(new JFrame(), "Flashcard can't be saved!", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Nastala chyba pri vytvarani falshcard");
-
         }
 
     }
@@ -134,8 +129,7 @@ public class AddScreenController implements Serializable{
         return true;
     }
 
-    @FXML
-    public void addQImage1() {
+    private void chooseImage(String nameOfImage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
@@ -148,147 +142,68 @@ public class AddScreenController implements Serializable{
                 new FileChooser.ExtensionFilter("PNG", "*.png")
         );
         if (selectedFile != null) {
-            inputFiles.put("QImage1", selectedFile);
-            System.out.println(inputFiles.get("QImage1"));
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage1");
+            inputFiles.put(nameOfImage, selectedFile);
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+nameOfImage);
             but.setText(selectedFile.getName());
         }
+    }
+
+    private void chooseSound(String nameOfSound) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Sounds");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("MP3", "*.mp3")
+        );
+        if (selectedFile != null) {
+            inputFiles.put(nameOfSound, selectedFile);
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+nameOfSound);
+            but.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addQImage1() {
+        chooseImage("QImage1");
     }
 
     @FXML
     public void addQImage2() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
-        fileChooser.setTitle("View Pictures");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png")
-        );
-        if (selectedFile != null) {
-            inputFiles.put("QImage2", selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage2");
-            but.setText(selectedFile.getName());
-        }
+        chooseImage("QImage2");
     }
 
     @FXML
     public void addQSound1() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
-        fileChooser.setTitle("View Sounds");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("MP3", "*.mp3")
-        );
-        if (selectedFile != null) {
-            inputFiles.put("QSound1", selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound1");
-            but.setText(selectedFile.getName());
-        }
+        chooseSound("QSound1");
     }
 
     @FXML
     public void addQSound2() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
-        fileChooser.setTitle("View Sounds");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("MP3", "*.mp3")
-        );
-        if (selectedFile != null) {
-            inputFiles.put("QSound2", selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound2");
-            but.setText(selectedFile.getName());
-        }
+        chooseSound("QSound2");
     }
 
     @FXML
     public void addAImage1() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
-        fileChooser.setTitle("View Pictures");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png")
-        );
-        if (selectedFile != null) {
-            inputFiles.put("AImage1", selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage1");
-            but.setText(selectedFile.getName());
-        }
+        chooseImage("AImage1");
     }
 
     @FXML
     public void addAImage2() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
-        fileChooser.setTitle("View Pictures");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png")
-        );
-        if (selectedFile != null) {
-            inputFiles.put("AImage2", selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage2");
-            but.setText(selectedFile.getName());
-        }
+        chooseImage("AImage2");
     }
 
     @FXML
     public void addASound1() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
-        fileChooser.setTitle("View Sounds");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("MP3", "*.mp3")
-        );
-        if (selectedFile != null) {
-            inputFiles.put("ASound1", selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound1");
-            but.setText(selectedFile.getName());
-        }
+        chooseSound("ASound1");
     }
 
     @FXML
     public void addASound2() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
-        fileChooser.setTitle("View Sounds");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("MP3", "*.mp3")
-        );
-        if (selectedFile != null) {
-            inputFiles.put("ASound2", selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound2");
-            but.setText(selectedFile.getName());
-        }
+        chooseSound("ASound2");
     }
 
 

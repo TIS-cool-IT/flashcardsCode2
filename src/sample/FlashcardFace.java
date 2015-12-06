@@ -1,7 +1,7 @@
 package sample;
 
-import javafx.scene.image.Image;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -10,26 +10,26 @@ import java.util.ArrayList;
  */
 public class FlashcardFace implements Serializable{
 
-    private ArrayList<Image> images = new ArrayList<>();
-    private ArrayList<Sounder> sounds = new ArrayList<>(); // TODO pridat nazov triedy na spravu zvuku
+    private ArrayList<File> images = new ArrayList<>();
+    private ArrayList<File> sounds = new ArrayList<>(); // TODO pridat nazov triedy na spravu zvuku
     private String text;
 
-    public FlashcardFace(String text, ArrayList<Image> images, ArrayList<Sounder> sounds) {
+    public FlashcardFace(String text, ArrayList<File> images, ArrayList<File> sounds) {
         this.text = text;
         this.images = images;
         this.sounds = sounds;
     }
 
 
-    public ArrayList<Image> getImages() {
+    public ArrayList<File> getImages() {
         return images;
     }
 
-    public void addImage(Image image) {
+    public void addImage(File image) {
         images.add(image);
     }
 
-    public void deleteImage(Image image) {
+    public void deleteImage(File image) {
         images.remove(image);
     }
 
