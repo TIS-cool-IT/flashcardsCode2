@@ -63,8 +63,6 @@ public class Main extends Application implements Serializable{
                 System.exit(0);
             }
         });
-        FolderChecker fc = new FolderChecker();
-        fc.start();
     }
 
     public static void addCategory(Category category) throws IOException {
