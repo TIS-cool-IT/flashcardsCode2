@@ -1,11 +1,14 @@
 package sample;
 
 import jAudioFeatureExtractor.jAudioTools.AudioSamples;
+import jdk.internal.dynalink.beans.StaticClass;
 
 import java.io.*;
 import javax.sound.sampled.*;
 
-class Sounder {
+import static sample.Main.*;
+
+public class Sounder {
 
     private AudioSamples as;
     private Clip clip;
@@ -52,7 +55,23 @@ class Sounder {
         double[][] samples = audiosample.getSamplesChannelSegregated(start, end);
         audiosample.setSamples(samples);
         if(checkBeforeSave(audiosample)) {
-            audiosample.saveAudio(new File("C:\\FlashCard\\vystrihnute.wav"), true, AudioFileFormat.Type.WAVE, false);
+            File theDir = new File("C:\\FlashCard\\tmp_files");
+            if (!theDir.exists()) {
+                boolean result = false;
+                try{
+                    theDir.mkdir();
+                    result = true;
+                }
+                catch(SecurityException se){
+                    //handle it
+                }
+                if(result) {
+                    System.out.println("DIR created");
+                }
+            }
+//            String dir = Main.getCategories().get(Main.getIdOfSelectedCategory()).getTitleOfCategory();
+//            audiosample.saveAudio(new File("C:\\FlashCard\\" + dir + "\\" + Integer.toString(Main.getIdOfSelectedFlashcard()) +  "\\tmp_files\\tmp_record.wav"), true, AudioFileFormat.Type.WAVE, false);
+            audiosample.saveAudio(new File("C:\\FlashCard\\tmp_files\\tmp_record.wav"), true, AudioFileFormat.Type.WAVE, false);
             return true;
         }
         return false;

@@ -10,11 +10,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.*;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends Application implements Serializable{
     public static Stage primStage = null;
@@ -57,6 +63,8 @@ public class Main extends Application implements Serializable{
                 System.exit(0);
             }
         });
+        FolderChecker fc = new FolderChecker();
+        fc.start();
     }
 
     public static void addCategory(Category category) throws IOException {

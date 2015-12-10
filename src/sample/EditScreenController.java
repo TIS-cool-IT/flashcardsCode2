@@ -8,13 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -79,6 +77,22 @@ public class EditScreenController implements Initializable{
         if (savedSelectedFlashcard()){
             FXMLLoader.load(getClass().getResource("editOneScreen.fxml"));
             toEditOneScreen();
+        }
+    }
+
+    public void saveChanges() throws IOException {
+        TextField tv = (TextField) Main.getPrimaryStage().getScene().lookup("#nameOfCategory");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Rename Category");
+        String s = "Do you want change category name from " + Main.getCategories().get(idCategory).getTitleOfCategory() + " to " + tv.getText()+"?";
+        alert.setContentText(s);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+            JOptionPane.showMessageDialog(new JFrame(), "Category name was changed to '" + tv.getText());
+            Main.getCategories().get(idCategory).setTitleOfCategory(tv.getText());
+            Main.saveCategories();
         }
     }
 
