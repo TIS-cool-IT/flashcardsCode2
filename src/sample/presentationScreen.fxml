@@ -22,74 +22,90 @@
     </Button>
   </bottom>
   <center>
-    <Group id="Group" visible="true">
+    <Group id="Group" scaleX="1.0" scaleY="1.0" visible="true">
       <children>
-        <Pane layoutX="30.0" layoutY="-60.0" prefHeight="456.0" prefWidth="721.4999389648438">
+        <Group id="Group" fx:id="presentationGroup" layoutX="25.0" layoutY="-66.0" scaleX="1.0" scaleY="1.0" visible="true">
           <children>
-            <Group id="Group" fx:id="rectTwoImages" layoutX="-1.0" layoutY="25.0">
+            <Pane layoutX="5.0" layoutY="0.0" prefHeight="456.0" prefWidth="778.4999389648438">
               <children>
-                <Rectangle id="rect2images" fx:id="rect2" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="243.00010681152344" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="721.5" />
-                <ImageView fx:id="image1" fitHeight="214.91997230828028" fitWidth="340.063232421875" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@../image1.png" />
-                  </image>
-                </ImageView>
-                <ImageView fx:id="imageview2" fitHeight="213.6559484151632" fitWidth="338.0632019042969" layoutX="369.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@../image2.png" />
-                  </image>
-                </ImageView>
-                <Label fx:id="aqLabel" alignment="CENTER" contentDisplay="BOTTOM" layoutX="12.0" layoutY="155.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="695.063232421875" style="-fx-background-color: white;" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false">
+                <Label fx:id="flippingLabel" alignment="CENTER" cache="false" contentDisplay="LEFT" disable="false" focusTraversable="false" layoutX="228.0" layoutY="-6.0" opacity="1.0" prefHeight="31.0" prefWidth="223.99991689452872" text="Click for flipping the flashcard" textAlignment="CENTER" textFill="GREY" underline="false" visible="true" wrapText="false">
                   <font>
                     <Font size="12.0" fx:id="x1" />
                   </font>
                 </Label>
-              </children>
-            </Group>
-            <Label alignment="CENTER" cache="false" contentDisplay="LEFT" disable="false" focusTraversable="false" font="$x1" layoutX="249.0" layoutY="-6.0" opacity="1.0" prefHeight="31.0" prefWidth="223.99991689452872" text="Click for flipping the flashcard" textAlignment="CENTER" textFill="GREY" underline="false" visible="true" wrapText="false" />
-            <Button fx:id="wrongBtn" layoutX="87.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#wrongAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: red;" text="I was wrong" />
-            <Button fx:id="rightBtn" layoutX="425.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#rightAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: green;" text="I was right " />
-            <Label fx:id="presentationStatus" layoutX="340.0" layoutY="362.0" text="0/0">
-              <font>
-                <Font size="15.0" fx:id="x2" />
-              </font>
-            </Label>
-          </children>
-        </Pane>
-        <Group id="Group" fx:id="settingsGroup" layoutX="303.0" layoutY="172.0" scaleX="1.0" scaleY="1.0" visible="false">
-          <children>
-            <Label layoutX="41.0" layoutY="92.0" text="Font size">
-              <font>
-                <Font size="18.0" fx:id="x3" />
-              </font>
-            </Label>
-            <CheckBox fx:id="soundAutoCheckbox" font="$x3" layoutX="28.0" layoutY="32.0" mnemonicParsing="false" text="Play sound automatically" />
-            <ComboBox id="fontSizeChooser" fx:id="fontSizeComboBox" cache="false" disable="false" editable="false" layoutX="142.0" layoutY="89.0" promptText="18">
-              <items>
-                <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Item 1" />
-                  <String fx:value="Item 2" />
-                  <String fx:value="Item 3" />
-                </FXCollections>
-              </items>
-            </ComboBox>
-            <Button layoutX="46.0" layoutY="240.0" mnemonicParsing="false" text="Save changes and continue " />
-          </children>
-        </Group>
-        <Group id="Group" fx:id="presentationGroup" layoutX="236.0" layoutY="80.0" visible="true">
-          <children>
-            <Group id="Group" layoutX="0.0" layoutY="262.0" />
-            <Group id="Group" fx:id="rectOneImage" layoutX="125.0" layoutY="46.0" visible="false">
-              <children>
-                <Rectangle id="rect2images" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="219.00010681152344" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="318.0001220703125" />
-                <ImageView id="image1" fitHeight="184.5440852350409" fitWidth="292.0001220703125" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" visible="true">
+                <Group id="Group" fx:id="buttonsGroup" layoutX="87.0" layoutY="345.0" visible="false">
+                  <children>
+                    <Button fx:id="wrongBtn" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#wrongAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: red;" text="I was wrong" />
+                    <Button fx:id="rightBtn" layoutX="338.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#rightAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: green;" text="I was right " />
+                  </children>
+                </Group>
+                <Label fx:id="presentationStatus" layoutX="340.0" layoutY="362.0" text="0/0">
+                  <font>
+                    <Font size="15.0" fx:id="x2" />
+                  </font>
+                </Label>
+                <Group id="Group" fx:id="rectTwoImages" layoutX="-5.0" layoutY="27.0" onMouseClicked="#onRectClicked">
+                  <children>
+                    <Rectangle id="rect2images" fx:id="rect2" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="243.00010681152344" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="721.5" />
+                    <ImageView id="image1" fx:id="image21" fitHeight="214.91997230828028" fitWidth="340.063232421875" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@../image1.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView id="imageview2" fx:id="image22" fitHeight="213.6559484151632" fitWidth="338.0632019042969" layoutX="369.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@../image2.png" />
+                      </image>
+                    </ImageView>
+                    <Label id="aqLabel" fx:id="label2" alignment="CENTER" contentDisplay="BOTTOM" font="$x1" layoutX="12.0" layoutY="155.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="695.063232421875" style="-fx-background-color: white;" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false" />
+                  </children>
+                </Group>
+                <Group id="Group" fx:id="rectOneImage" layoutX="116.0" layoutY="27.0" onMouseClicked="#onRectClicked">
+                  <children>
+                    <Rectangle id="rect2images" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="307.0001220703125" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="470.0001220703125" />
+                    <ImageView fx:id="image1" fitHeight="278.712104731729" fitWidth="441.0001525878906" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" visible="true">
+                      <image>
+                        <Image url="@../image1.png" />
+                      </image>
+                    </ImageView>
+                    <Label id="aqLabel" fx:id="label1" alignment="CENTER" contentDisplay="BOTTOM" font="$x1" layoutX="12.0" layoutY="194.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="440.0001525878906" style="-fx-background-color: white;" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false" />
+                  </children>
+                </Group>
+                <ImageView id="settings" fx:id="sound" fitHeight="60.0" fitWidth="60.0" layoutX="719.0" layoutY="25.0" onMouseClicked="#onSoundClicked" onMousePressed="#onSoundPressed" onMouseReleased="#onSoundReleased" pickOnBounds="true" preserveRatio="true">
                   <image>
-                    <Image url="@../image1.png" />
+                    <Image url="@../sound.png" />
                   </image>
                 </ImageView>
-                <Label id="aqLabel" alignment="CENTER" contentDisplay="BOTTOM" font="$x1" layoutX="12.0" layoutY="118.0" mnemonicParsing="false" opacity="1.0" pickOnBounds="false" prefHeight="43.0" prefWidth="292.0001220703125" style="-fx-background-color: white;" text="answer" textFill="BLACK" underline="false" visible="true" wrapText="false" />
               </children>
-            </Group>
+            </Pane>
+          </children>
+        </Group>
+        <Group id="Group" fx:id="settingsGroup" layoutX="303.0" layoutY="172.0" scaleX="1.0" scaleY="1.0" visible="false">
+          <children>
+            <Pane layoutX="-143.0" layoutY="-216.0" prefHeight="434.0" prefWidth="438.0001220703125">
+              <children>
+                <Group id="Group" layoutX="39.0" layoutY="32.0" visible="true">
+                  <children>
+                    <Label layoutX="2.0" layoutY="54.0" text="Font size">
+                      <font>
+                        <Font size="18.0" fx:id="x3" />
+                      </font>
+                    </Label>
+                    <Button layoutX="0.0" layoutY="251.0" mnemonicParsing="false" onMouseClicked="#saveSettings" prefHeight="43.0" prefWidth="227.00006103515625" text="Save changes and continue " />
+                    <ComboBox id="fontSizeChooser" fx:id="fontSizeComboBox" cache="false" disable="false" editable="false" layoutX="96.0" layoutY="53.0" promptText="16">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ComboBox>
+                    <CheckBox fx:id="soundAutoCheckbox" font="$x3" layoutX="2.0" layoutY="0.0" mnemonicParsing="false" selected="true" text="Play sound automatically" />
+                  </children>
+                </Group>
+              </children>
+            </Pane>
           </children>
         </Group>
       </children>

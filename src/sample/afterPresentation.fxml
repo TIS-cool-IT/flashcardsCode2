@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="382.0" prefWidth="516.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.AfterPresentationController">
+  <children>
+    <Label layoutX="184.0" layoutY="68.0" prefWidth="149.0" text="Keep practicing!">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
+    <Label layoutX="101.0" layoutY="134.0" text="Category:">
+      <font>
+        <Font size="18.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label fx:id="categoryName" font="$x1" layoutX="203.0" layoutY="134.0" text="categoryName" />
+    <Button layoutX="196.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#closePopup" prefWidth="124.0" text="OK" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#baff99" height="38.0" layoutX="89.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" width="336.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6666" height="38.0" layoutX="89.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="336.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfbfbf" height="38.0" layoutX="89.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="336.0" />
+    <Label font="$x1" layoutX="101.0" layoutY="171.0" text="Correct:" />
+    <Label font="$x1" layoutX="101.0" layoutY="209.0" text="Wrong: " />
+    <Label font="$x1" layoutX="101.0" layoutY="247.0" text="Total: " />
+    <Label fx:id="labelCorrect" font="$x1" layoutX="203.0" layoutY="170.0" text="Label" />
+    <Label id="labelCorrect" fx:id="labelWrong" font="$x1" layoutX="203.0" layoutY="209.0" text="Label" />
+    <Label id="labelCorrect" fx:id="labelTotal" font="$x1" layoutX="203.0" layoutY="247.0" text="Label" />
+  </children>
+</Pane>

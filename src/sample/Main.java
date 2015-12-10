@@ -31,27 +31,46 @@ public class Main extends Application implements Serializable{
     public static Parent addParent = null;
     public static Parent presentationParent = null;
     public static Scene sounderScene = null;
+    public static Parent  popupPresentation = null;
     private static ArrayList<Category> categories = new ArrayList<>();
-            //public static Scene skuska = null;
 
-            // passing id
-    //public static int categoryId;
-
-    //public static Category editCategory;
     public static int idOfSelectedCategory = -1;
     public static int idOfSelectedFlashcard = -1;
+
+    public static Stage afterPresentationStage;
+
+    // controllers
+    private static PresentationScreenController presentationScreenController;
+    public static AfterPresentationController afterPresentationController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         addParent = FXMLLoader.load(getClass().getResource("addscreen.fxml"));
         editParent = FXMLLoader.load(getClass().getResource("editScreen.fxml"));
         editOneParent = FXMLLoader.load(getClass().getResource("editOneScreen.fxml"));
-        presentationParent = FXMLLoader.load(getClass().getResource("presentationScreen.fxml"));
+
+
+        // presentation controller
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("presentationScreen.fxml"));
+        presentationParent = loader.load();
+        presentationScreenController =  loader.getController();
+
+
+        // after presentation controller
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("afterPresentation.fxml"));
+        popupPresentation  = loader2.load();
+        afterPresentationController = loader2.getController();
+        afterPresentationStage = new Stage();
+        Scene sceneForPopup = new Scene(popupPresentation);
+        afterPresentationStage.setScene(sceneForPopup);
+        afterPresentationStage.getScene().setRoot(popupPresentation);
+
+
+
         launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
         sounderScene = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
 
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
-        //skuska = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
         primaryStage.setTitle("Flashcards");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -143,6 +162,8 @@ public class Main extends Application implements Serializable{
 
     public static void toPresentationScreen(){
         primStage.getScene().setRoot(presentationParent);
+        presentationScreenController.showDialog();
+        presentationScreenController.init();
     }
 
     public static void toAddScreen(){
@@ -161,6 +182,14 @@ public class Main extends Application implements Serializable{
     public static void setNewCategories(ArrayList<Category> cat) throws IOException {
         categories = cat;
         saveCategories();
+    }
+
+    public static Stage getPopupPresentationStage(){
+        return afterPresentationStage;
+    }
+
+    public static AfterPresentationController getAfterPresentationController(){
+        return afterPresentationController;
     }
 
 
