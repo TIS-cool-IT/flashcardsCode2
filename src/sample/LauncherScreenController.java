@@ -15,10 +15,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static sample.Main.*;
 
@@ -46,8 +43,18 @@ public class LauncherScreenController implements Initializable {
 
     public void addCategoryBtnClicked() throws IOException {
         System.out.println(categoryName.getText());
-        Main.addCategory((new Category(categories.size()+1, categoryName.getText())));
-        JOptionPane.showMessageDialog(new JFrame(), "Category '" + categoryName.getText() + "' was saved!");
+        if(!categoryName.getText().equals("")) {
+            if(categories.size() == 0){
+                Main.addCategory((new Category(1, categoryName.getText().trim())));
+            }
+            else{
+                Main.addCategory((new Category(categories.get(categories.size()-1).getId()+1, categoryName.getText().trim())));
+            }
+            JOptionPane.showMessageDialog(new JFrame(), "Category '" + categoryName.getText() + "' was saved!");
+        }
+        else{
+            JOptionPane.showMessageDialog(new JFrame(), "Category name can't be empty", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         table.getItems().clear();
         //TODO zda sa ze toto vymazavanie nefunguje po pridani mi ukaze tie co boli pred tym dva krat
         // TODO co je toto vo forcykle robit vkuse dopyt po categoriach...treba ulozit do premennej..
@@ -59,11 +66,20 @@ public class LauncherScreenController implements Initializable {
 
     @FXML
     protected void deleteCategory() throws IOException {
-        System.out.println(table.getSelectionModel().getSelectedItem().getTitleOfCategory());
-        ArrayList<Category> al = Main.getCategories();
-        al.remove(table.getSelectionModel().getSelectedItem());
-        Main.setNewCategories(al);
-        FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Category");
+        String s = "Do you want permanently delete category?";
+        alert.setContentText(s);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+            System.out.println(table.getSelectionModel().getSelectedItem().getTitleOfCategory());
+            ArrayList<Category> al = Main.getCategories();
+            al.remove(table.getSelectionModel().getSelectedItem());
+            Main.setNewCategories(al);
+            FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
+        }
     }
 
     public void editBtnClicked() throws IOException {
@@ -75,8 +91,7 @@ public class LauncherScreenController implements Initializable {
 
     public boolean savedSelectedCategoryId() {
         if (table.getSelectionModel().getSelectedItem() != null) {
-            Category selected = table.getSelectionModel().getSelectedItem();
-            idOfSelectedCategory = Main.getCategories().indexOf(selected);
+            idOfSelectedCategory = table.getSelectionModel().getSelectedIndex();
             idOfSelectedCategory++;
             return true;
         }

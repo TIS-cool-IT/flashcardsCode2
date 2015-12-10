@@ -1,12 +1,23 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
+
+import static sample.Main.idOfSelectedCategory;
+import static sample.Main.idOfSelectedFlashcard;
 import static sample.Main.toEditScreen;
 
-public class EditOneScreenController {
+public class EditOneScreenController implements Initializable {
+
+    @FXML
+    TextField inputQText;
 
     @FXML
     ImageView rightArrow;
@@ -21,8 +32,6 @@ public class EditOneScreenController {
 
     public void finishEditing(){
         toEditScreen();
-
-
     }
 
     public void onRightArrowClicked(){
@@ -47,5 +56,13 @@ public class EditOneScreenController {
 
     public void onLeftReleased(){
         leftArrow.setImage(l1);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if(idOfSelectedFlashcard != -1){
+            Flashcard selected = Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().get(idOfSelectedFlashcard);
+            inputQText.setText("hnoj");
+        }
     }
 }

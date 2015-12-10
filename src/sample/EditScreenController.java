@@ -75,10 +75,20 @@ public class EditScreenController implements Initializable{
         toAddScreen();
     }
 
-    public void openEditOneScreen(){
-        toEditOneScreen();
+    public void openEditOneScreen() throws IOException {
+        if (savedSelectedFlashcard()){
+            FXMLLoader.load(getClass().getResource("editOneScreen.fxml"));
+            toEditOneScreen();
+        }
     }
 
+    public boolean savedSelectedFlashcard() {
+        if (table1.getSelectionModel().getSelectedItem() != null) {
+            idOfSelectedFlashcard = table1.getSelectionModel().getSelectedIndex();
+            return true;
+        }
+        return false;
+    }
 
 
     public EditScreenController() throws IOException{
@@ -101,7 +111,7 @@ public class EditScreenController implements Initializable{
     }
 
     @FXML
-    protected void addPerson(ActionEvent event) {
+    protected void addFlashcardToTable(ActionEvent event) {
         table1.getItems().clear();
         ObservableList<TableRecord> data = table1.getItems();
         nameOfCategoryInput.setText(Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
@@ -131,7 +141,6 @@ public class EditScreenController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("EdiScreenCont INITIALIZE");
         idCol.setStyle("-fx-alignment: CENTER;");
         tvQuestion.setStyle("-fx-alignment: CENTER;");
         tvAnswer.setStyle("-fx-alignment: CENTER;");
@@ -142,6 +151,7 @@ public class EditScreenController implements Initializable{
         tvReversed.setStyle("-fx-alignment: CENTER;");
 
         if (idOfSelectedCategory != -1) {
+            System.out.println(idOfSelectedCategory);
             idCategory = Main.getCategories().get(idOfSelectedCategory - 1).getId();
             title = Main.getCategories().get(idOfSelectedCategory - 1).getTitleOfCategory();
             System.out.println("zvolena kategoria id: " + idCategory + ",title: " + title);

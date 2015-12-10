@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
+        
 <?import java.net.*?>
-<?import java.util.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.collections.*?>
-<?import sample.*?>
 
-<?import sample.TableRecord?>
 <BorderPane prefHeight="640.0" prefWidth="1100.0" styleClass="borderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.EditScreenController">
   <bottom>
     <Button fx:id="backBtn" cancelButton="false" defaultButton="false" mnemonicParsing="false" onMouseClicked="#finishEditing" prefHeight="65.0" prefWidth="1100.0" text="Finish editing" textFill="BLACK" BorderPane.alignment="CENTER">
@@ -31,7 +25,7 @@
         <Button layoutX="426.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#openAddScreen" prefHeight="35.0" prefWidth="157.0" text="Add new " />
         <Button layoutX="426.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#openEditOneScreen" prefHeight="35.0" prefWidth="157.0" text="Edit" />
         <Button layoutX="426.0" layoutY="492.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Save changes" />
-        <Button text="Refresh" onAction="#addPerson"/>
+        <Button text="Refresh" onAction="#addFlashcardToTable"/>
         <Label alignment="CENTER" cache="false" contentDisplay="LEFT" disable="false" focusTraversable="false" layoutX="116.0" layoutY="39.0" opacity="1.0" prefHeight="43.0" prefWidth="118.0" text="Name of category:" textAlignment="LEFT" underline="false" visible="true" wrapText="false">
           <font>
             <Font size="13.0" />

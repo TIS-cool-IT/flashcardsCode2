@@ -30,7 +30,7 @@ public class Category implements Serializable{
     public Category(int id, String title) {
         idOfCategory = id;
         titleOfCategory = title;
-        categoryDirectory = Integer.toString(idOfCategory);
+        categoryDirectory = titleOfCategory;
         makeDirectory(categoryDirectory);
         countOfFlashcars = 0;
         //Main.addCategory(this);

@@ -116,7 +116,8 @@ public class AddScreenController implements Serializable{
 
     private void saveTxtFile(String nameOfFile, String text, String dir) {
         FileOutputStream fop = null;
-        File file = new File(dir + "\\" + nameOfFile + ".txt");
+        File file = new File(dir.trim() + "\\" + nameOfFile + ".txt");
+        System.out.println(file.getAbsolutePath());
         try {
             fop = new FileOutputStream(file);
             if (!file.exists()) {
