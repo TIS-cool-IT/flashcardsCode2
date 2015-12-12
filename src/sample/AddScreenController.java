@@ -39,16 +39,18 @@ public class AddScreenController implements Serializable{
         put("AImage1",null); put("ASound1", null); put("AImage2", null); put("ASound2", null);
     }};
 
-    FolderChecker folderChecker;
+    //FolderChecker folderChecker;
 
     public AddScreenController(){
-        folderChecker = new FolderChecker();
-        folderChecker.start();
+        //folderChecker = new FolderChecker();
+        //folderChecker.start();
+
+
     }
 
     public void finishAdding(){
         toEditScreen(); //TODO poslat id kategorie
-        folderChecker.stop();
+        //folderChecker.stop();
     }
 
 
@@ -104,6 +106,14 @@ public class AddScreenController implements Serializable{
             saveTxtFile("answer", inputAText.getText(), "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
 
             JOptionPane.showMessageDialog(new JFrame(), "Flashcard was saved!");
+
+            // clear fields values
+            inputQText.clear();
+            inputAText.clear();
+            inputFiles.clear();
+            this.clearFilesFields();
+
+
             toEditScreen();
         }
         else {
@@ -290,6 +300,25 @@ public class AddScreenController implements Serializable{
     @FXML
     public void openAudio() throws IOException {
         Main.openAudioBook();
+    }
+
+    private void clearFilesFields() {
+        Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QImage1");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QImage2");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QSound1");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QSound2");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"AImage1");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"AImage2");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"ASound1");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"ASound2");
+        but.setText("Upload file");
     }
 
 }
