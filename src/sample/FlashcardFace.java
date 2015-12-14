@@ -33,7 +33,7 @@ public class FlashcardFace implements Serializable{
         images.remove(image);
     }
 
-    public ArrayList getSounds() { // TODO pridat nazov triedy na spravu zvuku
+    public ArrayList<File> getSounds() { // TODO pridat nazov triedy na spravu zvuku
         return sounds;
     }
 

@@ -61,7 +61,7 @@
         <Label font="$x6" layoutX="194.0" layoutY="236.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Text" textAlignment="LEFT" />
         <Label font="$x6" layoutX="194.0" layoutY="273.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Image" textAlignment="LEFT" />
         <Label font="$x6" layoutX="194.0" layoutY="310.0" prefHeight="36.60000038146973" prefWidth="43.0" text="Sound" textAlignment="LEFT" />
-        <TextField id="BtnAText" fx:id="inputAText" layoutX="279.0" layoutY="243.0" prefWidth="560.0" />
+        <TextField id="InputAText" fx:id="inputAText" layoutX="279.0" layoutY="243.0" prefWidth="560.0" />
         <Button id="BtnAImage1" fx:id="btnAImage1" layoutX="279.0" layoutY="281.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
         <Button id="BtnASound1" fx:id="btnASound1" layoutX="279.0" layoutY="318.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
         <Button id="BtnAImage2" fx:id="btnAImage2" layoutX="438.0" layoutY="281.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" />
@@ -77,7 +77,7 @@
             <Image url="@../l1.png" />
           </image>
         </ImageView>
-        <Button id="addBtn" layoutX="466.0" layoutY="454.0" mnemonicParsing="false" prefHeight="36.5999755859375" prefWidth="119.0" text="Save changes" />
+        <Button fx:id="saveChangesBtn" id="addBtn" layoutX="466.0" layoutY="454.0" mnemonicParsing="false" prefHeight="36.5999755859375" prefWidth="119.0" text="Save changes" onMouseClicked="#saveChanges"/>
         <ImageView fx:id="rightArrow" fitHeight="120.0" fitWidth="160.0" layoutX="888.0" layoutY="440.0" onMouseClicked="#onRightArrowClicked" onMousePressed="#onRightPressed" onMouseReleased="#onRightReleased" pickOnBounds="true" preserveRatio="true">
           <image>
             <Image url="@../r1.png" />

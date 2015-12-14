@@ -42,12 +42,15 @@ public class Main extends Application implements Serializable{
     // controllers
     private static PresentationScreenController presentationScreenController;
     public static AfterPresentationController afterPresentationController;
+    public static EditScreenController editScreenController;
+    public static EditOneScreenController editOneScreenController;
+    public static LauncherScreenController launcherScreenController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         addParent = FXMLLoader.load(getClass().getResource("addscreen.fxml"));
-        editParent = FXMLLoader.load(getClass().getResource("editScreen.fxml"));
-        editOneParent = FXMLLoader.load(getClass().getResource("editOneScreen.fxml"));
+        //editParent = FXMLLoader.load(getClass().getResource("editScreen.fxml"));
+        //editOneParent = FXMLLoader.load(getClass().getResource("editOneScreen.fxml"));
 
 
         // presentation controller
@@ -65,9 +68,22 @@ public class Main extends Application implements Serializable{
         afterPresentationStage.setScene(sceneForPopup);
         afterPresentationStage.getScene().setRoot(popupPresentation);
 
+        //edit controller
+        FXMLLoader loader3 = new FXMLLoader(getClass().getResource("editScreen.fxml"));
+        editParent = loader3.load();
+        editScreenController = loader3.getController();
 
+        //editOne controller
+        FXMLLoader loader4 = new FXMLLoader(getClass().getResource("editOneScreen.fxml"));
+        editOneParent = loader4.load();
+        editOneScreenController = loader4.getController();
 
-        launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
+        //laucher controller
+        FXMLLoader loader5 = new FXMLLoader(getClass().getResource("launcherScreen.fxml"));
+        launcherParent = loader5.load();
+        launcherScreenController = loader5.getController();
+
+        //launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
         sounderScene = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
 
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
@@ -82,6 +98,7 @@ public class Main extends Application implements Serializable{
                 System.exit(0);
             }
         });
+        backToLauncher();
     }
 
     public static void addCategory(Category category) throws IOException {
@@ -154,10 +171,12 @@ public class Main extends Application implements Serializable{
 
     public static void backToLauncher(){
         primStage.getScene().setRoot(launcherParent);
+        launcherScreenController.init();
     }
 
     public static void toEditScreen(){
         primStage.getScene().setRoot(editParent);
+        editScreenController.init();
     }
 
     public static void toPresentationScreen(){
@@ -172,6 +191,7 @@ public class Main extends Application implements Serializable{
 
     public static void toEditOneScreen(){
         primStage.getScene().setRoot(editOneParent);
+        editOneScreenController.init();
     }
 
     public static void setCategories(int index, Category cat) throws IOException {

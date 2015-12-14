@@ -20,7 +20,7 @@ import java.util.*;
 import static sample.Main.*;
 
 
-public class LauncherScreenController implements Initializable {
+public class LauncherScreenController {
 
     @FXML
     TextField categoryName;
@@ -78,7 +78,7 @@ public class LauncherScreenController implements Initializable {
             ArrayList<Category> al = Main.getCategories();
             al.remove(table.getSelectionModel().getSelectedItem());
             Main.setNewCategories(al);
-            FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
+            init();
         }
     }
 
@@ -106,12 +106,12 @@ public class LauncherScreenController implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void init() {
         idCol.setStyle("-fx-alignment: CENTER;");
         countCol.setStyle("-fx-alignment: CENTER;");
         titleCol.setStyle("-fx-alignment: CENTER;");
         categories.removeAll();
+        table.getItems().clear();
         try {
             for(Category cat : Main.getLoadedCategories()) {
                 categories.add(cat);
@@ -119,7 +119,7 @@ public class LauncherScreenController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        table.getItems().setAll(categories);
+        table.setItems(categories);
 
 //        table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 //            @Override

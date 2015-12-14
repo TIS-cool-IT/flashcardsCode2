@@ -39,16 +39,16 @@ public class AddScreenController implements Serializable{
         put("AImage1",null); put("ASound1", null); put("AImage2", null); put("ASound2", null);
     }};
 
-    FolderChecker folderChecker;
+    //FolderChecker folderChecker;
 
     public AddScreenController(){
-        folderChecker = new FolderChecker();
-        folderChecker.start();
+        //folderChecker = new FolderChecker();
+        //folderChecker.start();
     }
 
     public void finishAdding(){
         toEditScreen(); //TODO poslat id kategorie
-        folderChecker.stop();
+        //folderChecker.stop();
     }
 
 

@@ -25,7 +25,6 @@
         <Button layoutX="426.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#openAddScreen" prefHeight="35.0" prefWidth="157.0" text="Add new " />
         <Button layoutX="426.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#openEditOneScreen" prefHeight="35.0" prefWidth="157.0" text="Edit" />
         <Button layoutX="426.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#saveChanges" prefHeight="35.0" prefWidth="157.0" text="Save changes" />
-        <Button text="Refresh" onAction="#addFlashcardToTable"/>
         <Label alignment="CENTER" cache="false" contentDisplay="LEFT" disable="false" focusTraversable="false" layoutX="116.0" layoutY="39.0" opacity="1.0" prefHeight="43.0" prefWidth="118.0" text="Name of category:" textAlignment="LEFT" underline="false" visible="true" wrapText="false">
           <font>
             <Font size="13.0" />
@@ -73,10 +72,6 @@
                 </FXCollections>
               </items>
             </TableView>
-            <!--<HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="0"-->
-                  <!--GridPane.rowIndex="2">-->
-              <!--<Button text="Refresh" onAction="#addPerson"/>-->
-            <!--</HBox>-->
           </children>
         </Pane>
       </children>

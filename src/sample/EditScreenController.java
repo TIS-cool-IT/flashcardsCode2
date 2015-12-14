@@ -13,13 +13,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 import static sample.Main.*;
 
-public class EditScreenController implements Initializable{
+public class EditScreenController{
 
     private int idCategory;
     private String title;
@@ -105,56 +106,53 @@ public class EditScreenController implements Initializable{
     }
 
 
-    public EditScreenController() throws IOException{
-        if (idOfSelectedCategory != -1) {
-            System.out.println("inicializujem screen");
-            //Main.saveCategories();
-            Main.loadCategories();
-            /*for(Flashcard fc : Main.getCategories().get(idOfSelectedCategory-1).getFlashcards()){
-                //flashcardsForActualCategory.add(fc);
-                System.out.println("added");
-            }*/
-            //TODO spravit zobrazovanie v table1
-            //table1.setItems(flashcardsForActualCategory);
-        }
-    }
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
         nameOfCategoryInput.appendText(title);
     }
 
-    @FXML
-    protected void addFlashcardToTable(ActionEvent event) {
+    protected void addFlashcardToTable() {
         table1.getItems().clear();
         ObservableList<TableRecord> data = table1.getItems();
         nameOfCategoryInput.setText(Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
         //System.out.println("title: " + Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
         for(Flashcard fc : Main.getCategories().get(idOfSelectedCategory-1).getFlashcards()){
             //TODO nie je lepsie ukladat miesto IMAGE a SOUND skorej FILE?
-            /*ArrayList<String> imagesQ = new ArrayList<>();
+            ArrayList<String> imagesQ = new ArrayList<>();
             ArrayList<String> imagesA = new ArrayList<>();
             ArrayList<String> soundsQ = new ArrayList<>();
             ArrayList<String> soundsA = new ArrayList<>();
-            for(Image i : fc.getQuestion().getImages()){
-                imagesQ.add(i.);
-            }*/
+            for(File i : fc.getQuestion().getImages()){
+                if(i != null)
+                imagesQ.add(i.getName());
+            }
+            for(File i : fc.getQuestion().getSounds()){
+                if(i != null)
+                soundsQ.add(i.getName());
+            }
+            for(File i : fc.getAnswer().getImages()){
+                if(i != null)
+                imagesA.add(i.getName());
+            }
+            for(File i : fc.getAnswer().getSounds()){
+                if(i != null)
+                soundsA.add(i.getName());
+            }
             data.add(new TableRecord(fc.getId(),
                     fc.getQuestion().getText(),
                     fc.getAnswer().getText(),
-                    fc.getQuestion().getImages().toString(),
-                    fc.getAnswer().getImages().toString(),
-                    fc.getQuestion().getSounds().toString(),
-                    fc.getAnswer().getSounds().toString(),
+                    imagesQ.toString(),
+                    imagesA.toString(),
+                    soundsQ.toString(),
+                    soundsA.toString(),
                     Boolean.toString(fc.getReversed())
             ));
         }
 
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void init() {
         idCol.setStyle("-fx-alignment: CENTER;");
         tvQuestion.setStyle("-fx-alignment: CENTER;");
         tvAnswer.setStyle("-fx-alignment: CENTER;");
@@ -174,6 +172,7 @@ public class EditScreenController implements Initializable{
             //nameOfCategoryInput.setText("arasid");
 
             ObservableList<TableRecord> data = table1.getItems();
+            File f = new File("prd");
 
             idCol.setCellValueFactory(new PropertyValueFactory<TableRecord,String>("id"));
             tvQuestion.setCellValueFactory(new PropertyValueFactory<TableRecord,String>("question"));
@@ -185,8 +184,8 @@ public class EditScreenController implements Initializable{
             tvReversed.setCellValueFactory(new PropertyValueFactory<TableRecord,String>("reversed"));
 
             table1.setItems(data);
-            table1.getColumns().addAll(idCol, tvQuestion, tvAnswer, tvQImage, tvAImage, tvQSound, tvASound, tvReversed);
-
+            //table1.getColumns().addAll(idCol, tvQuestion, tvAnswer, tvQImage, tvAImage, tvQSound, tvASound, tvReversed);
+            addFlashcardToTable();
         }
     }
 }
