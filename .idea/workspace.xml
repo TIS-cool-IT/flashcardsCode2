@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="292046df-81c4-46cd-af66-fcab720eb163" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/AddScreenController.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/AddScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/EditOneScreenController.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/EditOneScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/EditScreenController.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/EditScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/FlashcardFace.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/FlashcardFace.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/LauncherScreenController.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/LauncherScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/Category.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/Category.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AddScreenController.java" afterPath="$PROJECT_DIR$/src/sample/AddScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/EditOneScreenController.java" afterPath="$PROJECT_DIR$/src/sample/EditOneScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/EditScreenController.java" afterPath="$PROJECT_DIR$/src/sample/EditScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/FlashcardFace.java" afterPath="$PROJECT_DIR$/src/sample/FlashcardFace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/LauncherScreenController.java" afterPath="$PROJECT_DIR$/src/sample/LauncherScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/editOneScreen.fxml" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/editOneScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/editOneScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/editOneScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/editScreen.fxml" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/editScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/editScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/editScreen.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="flashcardsCode2.iws" />
@@ -172,8 +158,8 @@
       <file leaf-file-name="EditScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/EditScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.83595115">
-              <caret line="174" column="37" selection-start-line="174" selection-start-column="37" selection-end-line="174" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.6852174">
+              <caret line="181" column="19" selection-start-line="181" selection-start-column="19" selection-end-line="181" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -583,7 +569,7 @@
       <workItem from="1449746816838" duration="17201000" />
       <workItem from="1449825877733" duration="1200000" />
       <workItem from="1449937389680" duration="255000" />
-      <workItem from="1450120588779" duration="7312000" />
+      <workItem from="1450120588779" duration="10345000" />
     </task>
     <task id="LOCAL-00001" summary="pokus o pridavanie flashcard">
       <created>1448979105151</created>
@@ -595,7 +581,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101174000" />
+    <option name="totallyTimeSpent" value="104207000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -617,7 +603,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33073497" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -859,8 +845,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/EditScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83595115">
-          <caret line="174" column="37" selection-start-line="174" selection-start-column="37" selection-end-line="174" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.6852174">
+          <caret line="181" column="19" selection-start-line="181" selection-start-column="19" selection-end-line="181" selection-end-column="19" />
           <folding />
         </state>
       </provider>
