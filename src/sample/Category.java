@@ -54,8 +54,23 @@ public class Category implements Serializable{
         return listOfFlashcards;
     }
 
-    public void setTitleOfCategory(String newTitleOfCategory) {
-        titleOfCategory = newTitleOfCategory;
+    public boolean setTitleOfCategory(String newTitleOfCategory) {
+        if (!newTitleOfCategory.trim().equals("")) {
+            // rename directory
+            File oldName = new File(DIRECTORY + titleOfCategory);
+            File newName = new File(DIRECTORY + newTitleOfCategory);
+            boolean isFileRenamed = oldName.renameTo(newName);
+            if(isFileRenamed) {
+                System.out.println("Category Directory has been renamed");
+                titleOfCategory = newTitleOfCategory;
+                setCategoryDirectory(titleOfCategory);
+                return true;
+            } else {
+                System.out.println("Error renaming Category Directory");
+            }
+        }
+        System.out.println("Wrong name Category Directory");
+        return false;
     }
 
     public String getTitleOfCategory() {

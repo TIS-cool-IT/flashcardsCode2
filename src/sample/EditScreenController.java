@@ -82,19 +82,22 @@ public class EditScreenController{
     }
 
     public void saveChanges() throws IOException {
-        TextField tv = (TextField) Main.getPrimaryStage().getScene().lookup("#nameOfCategory");
-        /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Rename Category");
-        String s = "Do you want change category name from " + Main.getCategories().get(idCategory).getTitleOfCategory() + " to " + tv.getText()+"?";
-        alert.setContentText(s);
-
+        alert.setContentText("Do you want change category name from \"" + title + "\" to \"" + nameOfCategoryInput.getText()+"\"?");
         Optional<ButtonType> result = alert.showAndWait();
 
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-            JOptionPane.showMessageDialog(new JFrame(), "Category name was changed to '" + tv.getText());
-            Main.getCategories().get(idCategory).setTitleOfCategory(tv.getText());
-            Main.saveCategories();
-        }*/
+            if (Main.getCategories().get(idOfSelectedCategory-1).setTitleOfCategory(nameOfCategoryInput.getText())) {
+                JOptionPane.showMessageDialog(new JFrame(), "Category name was changed to \"" + nameOfCategoryInput.getText() + "\"");
+                Main.saveCategories();
+            } else {
+                JOptionPane.showMessageDialog(new JFrame(), "Category name can't be changed to \"" + nameOfCategoryInput.getText() + "\"",
+                        "Wrong new name",
+                        JOptionPane.ERROR_MESSAGE);
+                nameOfCategoryInput.setText(title);
+            }
+        }
     }
 
     public boolean savedSelectedFlashcard() {
