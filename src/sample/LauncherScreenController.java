@@ -42,15 +42,25 @@ public class LauncherScreenController {
     private final ObservableList<Category> categories = FXCollections.observableArrayList();
 
     public void addCategoryBtnClicked() throws IOException {
-        System.out.println(categoryName.getText());
-        if(!categoryName.getText().equals("")) {
+        String newCategoryName = categoryName.getText().trim();
+
+        System.out.println(newCategoryName);
+        if(!newCategoryName.equals("")) {
+            Category newCategory;
             if(categories.size() == 0){
-                Main.addCategory((new Category(1, categoryName.getText().trim())));
+                newCategory = new Category(1, categoryName.getText().trim());
             }
             else{
-                Main.addCategory((new Category(categories.get(categories.size()-1).getId()+1, categoryName.getText().trim())));
+                newCategory = new Category(categories.get(categories.size()-1).getId()+1, newCategoryName);
             }
-            JOptionPane.showMessageDialog(new JFrame(), "Category '" + categoryName.getText() + "' was saved!");
+            // make category directory
+            if (newCategory.makeDirectory(newCategory.getCategoryDirectory())) {
+                Main.addCategory(newCategory);
+                JOptionPane.showMessageDialog(new JFrame(), "Category '" + newCategoryName + "' was saved!");
+            } else {
+                JOptionPane.showMessageDialog(new JFrame(), "Category name can't includes characters: \\/:*?\"<>|",
+                        "Wrong new name", JOptionPane.ERROR_MESSAGE);
+            }
         }
         else{
             JOptionPane.showMessageDialog(new JFrame(), "Category name can't be empty", "Error", JOptionPane.ERROR_MESSAGE);

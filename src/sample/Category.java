@@ -31,9 +31,7 @@ public class Category implements Serializable{
         idOfCategory = id;
         titleOfCategory = title;
         categoryDirectory = titleOfCategory;
-        makeDirectory(categoryDirectory);
         countOfFlashcars = 0;
-        //Main.addCategory(this);
     }
 
     public int getId() {
@@ -93,14 +91,15 @@ public class Category implements Serializable{
         if (!theDir.exists()) {
             System.out.println("creating directory: " + dir);
             try{
-                theDir.mkdirs();
-                result = true;
+                result = theDir.mkdirs();
             }
             catch(SecurityException se){
                 //handle it
             }
             if(result) {
                 System.out.println("DIR created");
+            } else {
+                System.out.println("ERROR DIR name");
             }
         } else {
             System.out.println("DIR exists");
