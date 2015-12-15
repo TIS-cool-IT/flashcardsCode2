@@ -83,7 +83,7 @@ public class EditScreenController{
 
     public void saveChanges() throws IOException {
         TextField tv = (TextField) Main.getPrimaryStage().getScene().lookup("#nameOfCategory");
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Rename Category");
         String s = "Do you want change category name from " + Main.getCategories().get(idCategory).getTitleOfCategory() + " to " + tv.getText()+"?";
         alert.setContentText(s);
@@ -94,7 +94,7 @@ public class EditScreenController{
             JOptionPane.showMessageDialog(new JFrame(), "Category name was changed to '" + tv.getText());
             Main.getCategories().get(idCategory).setTitleOfCategory(tv.getText());
             Main.saveCategories();
-        }
+        }*/
     }
 
     public boolean savedSelectedFlashcard() {

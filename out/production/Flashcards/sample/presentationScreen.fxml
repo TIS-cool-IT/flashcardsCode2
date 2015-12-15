@@ -35,13 +35,13 @@
                 </Label>
                 <Group id="Group" fx:id="buttonsGroup" layoutX="87.0" layoutY="345.0" visible="false">
                   <children>
-                    <Button fx:id="wrongBtn" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#wrongAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: red;" text="I was wrong" />
-                    <Button fx:id="rightBtn" layoutX="338.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#rightAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: green;" text="I was right " />
+                    <Button fx:id="wrongBtn" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#wrongAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: &quot;#ff3333&quot;;" text="I was wrong" textFill="BLACK" />
+                    <Button fx:id="rightBtn" layoutX="338.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#rightAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: &quot;#a5ff33&quot;;" text="I was right " textFill="#330000" />
                   </children>
                 </Group>
-                <Label fx:id="presentationStatus" layoutX="340.0" layoutY="362.0" text="0/0">
+                <Label fx:id="presentationStatus" layoutX="335.0" layoutY="347.0" text="0/0">
                   <font>
-                    <Font size="15.0" fx:id="x2" />
+                    <Font size="26.0" />
                   </font>
                 </Label>
                 <Group id="Group" fx:id="rectTwoImages" layoutX="-5.0" layoutY="27.0" onMouseClicked="#onRectClicked">
@@ -63,7 +63,7 @@
                 <Group id="Group" fx:id="rectOneImage" layoutX="116.0" layoutY="27.0" onMouseClicked="#onRectClicked">
                   <children>
                     <Rectangle id="rect2images" arcHeight="25.0" arcWidth="25.0" fill="BLACK" height="307.0001220703125" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="470.0001220703125" />
-                    <ImageView fx:id="image1" fitHeight="278.712104731729" fitWidth="441.0001525878906" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" visible="true">
+                    <ImageView id="image1" fx:id="image11" fitHeight="278.712104731729" fitWidth="441.0001525878906" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" visible="true">
                       <image>
                         <Image url="@../image1.png" />
                       </image>

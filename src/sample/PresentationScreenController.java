@@ -35,7 +35,7 @@ public class PresentationScreenController  {
     Label label1;
 
     @FXML
-    ImageView image1;
+    ImageView image11;
 
     // if flashcard has two images
     @FXML
@@ -46,7 +46,6 @@ public class PresentationScreenController  {
 
     @FXML
     ImageView image21;
-
 
     @FXML
     ImageView image22;
@@ -290,19 +289,27 @@ public class PresentationScreenController  {
 
     public void fillFace(FlashcardFace face){
         actualFace = face;
-        if (face.getImages().size() < 2){
-            System.out.println("0 alebo 1 obrazok");
-            rectTwoImages.setVisible(false);
-            rectOneImage.setVisible(true);
-            label1.setText(face.getText().toString());
-            //Image i = face.getImages().get(0);
-            //image1.setImage(getImage(file1));
-
-        }
-        else {
+        File i1 = face.getImages().get(0);
+        File i2 = face.getImages().get(1);
+        if (i1 != null &&  i2 != null){
+            System.out.println("2 images");
             rectTwoImages.setVisible(true);
             rectOneImage.setVisible(false);
             label2.setText(face.getText().toString());
+            image21.setImage(getImage(i1));
+            image22.setImage(getImage(i2));
+        }
+        else {
+            System.out.println("1 or NONE image");
+            rectTwoImages.setVisible(false);
+            rectOneImage.setVisible(true);
+            label1.setText(face.getText().toString());
+            if (i1 != null){
+                image11.setImage(getImage(i1));
+            }
+            if (i2 != null){
+                image11.setImage(getImage(i2));
+            }
 
         }
     }

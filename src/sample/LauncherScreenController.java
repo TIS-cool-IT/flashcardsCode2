@@ -66,7 +66,7 @@ public class LauncherScreenController {
 
     @FXML
     protected void deleteCategory() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Category");
         String s = "Do you want permanently delete category?";
         alert.setContentText(s);
@@ -79,7 +79,7 @@ public class LauncherScreenController {
             al.remove(table.getSelectionModel().getSelectedItem());
             Main.setNewCategories(al);
             init();
-        }
+        }*/
     }
 
     public void editBtnClicked() throws IOException {
