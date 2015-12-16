@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.security.auth.callback.Callback;
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
@@ -76,7 +77,7 @@ public class LauncherScreenController {
 
     @FXML
     protected void deleteCategory() throws IOException {
-        /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Category");
         String s = "Do you want permanently delete category?";
         alert.setContentText(s);
@@ -88,9 +89,38 @@ public class LauncherScreenController {
             ArrayList<Category> al = Main.getCategories();
             al.remove(table.getSelectionModel().getSelectedItem());
             Main.setNewCategories(al);
+
+            // recursive deleting directories and files
+            File file = new File("C:\\FlashCard\\Categories\\" + table.getSelectionModel().getSelectedItem().getTitleOfCategory());
+            String[] children = file.list();
+            if (children != null) {
+                for (int i = 0; i < children.length; i++) {
+                    deleteDirectory(new File(children[i]));
+                }
+            }
+            deleteDirectory(file);
+
             init();
-        }*/
+        }
     }
+
+    public static boolean deleteDirectory(File directory) {
+        if(directory.exists()){
+            File[] files = directory.listFiles();
+            if(null!=files){
+                for(int i=0; i<files.length; i++) {
+                    if(files[i].isDirectory()) {
+                        deleteDirectory(files[i]);
+                    }
+                    else {
+                        files[i].delete();
+                    }
+                }
+            }
+        }
+        return(directory.delete());
+    }
+
 
     public void editBtnClicked() throws IOException {
         if (savedSelectedCategoryId()){
