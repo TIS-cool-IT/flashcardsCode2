@@ -7,17 +7,18 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
-import static sample.Main.idOfSelectedCategory;
-import static sample.Main.idOfSelectedFlashcard;
-import static sample.Main.toEditScreen;
+import static sample.Main.*;
+import static sample.Main.getPrimaryStage;
 
 public class EditOneScreenController {
 
@@ -34,6 +35,11 @@ public class EditOneScreenController {
     private Image l2 = new Image("l2.png");
     private Image r1 = new Image("r1.png");
     private Image r2 = new Image("r2.png");*/
+
+    HashMap<String, File> inputFiles = new HashMap<String, File>() {{
+        put("QImage1",null); put("QSound1", null); put("QImage2", null); put("QSound2", null);
+        put("AImage1",null); put("ASound1", null); put("AImage2", null); put("ASound2", null);
+    }};
 
     public void finishEditing(){
         toEditScreen();
@@ -80,6 +86,7 @@ public class EditOneScreenController {
 
     public void saveChanges(){
         System.out.println("Saving...");
+
     }
 
     public void init() {
@@ -143,4 +150,85 @@ public class EditOneScreenController {
 
         }
     }
+
+
+
+    private void chooseImage(String nameOfImage) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Pictures");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        if (selectedFile != null) {
+            inputFiles.put(nameOfImage, selectedFile);
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+nameOfImage);
+            but.setText(selectedFile.getName());
+        }
+    }
+
+    private void chooseSound(String nameOfSound) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setTitle("View Sounds");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("MP3", "*.mp3")
+        );
+        if (selectedFile != null) {
+            inputFiles.put(nameOfSound, selectedFile);
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+nameOfSound);
+            but.setText(selectedFile.getName());
+        }
+    }
+
+    @FXML
+    public void addQImage1() {
+        chooseImage("QImage1");
+    }
+
+    @FXML
+    public void addQImage2() {
+        chooseImage("QImage2");
+    }
+
+    @FXML
+    public void addQSound1() {
+        chooseSound("QSound1");
+    }
+
+    @FXML
+    public void addQSound2() {
+        chooseSound("QSound2");
+    }
+
+    @FXML
+    public void addAImage1() {
+        chooseImage("AImage1");
+    }
+
+    @FXML
+    public void addAImage2() {
+        chooseImage("AImage2");
+    }
+
+    @FXML
+    public void addASound1() {
+        chooseSound("ASound1");
+    }
+
+    @FXML
+    public void addASound2() {
+        chooseSound("ASound2");
+    }
+
+
 }
