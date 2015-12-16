@@ -67,10 +67,10 @@
         <Button id="BtnAImage2" fx:id="btnAImage2" layoutX="438.0" layoutY="281.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addAImage2" />
         <Button id="BtnASound2" fx:id="btnASound2" layoutX="438.0" layoutY="318.0" mnemonicParsing="false" prefWidth="112.0" text="Upload file" onMouseClicked="#addASound2"/>
         <Label font="$x3" layoutX="152.0" layoutY="394.0" prefHeight="36.60000038146973" prefWidth="56.0" text="Help" textAlignment="LEFT" />
-        <Button id="BtnQRecord" fx:id="btnQRecord" layoutX="608.0" layoutY="153.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" />
-        <Button id="BtnARecord" fx:id="btnARecord" layoutX="608.0" layoutY="318.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" />
+        <Button id="BtnQRecord" fx:id="btnQRecord" layoutX="608.0" layoutY="153.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" onMouseClicked="#recordSoundQ"/>
+        <Button id="BtnARecord" fx:id="btnARecord" layoutX="608.0" layoutY="318.0" mnemonicParsing="false" prefWidth="112.0" text="Record sound" onMouseClicked="#recordSoundA"/>
         <Button fx:id="btnOpenBook" layoutX="279.0" layoutY="404.0" mnemonicParsing="false" prefWidth="112.0" text="Open book" />
-        <Button fx:id="btnOpenAudioBook" layoutX="438.0" layoutY="404.0" mnemonicParsing="false" prefWidth="112.0" text="Open audiobook" />
+        <Button fx:id="btnOpenAudioBook" layoutX="438.0" layoutY="404.0" mnemonicParsing="false" prefWidth="112.0" text="Open audiobook" onMouseClicked="#openAudio" />
         <CheckBox fx:id="checkboxReverse" font="$x6" layoutX="152.0" layoutY="360.0" mnemonicParsing="false" text="Flashcard can be used reversed" />
         <ImageView fx:id="leftArrow" fitHeight="80.7016517089869" fitWidth="159.99980173912886" layoutX="0.0" layoutY="439.0" onMouseClicked="#onLeftArrowClicked" onMousePressed="#onLeftPressed" onMouseReleased="#onLeftReleased" pickOnBounds="true" preserveRatio="true">
           <image>

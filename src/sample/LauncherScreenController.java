@@ -67,8 +67,6 @@ public class LauncherScreenController {
             JOptionPane.showMessageDialog(new JFrame(), "Category name can't be empty", "Error", JOptionPane.ERROR_MESSAGE);
         }
         table.getItems().clear();
-        //TODO zda sa ze toto vymazavanie nefunguje po pridani mi ukaze tie co boli pred tym dva krat
-        // TODO co je toto vo forcykle robit vkuse dopyt po categoriach...treba ulozit do premennej..
         for(Category cat : Main.getCategories()){
             if(!categories.contains(cat)) categories.add(cat);
         }

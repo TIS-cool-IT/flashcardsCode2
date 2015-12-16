@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -9,7 +10,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
+import javax.sound.sampled.LineUnavailableException;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,19 +25,9 @@ import static sample.Main.getPrimaryStage;
 
 public class EditOneScreenController {
 
-    /*@FXML
-    TextField inputQText;
+    private boolean recording = false;
 
-    @FXML
-    ImageView rightArrow;
-
-    @FXML
-    ImageView leftArrow;*/
-
-    /*private Image l1 = new Image("l1.png");
-    private Image l2 = new Image("l2.png");
-    private Image r1 = new Image("r1.png");
-    private Image r2 = new Image("r2.png");*/
+    JavaSoundRecorder recorder = new JavaSoundRecorder();
 
     HashMap<String, File> inputFiles = new HashMap<String, File>() {{
         put("QImage1",null); put("QSound1", null); put("QImage2", null); put("QSound2", null);
@@ -51,6 +44,7 @@ public class EditOneScreenController {
         } else {
             idOfSelectedFlashcard = idOfSelectedFlashcard + 1;
         }
+        clearFilesFields();
         init();
     }
 
@@ -71,6 +65,7 @@ public class EditOneScreenController {
         } else {
             idOfSelectedFlashcard = Main.getCategories().get(idOfSelectedCategory-1).getCount() - 1;
         }
+        clearFilesFields();
         init();
     }
 
@@ -86,7 +81,50 @@ public class EditOneScreenController {
 
     public void saveChanges(){
         System.out.println("Saving...");
+    }
 
+    public void openAudio() throws IOException {
+        Main.openAudioBook();
+    }
+
+    @FXML synchronized
+    public void recordSoundQ() throws IOException, LineUnavailableException {
+        Scene addScene = Main.getPrimaryStage().getScene();
+        if(!recording) {
+            Button but = (Button) addScene.lookup("#BtnQRecord");
+            but.setStyle("-fx-text-fill: red;");
+            recording = true;
+//            Flashcard card = Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().get(idOfSelectedFlashcard);
+//            recorder.beginRecording(new File("C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory() + "nahravka.wav"));
+            recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\nahravka.wav"));
+            System.out.println("recording started!!!!");
+        }
+        else{
+            Button but = (Button) addScene.lookup("#BtnQRecord");
+            but.setStyle("-fx-text-fill: #292929;");
+            recorder.endRecording();
+            recording = false;
+            System.out.println("recording stopped!!!!");
+        }
+    }
+
+    @FXML synchronized
+    public void recordSoundA() throws IOException, LineUnavailableException {
+        Scene addScene = Main.getPrimaryStage().getScene();
+        if(!recording) {
+            Button but = (Button) addScene.lookup("#BtnARecord");
+            but.setStyle("-fx-text-fill: red;");
+            recording = true;
+            recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\nahravka.wav"));
+            System.out.println("recording started!!!!");
+        }
+        else{
+            Button but = (Button) addScene.lookup("#BtnARecord");
+            but.setStyle("-fx-text-fill: #292929;");
+            recorder.endRecording();
+            recording = false;
+            System.out.println("recording stopped!!!!");
+        }
     }
 
     public void init() {
@@ -151,6 +189,24 @@ public class EditOneScreenController {
         }
     }
 
+    private void clearFilesFields() {
+        Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QImage1");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QImage2");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QSound1");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QSound2");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"AImage1");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"AImage2");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"ASound1");
+        but.setText("Upload file");
+        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"ASound2");
+        but.setText("Upload file");
+    }
 
 
     private void chooseImage(String nameOfImage) {
