@@ -40,19 +40,32 @@ public class EditOneScreenController {
     }
 
     public void onRightArrowClicked(){
-        //TODO open next flashcard
+        if (idOfSelectedFlashcard == (Main.getCategories().get(idOfSelectedCategory-1).getCount() - 1)) {
+            idOfSelectedFlashcard = 0;
+        } else {
+            idOfSelectedFlashcard = idOfSelectedFlashcard + 1;
+        }
+        init();
     }
 
     public void onRightPressed(){
-        //rightArrow.setImage(r2);
+        ImageView iv =(ImageView) Main.getPrimaryStage().getScene().lookup("#rightArrow");
+        iv.setImage(new Image("r2.png"));
     }
 
     public void onRightReleased(){
-        //rightArrow.setImage(r1);
+        ImageView iv =(ImageView) Main.getPrimaryStage().getScene().lookup("#rightArrow");
+        iv.setImage(new Image("r1.png"));
     }
 
+
     public void onLeftArrowClicked(){
-        //TODO open previous flashcard
+        if (idOfSelectedFlashcard > 0) {
+            idOfSelectedFlashcard = idOfSelectedFlashcard - 1;
+        } else {
+            idOfSelectedFlashcard = Main.getCategories().get(idOfSelectedCategory-1).getCount() - 1;
+        }
+        init();
     }
 
     public void onLeftPressed(){
@@ -61,7 +74,7 @@ public class EditOneScreenController {
     }
 
     public void onLeftReleased(){
-        ImageView iv =(ImageView) Main.getPrimaryStage().getScene().lookup("#rightArrow");
+        ImageView iv =(ImageView) Main.getPrimaryStage().getScene().lookup("#leftArrow");
         iv.setImage(new Image("l1.png"));
     }
 
