@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -109,6 +110,41 @@ public class EditScreenController{
     }
 
 
+    public void deleteFlashcard() {
+        if (table1.getSelectionModel().getSelectedItem() != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Flashcard");
+            String s = "Do you want permanently delete selected Flashcard?";
+            alert.setContentText(s);
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+                Flashcard card = Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().get(table1.getSelectionModel().getSelectedIndex());
+                Main.getCategories().get(idOfSelectedCategory-1).removeFlashcard(card);
+
+                deleteDirectory(new File("C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory()));
+                init();
+            }
+        }
+    }
+
+    public static boolean deleteDirectory(File directory) {
+        if(directory.exists()){
+            File[] files = directory.listFiles();
+            if(null!=files){
+                for(int i=0; i<files.length; i++) {
+                    if(files[i].isDirectory()) {
+                        deleteDirectory(files[i]);
+                    }
+                    else {
+                        files[i].delete();
+                    }
+                }
+            }
+        }
+        return(directory.delete());
+    }
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -191,4 +227,5 @@ public class EditScreenController{
             addFlashcardToTable();
         }
     }
+
 }
