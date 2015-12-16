@@ -193,72 +193,75 @@ public class EditOneScreenController {
 
     public void init() {
         if(idOfSelectedFlashcard != -1){
-            Flashcard selected = Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().get(idOfSelectedFlashcard);
-            TextField tvQ = (TextField) Main.getPrimaryStage().getScene().lookup("#InputQText");
-            tvQ.setText(selected.getQuestion().getText());
-
-            TextField tvA = (TextField) Main.getPrimaryStage().getScene().lookup("#InputAText");
-            tvA.setText(selected.getAnswer().getText());
-
-            ArrayList<File> questionImages = selected.getQuestion().getImages();
-
-            if(questionImages.get(0) != null) {
-                Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage1");
-                btn.setText(questionImages.get(0).getName());
-                inputFiles.put("BtnQImage1", new File(btn.getText()));
-            }
-            if(questionImages.get(1) != null) {
-                Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage2");
-                btn.setText(questionImages.get(1).getName());
-                inputFiles.put("BtnQImage2", new File(btn.getText()));
-            }
-
-            ArrayList<File> answerImages = selected.getAnswer().getImages();
-
-            if(answerImages.get(0) != null) {
-                Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage1");
-                btn.setText(answerImages.get(0).getName());
-                inputFiles.put("BtnAImage1", new File(btn.getText()));
-            }
-            if(answerImages.get(1) != null) {
-                Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage2");
-                btn.setText(answerImages.get(1).getName());
-                inputFiles.put("BtnAImage2", new File(btn.getText()));
-            }
-
-            ///////////////////////////////////////////////////////////////////////////////////
-            ArrayList<File> questionSounds = selected.getQuestion().getSounds();
-
-            if(questionSounds.get(0) != null) {
-                Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound1");
-                btn.setText(questionSounds.get(0).getName());
-                inputFiles.put("BtnQSound1", new File(btn.getText()));
-            }
-            if(questionSounds.get(1) != null) {
-                Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound2");
-                btn.setText(questionSounds.get(1).getName());
-                inputFiles.put("BtnQSound2", new File(btn.getText()));
-            }
-
-            ArrayList<File> answerSounds = selected.getAnswer().getSounds();
-
-            if(answerSounds.get(0) != null) {
-                Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound1");
-                btn.setText(answerSounds.get(0).getName());
-                inputFiles.put("BtnASound1", new File(btn.getText()));
-            }
-            if(answerSounds.get(1) != null) {
-                Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound2");
-                btn.setText(answerSounds.get(1).getName());
-                inputFiles.put("BtnASound2", new File(btn.getText()));
-            }
-
-            CheckBox cb = (CheckBox) Main.getPrimaryStage().getScene().lookup("#checkboxReverse");
-            if(selected.getReversed()) cb.setSelected(true);
-            else cb.setSelected(false);
-
-
+            clearFilesFields();
+            fillFields();
         }
+    }
+
+    public void fillFields(){
+        Flashcard selected = Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().get(idOfSelectedFlashcard);
+        TextField tvQ = (TextField) Main.getPrimaryStage().getScene().lookup("#InputQText");
+        tvQ.setText(selected.getQuestion().getText());
+
+        TextField tvA = (TextField) Main.getPrimaryStage().getScene().lookup("#InputAText");
+        tvA.setText(selected.getAnswer().getText());
+
+        ArrayList<File> questionImages = selected.getQuestion().getImages();
+
+        if(questionImages.get(0) != null) {
+            Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage1");
+            btn.setText(questionImages.get(0).getName());
+            inputFiles.put("BtnQImage1", new File(btn.getText()));
+        }
+        if(questionImages.get(1) != null) {
+            Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage2");
+            btn.setText(questionImages.get(1).getName());
+            inputFiles.put("BtnQImage2", new File(btn.getText()));
+        }
+
+        ArrayList<File> answerImages = selected.getAnswer().getImages();
+
+        if(answerImages.get(0) != null) {
+            Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage1");
+            btn.setText(answerImages.get(0).getName());
+            inputFiles.put("BtnAImage1", new File(btn.getText()));
+        }
+        if(answerImages.get(1) != null) {
+            Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage2");
+            btn.setText(answerImages.get(1).getName());
+            inputFiles.put("BtnAImage2", new File(btn.getText()));
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        ArrayList<File> questionSounds = selected.getQuestion().getSounds();
+
+        if(questionSounds.get(0) != null) {
+            Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound1");
+            btn.setText(questionSounds.get(0).getName());
+            inputFiles.put("BtnQSound1", new File(btn.getText()));
+        }
+        if(questionSounds.get(1) != null) {
+            Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound2");
+            btn.setText(questionSounds.get(1).getName());
+            inputFiles.put("BtnQSound2", new File(btn.getText()));
+        }
+
+        ArrayList<File> answerSounds = selected.getAnswer().getSounds();
+
+        if(answerSounds.get(0) != null) {
+            Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound1");
+            btn.setText(answerSounds.get(0).getName());
+            inputFiles.put("BtnASound1", new File(btn.getText()));
+        }
+        if(answerSounds.get(1) != null) {
+            Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound2");
+            btn.setText(answerSounds.get(1).getName());
+            inputFiles.put("BtnASound2", new File(btn.getText()));
+        }
+
+        CheckBox cb = (CheckBox) Main.getPrimaryStage().getScene().lookup("#checkboxReverse");
+        if(selected.getReversed()) cb.setSelected(true);
+        else cb.setSelected(false);
     }
 
     private void clearFilesFields() {
