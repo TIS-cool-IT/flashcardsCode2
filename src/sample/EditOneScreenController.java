@@ -3,20 +3,21 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import javax.sound.sampled.LineUnavailableException;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
@@ -26,6 +27,7 @@ import static sample.Main.getPrimaryStage;
 public class EditOneScreenController {
 
     private boolean recording = false;
+    private boolean recordingSaved = false;
 
     JavaSoundRecorder recorder = new JavaSoundRecorder();
 
@@ -79,8 +81,66 @@ public class EditOneScreenController {
         iv.setImage(new Image("l1.png"));
     }
 
-    public void saveChanges(){
+    public void saveChanges() throws IOException {
         System.out.println("Saving...");
+
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Save changes");
+        alert.setContentText("Do you want save changes?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+            Flashcard selected = Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().get(idOfSelectedFlashcard);
+
+            for (File input : inputFiles.values()){
+                if (input != null) {
+                    File duplicate = new File("C:\\FlashCard\\Categories\\" + selected.getFlashcardDirectory()+"\\"+input.getName());
+                    if(!duplicate.exists()) {
+                        saveFaceFile(input, "C:\\FlashCard\\Categories\\" + selected.getFlashcardDirectory());
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " can't be added twice.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+            }
+
+
+            ArrayList<File> questionImages = new ArrayList<>();
+            questionImages.add(inputFiles.get("BtnQImage1"));
+            questionImages.add(inputFiles.get("BtnQImage2"));
+
+            ArrayList<File> questionSounds = new ArrayList<>();
+            questionSounds.add(inputFiles.get("#BtnQSound1"));
+            questionSounds.add(inputFiles.get("#BtnQSound2"));
+
+            selected.setQuestion(new FlashcardFace(((TextField) Main.getPrimaryStage().getScene().lookup("#InputQText")).getText(), questionImages, questionSounds));
+
+            ArrayList<File> answerImages = new ArrayList<>();
+            answerImages.add(inputFiles.get("BtnAImage1"));
+            answerImages.add(inputFiles.get("BtnAImage2"));
+
+            ArrayList<File> answerSounds = new ArrayList<>();
+            answerSounds.add(inputFiles.get("#BtnASound1"));
+            answerSounds.add(inputFiles.get("#BtnASound2"));
+
+            selected.setAnswer(new FlashcardFace(((TextField) Main.getPrimaryStage().getScene().lookup("#InputAText")).getText(), answerImages, answerSounds));
+
+            CheckBox cb = (CheckBox) Main.getPrimaryStage().getScene().lookup("#checkboxReverse");
+            selected.setReversed(cb.isSelected());
+
+            Main.saveCategories();
+            Main.toEditScreen();
+        }
+    }
+
+    public void saveFaceFile(File source, String dir){
+        File dest = new File(dir + "\\" + source.getName());
+        try {
+            Files.copy(source.toPath(), dest.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void openAudio() throws IOException {
@@ -92,6 +152,7 @@ public class EditOneScreenController {
         Scene addScene = Main.getPrimaryStage().getScene();
         if(!recording) {
             Button but = (Button) addScene.lookup("#BtnQRecord");
+            recordingSaved = false;
             but.setStyle("-fx-text-fill: red;");
             recording = true;
 //            Flashcard card = Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().get(idOfSelectedFlashcard);
@@ -105,6 +166,7 @@ public class EditOneScreenController {
             recorder.endRecording();
             recording = false;
             System.out.println("recording stopped!!!!");
+            recordingSaved = true;
         }
     }
 
@@ -112,6 +174,7 @@ public class EditOneScreenController {
     public void recordSoundA() throws IOException, LineUnavailableException {
         Scene addScene = Main.getPrimaryStage().getScene();
         if(!recording) {
+            recordingSaved = false;
             Button but = (Button) addScene.lookup("#BtnARecord");
             but.setStyle("-fx-text-fill: red;");
             recording = true;
@@ -124,6 +187,7 @@ public class EditOneScreenController {
             recorder.endRecording();
             recording = false;
             System.out.println("recording stopped!!!!");
+            recordingSaved = true;
         }
     }
 
@@ -141,10 +205,12 @@ public class EditOneScreenController {
             if(questionImages.get(0) != null) {
                 Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage1");
                 btn.setText(questionImages.get(0).getName());
+                inputFiles.put("BtnQImage1", new File(btn.getText()));
             }
             if(questionImages.get(1) != null) {
                 Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQImage2");
                 btn.setText(questionImages.get(1).getName());
+                inputFiles.put("BtnQImage2", new File(btn.getText()));
             }
 
             ArrayList<File> answerImages = selected.getAnswer().getImages();
@@ -152,10 +218,12 @@ public class EditOneScreenController {
             if(answerImages.get(0) != null) {
                 Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage1");
                 btn.setText(answerImages.get(0).getName());
+                inputFiles.put("BtnAImage1", new File(btn.getText()));
             }
             if(answerImages.get(1) != null) {
                 Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnAImage2");
                 btn.setText(answerImages.get(1).getName());
+                inputFiles.put("BtnAImage2", new File(btn.getText()));
             }
 
             ///////////////////////////////////////////////////////////////////////////////////
@@ -164,10 +232,12 @@ public class EditOneScreenController {
             if(questionSounds.get(0) != null) {
                 Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound1");
                 btn.setText(questionSounds.get(0).getName());
+                inputFiles.put("BtnQSound1", new File(btn.getText()));
             }
             if(questionSounds.get(1) != null) {
                 Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnQSound2");
                 btn.setText(questionSounds.get(1).getName());
+                inputFiles.put("BtnQSound2", new File(btn.getText()));
             }
 
             ArrayList<File> answerSounds = selected.getAnswer().getSounds();
@@ -175,10 +245,12 @@ public class EditOneScreenController {
             if(answerSounds.get(0) != null) {
                 Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound1");
                 btn.setText(answerSounds.get(0).getName());
+                inputFiles.put("BtnASound1", new File(btn.getText()));
             }
             if(answerSounds.get(1) != null) {
                 Button btn = (Button) Main.getPrimaryStage().getScene().lookup("#BtnASound2");
                 btn.setText(answerSounds.get(1).getName());
+                inputFiles.put("BtnASound2", new File(btn.getText()));
             }
 
             CheckBox cb = (CheckBox) Main.getPrimaryStage().getScene().lookup("#checkboxReverse");
@@ -223,7 +295,7 @@ public class EditOneScreenController {
         );
         if (selectedFile != null) {
             inputFiles.put(nameOfImage, selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+nameOfImage);
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#"+nameOfImage);
             but.setText(selectedFile.getName());
         }
     }
@@ -241,49 +313,49 @@ public class EditOneScreenController {
         );
         if (selectedFile != null) {
             inputFiles.put(nameOfSound, selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+nameOfSound);
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#"+nameOfSound);
             but.setText(selectedFile.getName());
         }
     }
 
     @FXML
     public void addQImage1() {
-        chooseImage("QImage1");
+        chooseImage("BtnQImage1");
     }
 
     @FXML
     public void addQImage2() {
-        chooseImage("QImage2");
+        chooseImage("BtnQImage2");
     }
 
     @FXML
     public void addQSound1() {
-        chooseSound("QSound1");
+        chooseSound("BtnQSound1");
     }
 
     @FXML
     public void addQSound2() {
-        chooseSound("QSound2");
+        chooseSound("BtnQSound2");
     }
 
     @FXML
     public void addAImage1() {
-        chooseImage("AImage1");
+        chooseImage("BtnAImage1");
     }
 
     @FXML
     public void addAImage2() {
-        chooseImage("AImage2");
+        chooseImage("BtnAImage2");
     }
 
     @FXML
     public void addASound1() {
-        chooseSound("ASound1");
+        chooseSound("BtnASound1");
     }
 
     @FXML
     public void addASound2() {
-        chooseSound("ASound2");
+        chooseSound("BtnASound2");
     }
 
 

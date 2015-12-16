@@ -79,7 +79,7 @@ public class AddScreenController implements Serializable{
             ArrayList<Category> al = Main.getCategories();
 
             al.get(idOfSelectedCategory-1).addFlashcard(card);
-            Main.saveCategories();
+            //Main.saveCategories();
             //cat.addFlashcard(card);
             //al.set(idOfSelectedCategory-1,cat);
             Main.setCategories(idOfSelectedCategory-1,al.get(idOfSelectedCategory-1));
