@@ -101,9 +101,21 @@ public class EditOneScreenController {
                     }
                 }
             }
-            File record = new File("C:\\FlashCard\\tmp_files\\nahravka.wav");
-            if(record.exists()){
-                record.delete();
+            File record1 = new File("C:\\FlashCard\\tmp_files\\record1.wav");
+            File record2 = new File("C:\\FlashCard\\tmp_files\\record2.wav");
+            File record3 = new File("C:\\FlashCard\\tmp_files\\record3.wav");
+            File record4 = new File("C:\\FlashCard\\tmp_files\\record4.wav");
+            if(record1.exists()){
+                record1.delete();
+            }
+            if(record2.exists()){
+                record2.delete();
+            }
+            if(record3.exists()){
+                record3.delete();
+            }
+            if(record4.exists()){
+                record4.delete();
             }
 
             ArrayList<File> questionImages = new ArrayList<>();
@@ -111,8 +123,8 @@ public class EditOneScreenController {
             questionImages.add(inputFiles.get("BtnQImage2"));
 
             ArrayList<File> questionSounds = new ArrayList<>();
-            questionSounds.add(inputFiles.get("#BtnQSound1"));
-            questionSounds.add(inputFiles.get("#BtnQSound2"));
+            questionSounds.add(inputFiles.get("BtnQSound1"));
+            questionSounds.add(inputFiles.get("BtnQSound2"));
 
             System.out.println(inputFiles.get("#BtnQSound1"));
             System.out.println(inputFiles.get("#BtnQSound2"));
@@ -124,8 +136,8 @@ public class EditOneScreenController {
             answerImages.add(inputFiles.get("BtnAImage2"));
 
             ArrayList<File> answerSounds = new ArrayList<>();
-            answerSounds.add(inputFiles.get("#BtnASound1"));
-            answerSounds.add(inputFiles.get("#BtnASound2"));
+            answerSounds.add(inputFiles.get("BtnASound1"));
+            answerSounds.add(inputFiles.get("BtnASound2"));
 
             selected.setAnswer(new FlashcardFace(((TextField) Main.getPrimaryStage().getScene().lookup("#InputAText")).getText(), answerImages, answerSounds));
 
@@ -153,13 +165,13 @@ public class EditOneScreenController {
     @FXML synchronized
     public void recordSoundQ() throws IOException, LineUnavailableException {
         Scene addScene = Main.getPrimaryStage().getScene();
-        if(inputFiles.get("#BtnQSound1")==null || inputFiles.get("#BtnQSound2")==null) {
+        if(inputFiles.get("BtnQSound1")==null || inputFiles.get("BtnQSound2")==null) {
             if (!recording) {
                 Button but = (Button) addScene.lookup("#BtnQRecord");
                 recordingSaved = false;
                 but.setStyle("-fx-text-fill: red;");
                 recording = true;
-                if(inputFiles.get("#BtnQSound1")==null) recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record1.wav"));
+                if(inputFiles.get("BtnQSound1")==null) recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record1.wav"));
                 else recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record2.wav"));
                 System.out.println("recording started!!!!");
             } else {
@@ -168,15 +180,15 @@ public class EditOneScreenController {
                 but = (Button) addScene.lookup("#BtnARecord");
                 but.setStyle("-fx-text-fill: #292929;");
 
-                if(inputFiles.get("#BtnQSound1")==null){
+                if(inputFiles.get("BtnQSound1")==null){
                     but = (Button) addScene.lookup("#BtnQSound1");
                     but.setText("record.wav");
-                    inputFiles.put("#BtnQSound1",new File("C:\\FlashCard\\tmp_files\\record1.wav"));
+                    inputFiles.put("BtnQSound1",new File("C:\\FlashCard\\tmp_files\\record1.wav"));
                 }
                 else{
                     but = (Button) addScene.lookup("#BtnQSound2");
                     but.setText("record.wav");
-                    inputFiles.put("#BtnQSound2",new File("C:\\FlashCard\\tmp_files\\record2.wav"));
+                    inputFiles.put("BtnQSound2",new File("C:\\FlashCard\\tmp_files\\record2.wav"));
                 }
                 recorder.endRecording();
                 recording = false;
@@ -192,13 +204,13 @@ public class EditOneScreenController {
     @FXML synchronized
     public void recordSoundA() throws IOException, LineUnavailableException {
         Scene addScene = Main.getPrimaryStage().getScene();
-        if(inputFiles.get("#BtnASound1")==null || inputFiles.get("#BtnASound2")==null) {
+        if(inputFiles.get("BtnASound1")==null || inputFiles.get("BtnASound2")==null) {
             if(!recording) {
                 recordingSaved = false;
                 Button but = (Button) addScene.lookup("#BtnARecord");
                 but.setStyle("-fx-text-fill: red;");
                 recording = true;
-                if(inputFiles.get("#BtnASound1")==null) recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record3.wav"));
+                if(inputFiles.get("BtnASound1")==null) recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record3.wav"));
                 else recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record4.wav"));
                 System.out.println("recording started!!!!");
             }
@@ -208,15 +220,15 @@ public class EditOneScreenController {
                 but = (Button) addScene.lookup("#BtnQRecord");
                 but.setStyle("-fx-text-fill: #292929;");
 
-                if(inputFiles.get("#BtnASound1")==null){
+                if(inputFiles.get("BtnASound1")==null){
                     but = (Button) addScene.lookup("#BtnASound1");
                     but.setText("record.wav");
-                    inputFiles.put("#BtnASound1",new File("C:\\FlashCard\\tmp_files\\record3.wav"));
+                    inputFiles.put("BtnASound1",new File("C:\\FlashCard\\tmp_files\\record3.wav"));
                 }
                 else{
                     but = (Button) addScene.lookup("#BtnASound2");
                     but.setText("record.wav");
-                    inputFiles.put("#BtnASound2",new File("C:\\FlashCard\\tmp_files\\record4.wav"));
+                    inputFiles.put("BtnASound2",new File("C:\\FlashCard\\tmp_files\\record4.wav"));
                 }
 
                 recorder.endRecording();

@@ -71,7 +71,7 @@ public class Sounder {
             }
 //            String dir = Main.getCategories().get(Main.getIdOfSelectedCategory()).getTitleOfCategory();
 //            audiosample.saveAudio(new File("C:\\FlashCard\\" + dir + "\\" + Integer.toString(Main.getIdOfSelectedFlashcard()) +  "\\tmp_files\\tmp_record.wav"), true, AudioFileFormat.Type.WAVE, false);
-            audiosample.saveAudio(new File("C:\\FlashCard\\tmp_files\\tmp_record.wav"), true, AudioFileFormat.Type.WAVE, false);
+            audiosample.saveAudio(new File("C:\\FlashCard\\tmp_files\\tmp_record_" + subor.getName() +".wav"), true, AudioFileFormat.Type.WAVE, false);
             return true;
         }
         return false;

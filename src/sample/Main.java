@@ -36,6 +36,7 @@ public class Main extends Application implements Serializable{
 
     public static int idOfSelectedCategory = -1;
     public static int idOfSelectedFlashcard = -1;
+    public static JavaSoundRecorder recorder = new JavaSoundRecorder();
 
     public static Stage afterPresentationStage;
 

@@ -21,30 +21,14 @@ import static sample.Main.*;
 
 public class AddScreenController implements Serializable{
 
-    private boolean recording = false;
-    //private JavaSoundRecorder recorder = new JavaSoundRecorder();
+    private boolean recordingQ = false;
+    private boolean recordingA = false;
 
-    /*@FXML
-    TextField inputQText;
-    @FXML
-    TextField inputAText;
-    @FXML
-    CheckBox checkboxReverse;*/
-    /*@FXML
-    Button btnQImage1, btnQSound1, btnQImage2, btnQSound2;
-    @FXML
-    Button btnAImage1, btnASound1, btnAImage2, btnASound2;*/
     HashMap<String, File> inputFiles = new HashMap<String, File>() {{
         put("QImage1",null); put("QSound1", null); put("QImage2", null); put("QSound2", null);
         put("AImage1",null); put("ASound1", null); put("AImage2", null); put("ASound2", null);
     }};
 
-    //FolderChecker folderChecker;
-
-    public AddScreenController(){
-        //folderChecker = new FolderChecker();
-        //folderChecker.start();
-    }
 
     public void finishAdding(){
         toEditScreen(); //TODO poslat id kategorie
@@ -53,6 +37,11 @@ public class AddScreenController implements Serializable{
 
 
     public void addBtnClicked() throws IOException {
+
+        if(recordingA || recordingQ){
+            JOptionPane.showMessageDialog(new JFrame(), "You are still recording sounds", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
         Scene addScene = Main.getPrimaryStage().getScene();
         TextField inputQText = (TextField) addScene.lookup("#InputQText");
@@ -74,18 +63,10 @@ public class AddScreenController implements Serializable{
             if (check.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
                 new Flashcard(1, check.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), answerFace, questionFace);
             }
-            // save a flashcard to the category
-            //int index = Main.getCategories().indexOf(editCategory);
             ArrayList<Category> al = Main.getCategories();
 
             al.get(idOfSelectedCategory-1).addFlashcard(card);
-            //Main.saveCategories();
-            //cat.addFlashcard(card);
-            //al.set(idOfSelectedCategory-1,cat);
             Main.setCategories(idOfSelectedCategory-1,al.get(idOfSelectedCategory-1));
-            //Flashcard fc = new Flashcard(1, checkboxReverse.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
-
-
             // save files to directory
             for (File input : inputFiles.values()){
                 if (input != null) {
@@ -97,6 +78,23 @@ public class AddScreenController implements Serializable{
                         JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " can't be added twice.", "Warning", JOptionPane.WARNING_MESSAGE);
                     }
                 }
+            }
+
+            File record1 = new File("C:\\FlashCard\\tmp_files\\record1.wav");
+            File record2 = new File("C:\\FlashCard\\tmp_files\\record2.wav");
+            File record3 = new File("C:\\FlashCard\\tmp_files\\record3.wav");
+            File record4 = new File("C:\\FlashCard\\tmp_files\\record4.wav");
+            if(record1.exists()){
+                record1.delete();
+            }
+            if(record2.exists()){
+                record2.delete();
+            }
+            if(record3.exists()){
+                record3.delete();
+            }
+            if(record4.exists()){
+                record4.delete();
             }
 
             // save txt files to directory
@@ -120,8 +118,6 @@ public class AddScreenController implements Serializable{
         }
 
     }
-
-
 
     public void saveFaceFile(File source, String dir){
         File dest = new File(dir + "\\" + source.getName());
@@ -257,41 +253,77 @@ public class AddScreenController implements Serializable{
 
     @FXML synchronized
     public void recordSoundQ() throws IOException, LineUnavailableException {
+        if(recordingA) return;
         Scene addScene = Main.getPrimaryStage().getScene();
-        JavaSoundRecorder recorder = new JavaSoundRecorder();
-        if(!recording) {
-            Button but = (Button) addScene.lookup("#BtnQRecord");
-            but.setStyle("-fx-text-fill: red;");
-            recording = true;
-            recorder.beginRecording(new File("C:\\FlashCard\\nahravka.wav"));
-            System.out.println("recording started!!!!");
+        if(inputFiles.get("QSound1")==null || inputFiles.get("QSound2")==null) {
+            if (!recordingQ) {
+                Button but = (Button) addScene.lookup("#BtnQRecord");
+                but.setStyle("-fx-text-fill: red;");
+                recordingQ = true;
+                if(inputFiles.get("QSound1")==null) recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record1.wav"));
+                else recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record2.wav"));
+                System.out.println("recording started!!!!");
+            } else {
+                Button but = (Button) addScene.lookup("#BtnQRecord");
+                but.setStyle("-fx-text-fill: #292929;");
+                but = (Button) addScene.lookup("#BtnARecord");
+                but.setStyle("-fx-text-fill: #292929;");
+
+                if(inputFiles.get("QSound1")==null){
+                    but = (Button) addScene.lookup("#BtnQSound1");
+                    but.setText("record.wav");
+                    inputFiles.put("QSound1",new File("C:\\FlashCard\\tmp_files\\record1.wav"));
+                }
+                else{
+                    but = (Button) addScene.lookup("#BtnQSound2");
+                    but.setText("record.wav");
+                    inputFiles.put("QSound2",new File("C:\\FlashCard\\tmp_files\\record2.wav"));
+                }
+                recorder.endRecording();
+                recordingQ = false;
+                System.out.println("recording stopped!!!!");
+            }
         }
         else{
-            Button but = (Button) addScene.lookup("#BtnQRecord");
-            but.setStyle("-fx-text-fill: #292929;");
-            recorder.endRecording();
-            recording = false;
-            System.out.println("recording stopped!!!!");
+            JOptionPane.showMessageDialog(new JFrame(), "Question already has 2 sounds", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 
     @FXML synchronized
     public void recordSoundA() throws IOException, LineUnavailableException {
+        if(recordingQ) return;
         Scene addScene = Main.getPrimaryStage().getScene();
-        JavaSoundRecorder recorder = new JavaSoundRecorder();
-        if(!recording) {
-            Button but = (Button) addScene.lookup("#BtnARecord");
-            but.setStyle("-fx-text-fill: red;");
-            recording = true;
-            recorder.beginRecording(new File("C:\\FlashCard\\nahravka.wav"));
-            System.out.println("recording started!!!!");
+        if(inputFiles.get("ASound1")==null || inputFiles.get("ASound2")==null) {
+            if (!recordingA) {
+                Button but = (Button) addScene.lookup("#BtnARecord");
+                but.setStyle("-fx-text-fill: red;");
+                recordingA = true;
+                if(inputFiles.get("ASound1")==null) recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record3.wav"));
+                else recorder.beginRecording(new File("C:\\FlashCard\\tmp_files\\record4.wav"));
+                System.out.println("recording started!!!!");
+            } else {
+                recorder.endRecording();
+                recordingA = false;
+                System.out.println("recording stopped!!!!");
+                Button but = (Button) addScene.lookup("#BtnARecord");
+                but.setStyle("-fx-text-fill: #292929;");
+                but = (Button) addScene.lookup("#BtnARecord");
+                but.setStyle("-fx-text-fill: #292929;");
+
+                if(inputFiles.get("ASound1")==null){
+                    but = (Button) addScene.lookup("#BtnASound1");
+                    but.setText("record.wav");
+                    inputFiles.put("ASound1",new File("C:\\FlashCard\\tmp_files\\record3.wav"));
+                }
+                else{
+                    but = (Button) addScene.lookup("#BtnASound2");
+                    but.setText("record.wav");
+                    inputFiles.put("ASound2",new File("C:\\FlashCard\\tmp_files\\record4.wav"));
+                }
+            }
         }
         else{
-            Button but = (Button) addScene.lookup("#BtnARecord");
-            but.setStyle("-fx-text-fill: #292929;");
-            recorder.endRecording();
-            recording = false;
-            System.out.println("recording stopped!!!!");
+            JOptionPane.showMessageDialog(new JFrame(), "Question already has 2 sounds", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 

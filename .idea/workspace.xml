@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="292046df-81c4-46cd-af66-fcab720eb163" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/AddScreenController.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/AddScreenController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/EditOneScreenController.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/EditOneScreenController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/JavaSoundRecorder.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/JavaSoundRecorder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flashcards/sample/Sounder.class" afterPath="$PROJECT_DIR$/out/production/Flashcards/sample/Sounder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AddScreenController.java" afterPath="$PROJECT_DIR$/src/sample/AddScreenController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/EditOneScreenController.java" afterPath="$PROJECT_DIR$/src/sample/EditOneScreenController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Sounder.java" afterPath="$PROJECT_DIR$/src/sample/Sounder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="flashcardsCode2.iws" />
@@ -79,12 +87,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddScreenController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/AddScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="96" column="161" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="161" />
-              <folding />
+            <state vertical-scroll-proportion="0.44270834">
+              <caret line="232" column="9" selection-start-line="232" selection-start-column="9" selection-end-line="232" selection-end-column="9" />
+              <folding>
+                <element signature="method#finishAdding#0;class#AddScreenController#0" expanded="false" />
+                <element signature="e#8667#8668#0" expanded="true" />
+                <element signature="e#8705#8706#0" expanded="true" />
+                <element signature="e#8747#8748#0" expanded="true" />
+                <element signature="e#8785#8786#0" expanded="true" />
+                <element signature="e#8827#8828#0" expanded="true" />
+                <element signature="e#8865#8866#0" expanded="true" />
+                <element signature="e#8907#8908#0" expanded="true" />
+                <element signature="e#8945#8946#0" expanded="true" />
+                <element signature="e#8987#8988#0" expanded="true" />
+                <element signature="e#9025#9026#0" expanded="true" />
+                <element signature="e#9067#9068#0" expanded="true" />
+                <element signature="e#9105#9106#0" expanded="true" />
+                <element signature="e#9147#9148#0" expanded="true" />
+                <element signature="e#9185#9186#0" expanded="true" />
+                <element signature="e#9227#9228#0" expanded="true" />
+                <element signature="e#9265#9266#0" expanded="true" />
+                <element signature="method#recordSoundQ#0;class#AddScreenController#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -102,11 +129,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditOneScreenController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EditOneScreenController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/EditOneScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.734375">
-              <caret line="218" column="37" selection-start-line="218" selection-start-column="37" selection-end-line="218" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="200" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onRightArrowClicked#0;class#EditOneScreenController#0" expanded="false" />
@@ -139,7 +166,17 @@
         <entry file="file://$PROJECT_DIR$/src/sample/JavaSoundRecorder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sounder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Sounder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="81" selection-start-line="73" selection-start-column="81" selection-end-line="73" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -149,7 +186,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="85" column="10" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
+              <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
               <folding>
                 <element signature="method#addCategory#0;class#Main#0" expanded="false" />
                 <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
@@ -201,7 +238,6 @@
         <option value="$PROJECT_DIR$/.idea/compiler.xml" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/SounderScreenController.java" />
-        <option value="$PROJECT_DIR$/src/sample/JavaSoundRecorder.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/sample/CategoryRow.java" />
         <option value="$PROJECT_DIR$/src/sample/CategoryTableController.java" />
@@ -209,20 +245,21 @@
         <option value="$PROJECT_DIR$/src/sample/launcherScreen.fxml" />
         <option value="$PROJECT_DIR$/src/sample/TableRecord.java" />
         <option value="$PROJECT_DIR$/src/sample/Category.java" />
-        <option value="$PROJECT_DIR$/src/sample/Sounder.java" />
         <option value="$PROJECT_DIR$/src/sample/FolderChecker.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/sample/FlashcardFace.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/EditScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/PresentationScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/presentationScreen.fxml" />
         <option value="$PROJECT_DIR$/src/sample/LauncherScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/editOneScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/AddScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/Flashcard.java" />
         <option value="$PROJECT_DIR$/src/sample/editScreen.fxml" />
         <option value="$PROJECT_DIR$/src/sample/EditOneScreenController.java" />
+        <option value="$PROJECT_DIR$/src/sample/Sounder.java" />
+        <option value="$PROJECT_DIR$/src/sample/JavaSoundRecorder.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/AddScreenController.java" />
       </list>
     </option>
   </component>
@@ -565,7 +602,7 @@
       <workItem from="1450120588779" duration="10345000" />
       <workItem from="1450292505243" duration="2636000" />
       <workItem from="1450300633935" duration="6432000" />
-      <workItem from="1450340707466" duration="2121000" />
+      <workItem from="1450340707466" duration="4898000" />
     </task>
     <task id="LOCAL-00001" summary="pokus o pridavanie flashcard">
       <created>1448979105151</created>
@@ -577,7 +614,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115396000" />
+    <option name="totallyTimeSpent" value="118173000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -589,7 +626,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -636,7 +673,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -645,17 +682,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/presentationScreen.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/EditOneScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -750,7 +776,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="212" column="23" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="method#finishAdding#0;class#AddScreenController#0" expanded="false" />
+            <element signature="e#8667#8668#0" expanded="true" />
+            <element signature="e#8705#8706#0" expanded="true" />
+            <element signature="e#8747#8748#0" expanded="true" />
+            <element signature="e#8785#8786#0" expanded="true" />
+            <element signature="e#8827#8828#0" expanded="true" />
+            <element signature="e#8865#8866#0" expanded="true" />
+            <element signature="e#8907#8908#0" expanded="true" />
+            <element signature="e#8945#8946#0" expanded="true" />
+            <element signature="e#8987#8988#0" expanded="true" />
+            <element signature="e#9025#9026#0" expanded="true" />
+            <element signature="e#9067#9068#0" expanded="true" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9147#9148#0" expanded="true" />
+            <element signature="e#9185#9186#0" expanded="true" />
+            <element signature="e#9227#9228#0" expanded="true" />
+            <element signature="e#9265#9266#0" expanded="true" />
+            <element signature="method#recordSoundQ#0;class#AddScreenController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -954,7 +999,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#finishAdding#0;class#AddScreenController#0" expanded="false" />
+            <element signature="e#8667#8668#0" expanded="true" />
+            <element signature="e#8705#8706#0" expanded="true" />
+            <element signature="e#8747#8748#0" expanded="true" />
+            <element signature="e#8785#8786#0" expanded="true" />
+            <element signature="e#8827#8828#0" expanded="true" />
+            <element signature="e#8865#8866#0" expanded="true" />
+            <element signature="e#8907#8908#0" expanded="true" />
+            <element signature="e#8945#8946#0" expanded="true" />
+            <element signature="e#8987#8988#0" expanded="true" />
+            <element signature="e#9025#9026#0" expanded="true" />
+            <element signature="e#9067#9068#0" expanded="true" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9147#9148#0" expanded="true" />
+            <element signature="e#9185#9186#0" expanded="true" />
+            <element signature="e#9227#9228#0" expanded="true" />
+            <element signature="e#9265#9266#0" expanded="true" />
+            <element signature="method#recordSoundQ#0;class#AddScreenController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1081,17 +1145,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="85" column="10" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
-          <folding>
-            <element signature="method#addCategory#0;class#Main#0" expanded="false" />
-            <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/editOneScreen.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1110,14 +1163,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/AddScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="161" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="161" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1143,14 +1188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/JavaSoundRecorder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/EditScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1159,10 +1196,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Sounder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="81" selection-start-line="73" selection-start-column="81" selection-end-line="73" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/EditOneScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.734375">
-          <caret line="218" column="37" selection-start-line="218" selection-start-column="37" selection-end-line="218" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="200" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onRightArrowClicked#0;class#EditOneScreenController#0" expanded="false" />
@@ -1176,6 +1221,52 @@
             <element signature="method#clearFilesFields#0;class#EditOneScreenController#0" expanded="false" />
             <element signature="method#chooseImage#0;class#EditOneScreenController#0" expanded="false" />
             <element signature="method#chooseSound#0;class#EditOneScreenController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/JavaSoundRecorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+          <folding>
+            <element signature="method#addCategory#0;class#Main#0" expanded="false" />
+            <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/AddScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44270834">
+          <caret line="232" column="9" selection-start-line="232" selection-start-column="9" selection-end-line="232" selection-end-column="9" />
+          <folding>
+            <element signature="method#finishAdding#0;class#AddScreenController#0" expanded="false" />
+            <element signature="e#8667#8668#0" expanded="true" />
+            <element signature="e#8705#8706#0" expanded="true" />
+            <element signature="e#8747#8748#0" expanded="true" />
+            <element signature="e#8785#8786#0" expanded="true" />
+            <element signature="e#8827#8828#0" expanded="true" />
+            <element signature="e#8865#8866#0" expanded="true" />
+            <element signature="e#8907#8908#0" expanded="true" />
+            <element signature="e#8945#8946#0" expanded="true" />
+            <element signature="e#8987#8988#0" expanded="true" />
+            <element signature="e#9025#9026#0" expanded="true" />
+            <element signature="e#9067#9068#0" expanded="true" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9147#9148#0" expanded="true" />
+            <element signature="e#9185#9186#0" expanded="true" />
+            <element signature="e#9227#9228#0" expanded="true" />
+            <element signature="e#9265#9266#0" expanded="true" />
+            <element signature="method#recordSoundQ#0;class#AddScreenController#0" expanded="false" />
           </folding>
         </state>
       </provider>
