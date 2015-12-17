@@ -332,6 +332,24 @@ public class AddScreenController implements Serializable{
         Main.openAudioBook();
     }
 
+    @FXML
+    public void openBook() throws  IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("View Texts");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt"),
+                new FileChooser.ExtensionFilter("All files", "*.*")
+        );
+
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
+        if (selectedFile != null) {
+            // open book
+
+        }
+    }
+
     private void clearFilesFields() {
         for (String inputFile : inputFiles.keySet()) {
             Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+inputFile);
