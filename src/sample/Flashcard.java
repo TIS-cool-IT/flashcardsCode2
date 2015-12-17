@@ -33,8 +33,8 @@ public class Flashcard implements Serializable{
         return reversed;
     }
 
-    public void setReversed(boolean hodnota){
-        reversed = hodnota;
+    public void setReversed(boolean value){
+        reversed = value;
     }
 
 

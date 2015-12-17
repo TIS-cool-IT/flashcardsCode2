@@ -107,7 +107,7 @@ public class AddScreenController implements Serializable{
             inputQText.clear();
             inputAText.clear();
             inputFiles.clear();
-            this.clearFilesFields();
+            clearFilesFields();
 
 
             toEditScreen();
@@ -333,22 +333,10 @@ public class AddScreenController implements Serializable{
     }
 
     private void clearFilesFields() {
-        Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QImage1");
-        but.setText("Upload file");
-        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QImage2");
-        but.setText("Upload file");
-        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QSound1");
-        but.setText("Upload file");
-        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"QSound2");
-        but.setText("Upload file");
-        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"AImage1");
-        but.setText("Upload file");
-        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"AImage2");
-        but.setText("Upload file");
-        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"ASound1");
-        but.setText("Upload file");
-        but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+"ASound2");
-        but.setText("Upload file");
+        for (String inputFile : inputFiles.keySet()) {
+            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+inputFile);
+            but.setText("Upload file");
+        }
     }
 
 }

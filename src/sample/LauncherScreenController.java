@@ -38,8 +38,6 @@ public class LauncherScreenController {
     @FXML
     TableColumn countCol;
 
-   // private ArrayList<Category> categories = new ArrayList<Category>();
-
     private final ObservableList<Category> categories = FXCollections.observableArrayList();
 
     public void addCategoryBtnClicked() throws IOException {
@@ -93,30 +91,13 @@ public class LauncherScreenController {
             String[] children = file.list();
             if (children != null) {
                 for (int i = 0; i < children.length; i++) {
-                    deleteDirectory(new File(children[i]));
+                    Category.deleteDirectory(new File(children[i]));
                 }
             }
-            deleteDirectory(file);
+            Category.deleteDirectory(file);
 
             init();
         }
-    }
-
-    public static boolean deleteDirectory(File directory) {
-        if(directory.exists()){
-            File[] files = directory.listFiles();
-            if(null!=files){
-                for(int i=0; i<files.length; i++) {
-                    if(files[i].isDirectory()) {
-                        deleteDirectory(files[i]);
-                    }
-                    else {
-                        files[i].delete();
-                    }
-                }
-            }
-        }
-        return(directory.delete());
     }
 
 
@@ -158,20 +139,6 @@ public class LauncherScreenController {
             e.printStackTrace();
         }
         table.setItems(categories);
-
-//        table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-//            @Override
-//            public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-//                //Check whether item is selected and set value of selected item to Label
-//                if(table.getSelectionModel().getSelectedItem() != null)
-//                {
-//
-//                    Category category = table.getSelectionModel().getSelectedItem();
-//                    //System.out.println(category.getId());
-//
-//                }
-//            }
-//        });
     }
 
 
