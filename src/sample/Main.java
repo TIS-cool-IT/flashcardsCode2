@@ -25,12 +25,15 @@ import java.util.List;
 public class Main extends Application implements Serializable{
     public static Stage primStage = null;
     public static Stage sounderStage = null;
+    public static Stage bookStage = null;
+
     public static Parent editParent = null;
     public static Parent editOneParent = null;
     public static Parent launcherParent = null;
     public static Parent addParent = null;
     public static Parent presentationParent = null;
     public static Scene sounderScene = null;
+    public static Scene bookScene = null;
     public static Parent  popupPresentation = null;
     private static ArrayList<Category> categories = new ArrayList<>();
 
@@ -86,6 +89,8 @@ public class Main extends Application implements Serializable{
 
         //launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
         sounderScene = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
+
+        bookScene = new Scene(FXMLLoader.load(getClass().getResource("bookScreen.fxml")));
 
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
         primaryStage.setTitle("Flashcards");
@@ -162,12 +167,20 @@ public class Main extends Application implements Serializable{
         return sounderScene;
     }
 
+    public static Scene getBookScene() { return bookScene; }
 
     public static void openAudioBook() throws IOException {
         sounderStage = new Stage();
         sounderStage.setTitle("Sounder");
         sounderStage.setScene(sounderScene);
         sounderStage.show();
+    }
+
+    public static void openBook() throws IOException {
+        bookStage = new Stage();
+        bookStage.setTitle("Book");
+        bookStage.setScene(bookScene);
+        bookStage.show();
     }
 
     public static void backToLauncher(){
