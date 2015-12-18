@@ -33,6 +33,9 @@ public class EditOneScreenController {
 
     HashMap<String, File> inputFiles;
 
+    @FXML
+    Label heading;
+
     public void finishEditing(){
         toEditScreen();
     }
@@ -244,6 +247,7 @@ public class EditOneScreenController {
 
     public void init() {
         if(idOfSelectedFlashcard != -1){
+            heading.setText("You are editing flashcard, id: " + Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().get(idOfSelectedFlashcard).getId() + " in category: " + Main.getCategories().get(idOfSelectedCategory-1).getTitleOfCategory());
             inputFiles = new HashMap<String, File>() {{
                 put("QImage1",null); put("QSound1", null); put("QImage2", null); put("QSound2", null);
                 put("AImage1",null); put("ASound1", null); put("AImage2", null); put("ASound2", null);
