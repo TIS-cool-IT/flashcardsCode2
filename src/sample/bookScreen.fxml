@@ -1,85 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.net.*?>
 <?import java.util.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="640.0" prefWidth="1100.0" styleClass="borderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.PresentationScreenController">
-  <bottom>
-    <Button id="backBtn" cancelButton="false" defaultButton="false" mnemonicParsing="false" onMouseClicked="#finishPresentation" prefHeight="65.0" prefWidth="1100.0" text="Finish presentation" textFill="BLACK" BorderPane.alignment="CENTER">
-      <font>
-        <Font name="Kartika" size="13.0" />
-      </font>
-    </Button>
-  </bottom>
-  <center>
-    <Group id="Group" scaleX="1.0" scaleY="1.0" visible="true">
-      <children>
-        <Group id="Group" fx:id="presentationGroup" layoutX="25.0" layoutY="-66.0" scaleX="1.0" scaleY="1.0" visible="true">
-          <children>
-            <Pane layoutX="5.0" layoutY="0.0" prefHeight="456.0" prefWidth="778.4999389648438">
-              <children>
-                <Group id="Group" fx:id="buttonsGroup" layoutX="87.0" layoutY="345.0" visible="false">
-                  <children>
-                    <Button fx:id="wrongBtn" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#wrongAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: &quot;#ff3333&quot;;" text="I was wrong" textFill="BLACK" />
-                    <Button fx:id="rightBtn" layoutX="338.0" layoutY="0.0" mnemonicParsing="false" onMouseClicked="#rightAnswer" prefHeight="49.0" prefWidth="199.0" style="-fx-background-color: &quot;#a5ff33&quot;;" text="I was right " textFill="#330000" />
-                  </children>
-                </Group>
-                <Group id="Group" fx:id="rectTwoImages" layoutX="-5.0" layoutY="27.0" onMouseClicked="#onRectClicked" />
-                <Group id="Group" fx:id="rectOneImage" layoutX="116.0" layoutY="27.0" onMouseClicked="#onRectClicked" />
-                <ImageView id="settings" fx:id="sound" fitHeight="60.0" fitWidth="60.0" layoutX="719.0" layoutY="25.0" onMouseClicked="#onSoundClicked" onMousePressed="#onSoundPressed" onMouseReleased="#onSoundReleased" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@../sound.png" />
-                  </image>
-                </ImageView>
-              </children>
-            </Pane>
-          </children>
-        </Group>
-        <Group id="Group" fx:id="settingsGroup" layoutX="303.0" layoutY="172.0" scaleX="1.0" scaleY="1.0" visible="false">
-          <children>
-            <Pane layoutX="-143.0" layoutY="-216.0" prefHeight="434.0" prefWidth="438.0001220703125">
-              <children>
-                <Group id="Group" layoutX="39.0" layoutY="32.0" visible="true">
-                  <children>
-                    <Label layoutX="2.0" layoutY="54.0" text="Font size">
-                      <font>
-                        <Font size="18.0" fx:id="x3" />
-                      </font>
-                    </Label>
-                    <Button layoutX="0.0" layoutY="251.0" mnemonicParsing="false" onMouseClicked="#saveSettings" prefHeight="43.0" prefWidth="227.00006103515625" text="Save changes and continue " />
-                    <ComboBox id="fontSizeChooser" fx:id="fontSizeComboBox" cache="false" disable="false" editable="false" layoutX="96.0" layoutY="53.0" promptText="16">
-                      <items>
-                        <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Item 1" />
-                          <String fx:value="Item 2" />
-                          <String fx:value="Item 3" />
-                        </FXCollections>
-                      </items>
-                    </ComboBox>
-                    <CheckBox fx:id="soundAutoCheckbox" font="$x3" layoutX="2.0" layoutY="0.0" mnemonicParsing="false" selected="true" text="Play sound automatically" />
-                  </children>
-                </Group>
-              </children>
-            </Pane>
-          </children>
-        </Group>
-      </children>
-    </Group>
-  </center>
-  <stylesheets>
-    <URL value="@style.css" />
-  </stylesheets>
-  <top>
-    <HBox id="HBox" alignment="CENTER" prefWidth="950.0" spacing="5.0" BorderPane.alignment="CENTER" />
-  </top>
-</BorderPane>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.BookScreenController">
+  <children>
+    <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+      <top>
+        <TextArea fx:id="showFile" prefHeight="314.0" prefWidth="600.0" wrapText="true" />
+      </top>
+    </BorderPane>
+  </children>
+</AnchorPane>

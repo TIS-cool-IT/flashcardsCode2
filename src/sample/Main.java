@@ -32,6 +32,9 @@ public class Main extends Application implements Serializable{
     public static Parent launcherParent = null;
     public static Parent addParent = null;
     public static Parent presentationParent = null;
+    public static Parent bookParent = null;
+
+
     public static Scene sounderScene = null;
     public static Scene bookScene = null;
     public static Parent  popupPresentation = null;
@@ -49,6 +52,7 @@ public class Main extends Application implements Serializable{
     public static EditScreenController editScreenController;
     public static EditOneScreenController editOneScreenController;
     public static LauncherScreenController launcherScreenController;
+    public static BookScreenController bookScreenController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -90,7 +94,10 @@ public class Main extends Application implements Serializable{
         //launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
         sounderScene = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
 
-        bookScene = new Scene(FXMLLoader.load(getClass().getResource("bookScreen.fxml")));
+        FXMLLoader loader6 = new FXMLLoader(getClass().getResource("bookScreen.fxml"));
+        bookParent = loader6.load();
+        bookScreenController = loader6.getController();
+
 
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
         primaryStage.setTitle("Flashcards");
@@ -176,11 +183,12 @@ public class Main extends Application implements Serializable{
         sounderStage.show();
     }
 
-    public static void openBook() throws IOException {
+    public static void openBook(File file) throws IOException {
         bookStage = new Stage();
         bookStage.setTitle("Book");
         bookStage.setScene(bookScene);
         bookStage.show();
+       // bookScreenController.init(file);
     }
 
     public static void backToLauncher(){
@@ -207,6 +215,7 @@ public class Main extends Application implements Serializable{
         primStage.getScene().setRoot(editOneParent);
         editOneScreenController.init();
     }
+
 
     public static void setCategories(int index, Category cat) throws IOException {
         categories.set(index,cat);

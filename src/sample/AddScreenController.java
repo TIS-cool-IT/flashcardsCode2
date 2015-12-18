@@ -349,8 +349,13 @@ public class AddScreenController implements Serializable{
 
         if (selectedFile != null) {
             // open book
-            Main.openBook();
+            Main.openBook(selectedFile);
 
+
+            /*BookScreenController bsc = new BookScreenController();
+            //System.out.println(selectedFile);
+            bsc.setFile(selectedFile);
+            bsc.init();*/
 
         }
     }
