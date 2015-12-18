@@ -93,11 +93,13 @@ public class Main extends Application implements Serializable{
 
         //launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
         sounderScene = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
+        bookScene =  new Scene(FXMLLoader.load(getClass().getResource("bookScreen.fxml")));
 
+/*
         FXMLLoader loader6 = new FXMLLoader(getClass().getResource("bookScreen.fxml"));
         bookParent = loader6.load();
         bookScreenController = loader6.getController();
-
+*/
 
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
         primaryStage.setTitle("Flashcards");
@@ -188,6 +190,8 @@ public class Main extends Application implements Serializable{
         bookStage.setTitle("Book");
         bookStage.setScene(bookScene);
         bookStage.show();
+        BookScreenController bsc= new BookScreenController();
+        bsc.init(file);
        // bookScreenController.init(file);
     }
 

@@ -37,8 +37,8 @@ public class BookScreenController {
         } catch (FileNotFoundException ex) {
             System.err.println(ex);
         }
-        System.out.println("tukabel");
-       showFile.setText("lp");
+        System.out.println("idem na showfile =====================");
+       showFile.setText("lpppppppppppppppppppppppppppppppppppppppppp");
     }
 
 
