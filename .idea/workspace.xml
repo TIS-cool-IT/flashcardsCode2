@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="292046df-81c4-46cd-af66-fcab720eb163" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AddScreenController.java" afterPath="$PROJECT_DIR$/src/sample/AddScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/EditOneScreenController.java" afterPath="$PROJECT_DIR$/src/sample/EditOneScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/LauncherScreenController.java" afterPath="$PROJECT_DIR$/src/sample/LauncherScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/PresentationScreenController.java" afterPath="$PROJECT_DIR$/src/sample/PresentationScreenController.java" />
     </list>
     <ignored path="flashcardsCode2.iws" />
@@ -93,11 +89,16 @@
       <file leaf-file-name="PresentationScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/PresentationScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39945653">
-              <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
+            <state vertical-scroll-proportion="-0.6168478">
+              <caret line="330" column="26" selection-start-line="330" selection-start-column="26" selection-end-line="330" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#finishPresentation#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#saveSettings#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#onSettingsClicked#0;class#PresentationScreenController#0" expanded="false" />
                 <element signature="method#showButtons#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#onSoundClicked#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#playRecords#0;class#PresentationScreenController#0" expanded="false" />
                 <element signature="method#getAllFlashcards#0;class#PresentationScreenController#0" expanded="false" />
                 <element signature="e#5660#5671#0" expanded="true" />
                 <element signature="method#rightAnswer#0;class#PresentationScreenController#0" expanded="false" />
@@ -105,9 +106,9 @@
                 <element signature="method#afterButtonClicked#0;class#PresentationScreenController#0" expanded="false" />
                 <element signature="method#updatePresentationStatus#0;class#PresentationScreenController#0" expanded="false" />
                 <element signature="method#init#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#startPresentation#0;class#PresentationScreenController#0" expanded="false" />
                 <element signature="method#getNextFlashcard#0;class#PresentationScreenController#0" expanded="false" />
-                <element signature="method#fillFace#0;class#PresentationScreenController#0" expanded="false" />
-                <element signature="method#getImage#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#continuePresentation#0;class#PresentationScreenController#0" expanded="false" />
                 <element signature="method#initSettings#0;class#PresentationScreenController#0" expanded="false" />
                 <element signature="method#onRectClicked#0;class#PresentationScreenController#0" expanded="false" />
               </folding>
@@ -688,7 +689,7 @@
       <workItem from="1450292505243" duration="2636000" />
       <workItem from="1450300633935" duration="6432000" />
       <workItem from="1450340707466" duration="5543000" />
-      <workItem from="1450517162377" duration="12626000" />
+      <workItem from="1450517162377" duration="13378000" />
     </task>
     <task id="LOCAL-00001" summary="pokus o pridavanie flashcard">
       <created>1448979105151</created>
@@ -700,7 +701,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131444000" />
+    <option name="totallyTimeSpent" value="132196000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1320,11 +1321,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/PresentationScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39945653">
-          <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
+        <state vertical-scroll-proportion="-0.6168478">
+          <caret line="330" column="26" selection-start-line="330" selection-start-column="26" selection-end-line="330" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#finishPresentation#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#saveSettings#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#onSettingsClicked#0;class#PresentationScreenController#0" expanded="false" />
             <element signature="method#showButtons#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#onSoundClicked#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#playRecords#0;class#PresentationScreenController#0" expanded="false" />
             <element signature="method#getAllFlashcards#0;class#PresentationScreenController#0" expanded="false" />
             <element signature="e#5660#5671#0" expanded="true" />
             <element signature="method#rightAnswer#0;class#PresentationScreenController#0" expanded="false" />
@@ -1332,9 +1338,9 @@
             <element signature="method#afterButtonClicked#0;class#PresentationScreenController#0" expanded="false" />
             <element signature="method#updatePresentationStatus#0;class#PresentationScreenController#0" expanded="false" />
             <element signature="method#init#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#startPresentation#0;class#PresentationScreenController#0" expanded="false" />
             <element signature="method#getNextFlashcard#0;class#PresentationScreenController#0" expanded="false" />
-            <element signature="method#fillFace#0;class#PresentationScreenController#0" expanded="false" />
-            <element signature="method#getImage#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#continuePresentation#0;class#PresentationScreenController#0" expanded="false" />
             <element signature="method#initSettings#0;class#PresentationScreenController#0" expanded="false" />
             <element signature="method#onRectClicked#0;class#PresentationScreenController#0" expanded="false" />
           </folding>

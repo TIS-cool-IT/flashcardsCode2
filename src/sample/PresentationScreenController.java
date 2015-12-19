@@ -336,8 +336,8 @@ public class PresentationScreenController  {
             rectTwoImages.setVisible(true);
             rectOneImage.setVisible(false);
             label2.setText(face.getText().toString());
-            image21.setImage(getImage(i1));
-            image22.setImage(getImage(i2));
+            image21.setImage(getImage(new File("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + i1.getName())));
+            image22.setImage(getImage(new File("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + i2.getName())));
         }
         else {
             System.out.println("1 or NONE image");
@@ -345,10 +345,10 @@ public class PresentationScreenController  {
             rectOneImage.setVisible(true);
             label1.setText(face.getText().toString());
             if (i1 != null){
-                image11.setImage(getImage(i1));
+                image11.setImage(getImage(new File("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + i1.getName())));
             }
             if (i2 != null){
-                image11.setImage(getImage(i2));
+                image11.setImage(getImage(new File("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + i2.getName())));
             }
 
         }
