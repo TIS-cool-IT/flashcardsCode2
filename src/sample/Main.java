@@ -57,15 +57,11 @@ public class Main extends Application implements Serializable{
     @Override
     public void start(Stage primaryStage) throws Exception{
         addParent = FXMLLoader.load(getClass().getResource("addscreen.fxml"));
-        //editParent = FXMLLoader.load(getClass().getResource("editScreen.fxml"));
-        //editOneParent = FXMLLoader.load(getClass().getResource("editOneScreen.fxml"));
-
 
         // presentation controller
         FXMLLoader loader = new FXMLLoader(getClass().getResource("presentationScreen.fxml"));
         presentationParent = loader.load();
         presentationScreenController =  loader.getController();
-
 
         // after presentation controller
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("afterPresentation.fxml"));
@@ -91,15 +87,15 @@ public class Main extends Application implements Serializable{
         launcherParent = loader5.load();
         launcherScreenController = loader5.getController();
 
+        //book screen controller
+        FXMLLoader loader6 = new FXMLLoader(getClass().getResource("bookScreen.fxml"));
+        bookParent = loader6.load();
+        bookScreenController = loader6.getController();
+
         //launcherParent = FXMLLoader.load(getClass().getResource("launcherScreen.fxml"));
         sounderScene = new Scene(FXMLLoader.load(getClass().getResource("sounderScreen.fxml")));
         bookScene =  new Scene(FXMLLoader.load(getClass().getResource("bookScreen.fxml")));
 
-/*
-        FXMLLoader loader6 = new FXMLLoader(getClass().getResource("bookScreen.fxml"));
-        bookParent = loader6.load();
-        bookScreenController = loader6.getController();
-*/
 
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("launcherScreen.fxml")));
         primaryStage.setTitle("Flashcards");
@@ -183,16 +179,16 @@ public class Main extends Application implements Serializable{
         sounderStage.setTitle("Sounder");
         sounderStage.setScene(sounderScene);
         sounderStage.show();
+        sounderStage.toFront();
     }
 
     public static void openBook(File file) throws IOException {
         bookStage = new Stage();
         bookStage.setTitle("Book");
-        bookStage.setScene(bookScene);
+        bookStage.setScene(sounderScene);
+        bookStage.getScene().setRoot(bookParent);
+        bookScreenController.init(file);
         bookStage.show();
-        BookScreenController bsc= new BookScreenController();
-        bsc.init(file);
-       // bookScreenController.init(file);
     }
 
     public static void backToLauncher(){

@@ -170,9 +170,12 @@ public class PresentationScreenController  {
     }
 
     public void onSoundClicked() {
-        ArrayList sounds = actualFace.getSounds();
-        String path = "C:\\Users\\Betka\\Documents\\GitHub\\flashcardsCode2\\src\\sample\\bip.mp3";
-        playRecords(path);
+        ArrayList<File> sounds = actualFace.getSounds();
+        //String path = "C:\\Users\\Betka\\Documents\\GitHub\\flashcardsCode2\\src\\sample\\bip.mp3";
+        /*for(File subor : sounds){
+            playRecords(subor.getPath());
+        }*/
+        //playRecords(path);
 
     }
 
@@ -372,7 +375,4 @@ public class PresentationScreenController  {
         randomOrder = (choice == 0);
 
     }
-
-
-
 }

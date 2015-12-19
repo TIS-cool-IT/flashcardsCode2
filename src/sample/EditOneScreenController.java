@@ -161,6 +161,22 @@ public class EditOneScreenController {
         }
     }
 
+    public void openBook() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("View Texts");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt"),
+                new FileChooser.ExtensionFilter("All files", "*.*")
+        );
+
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
+        if (selectedFile != null) {
+            Main.openBook(selectedFile);
+        }
+    }
+
     public void openAudio() throws IOException {
         Main.openAudioBook();
     }

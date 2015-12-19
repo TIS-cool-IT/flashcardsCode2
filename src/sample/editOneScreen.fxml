@@ -69,7 +69,7 @@
         <Label font="$x3" layoutX="152.0" layoutY="394.0" prefHeight="36.60000038146973" prefWidth="56.0" text="Help" textAlignment="LEFT" />
         <Button id="BtnQRecord" fx:id="btnQRecord" layoutX="608.0" layoutY="153.0" mnemonicParsing="false" onMouseClicked="#recordSoundQ" prefWidth="112.0" text="Record sound" />
         <Button id="BtnARecord" fx:id="btnARecord" layoutX="608.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#recordSoundA" prefWidth="112.0" text="Record sound" />
-        <Button fx:id="btnOpenBook" layoutX="279.0" layoutY="404.0" mnemonicParsing="false" prefWidth="112.0" text="Open book" />
+        <Button fx:id="btnOpenBook" layoutX="279.0" layoutY="404.0" mnemonicParsing="false" prefWidth="112.0" text="Open book" onMouseClicked="#openBook"/>
         <Button fx:id="btnOpenAudioBook" layoutX="438.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#openAudio" prefWidth="112.0" text="Open audiobook" />
         <CheckBox fx:id="checkboxReverse" font="$x6" layoutX="152.0" layoutY="360.0" mnemonicParsing="false" text="Flashcard can be used reversed" />
         <ImageView fx:id="leftArrow" fitHeight="80.7016517089869" fitWidth="159.99980173912886" layoutX="0.0" layoutY="439.0" onMouseClicked="#onLeftArrowClicked" onMousePressed="#onLeftPressed" onMouseReleased="#onLeftReleased" pickOnBounds="true" preserveRatio="true">

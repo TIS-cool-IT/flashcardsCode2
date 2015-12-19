@@ -6,12 +6,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.stage.FileChooser;
+
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioSystem;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static sample.Main.getPrimaryStage;
 
 public class SounderScreenController implements Initializable {
 
@@ -20,14 +26,20 @@ public class SounderScreenController implements Initializable {
     private Label lab;
 
     public void otvor() throws Exception {
-        JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("MP3 File","mp3");
-        fileChooser.addChoosableFileFilter(filter);
-        fileChooser.setAcceptAllFileFilterUsed(false);
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        int result = fileChooser.showOpenDialog(fileChooser);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
+        String[] types = new String[3];
+        types[0] = "*.mp3";
+        types[1] = "*.wav";
+        types[2] = "*.au";
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("View Sounds");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Sounds", types)
+        );
+
+        File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
+        if (selectedFile != null) {
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
             zvuk = new Sounder(selectedFile);
             Scene sounderScene = Main.getSounderScene();
@@ -42,7 +54,6 @@ public class SounderScreenController implements Initializable {
             Label labEnd = (Label) sounderScene.lookup("#endOfLabelTime");
             labEnd.setText("00:00:00");
         }
-
     }
 
     @FXML synchronized
