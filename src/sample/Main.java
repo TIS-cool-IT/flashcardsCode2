@@ -172,8 +172,6 @@ public class Main extends Application implements Serializable{
         return sounderScene;
     }
 
-    public static Scene getBookScene() { return bookScene; }
-
     public static void openAudioBook() throws IOException {
         sounderStage = new Stage();
         sounderStage.setTitle("Sounder");
@@ -216,7 +214,6 @@ public class Main extends Application implements Serializable{
         editOneScreenController.init();
     }
 
-
     public static void setCategories(int index, Category cat) throws IOException {
         categories.set(index,cat);
         saveCategories();
@@ -234,8 +231,5 @@ public class Main extends Application implements Serializable{
     public static AfterPresentationController getAfterPresentationController(){
         return afterPresentationController;
     }
-
-
-
 
 }

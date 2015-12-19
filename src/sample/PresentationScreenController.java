@@ -109,8 +109,12 @@ public class PresentationScreenController  {
     private FlashcardFace actualFace = null;
     private ArrayList<Integer> usedIDinRandomOrder;
     private Random randomizer = new Random();
+    private Flashcard actualFlashcard;
 
 
+    private boolean firstRecordPlaying = false;
+    private boolean isMediaPlaying = false;
+    private MediaPlayer mediaPlayer;
     private static Category category;
     private ArrayList<Flashcard> flashcards;
     private FlashcardFace questionFace;
@@ -170,19 +174,35 @@ public class PresentationScreenController  {
     }
 
     public void onSoundClicked() {
-        ArrayList<File> sounds = actualFace.getSounds();
-        //String path = "C:\\Users\\Betka\\Documents\\GitHub\\flashcardsCode2\\src\\sample\\bip.mp3";
-        /*for(File subor : sounds){
-            playRecords(subor.getPath());
-        }*/
-        //playRecords(path);
-
+        if(!isMediaPlaying){
+            if(actualFace.getSounds().size() > 0) {
+                if(firstRecordPlaying){
+                    if(actualFace.getSounds().size() > 1){
+                        File subor = actualFace.getSounds().get(1);
+                        isMediaPlaying = true;
+                        playRecords("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + subor.getName());
+                        firstRecordPlaying = false;
+                    }
+                }
+                else {
+                    File subor = actualFace.getSounds().get(0);
+                    isMediaPlaying = true;
+                    playRecords("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + subor.getName());
+                    firstRecordPlaying = true;
+                }
+            }
+        }
+        else{
+            mediaPlayer.stop();
+            isMediaPlaying = false;
+        }
     }
 
     public void playRecords(String path){
         Media hit = new Media(Paths.get(path).toUri().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(hit);
+        mediaPlayer = new MediaPlayer(hit);
         mediaPlayer.play();
+        System.out.println(mediaPlayer.getStatus());
     }
 
     // all flashcards with reversed
@@ -204,7 +224,6 @@ public class PresentationScreenController  {
         numberOfAllFlashcards = allflashcards.size();
         return allflashcards;
     }
-
 
     public void rightAnswer(){
         correctAnswers++;
@@ -263,7 +282,18 @@ public class PresentationScreenController  {
             Flashcard flashcard = getNextFlashcard();
             answerFace = flashcard.getAnswer();
             questionFace = flashcard.getQuestion();
-            fillFace(answerFace);
+            actualFlashcard = flashcard;
+            fillFace(questionFace);
+            if(playSoundsAutomatically){
+                onSoundClicked();
+                mediaPlayer.setOnEndOfMedia(new Runnable() {
+                    @Override
+                    public void run() {
+                        onSoundClicked();
+                        onSoundClicked();
+                    }
+                });
+            }
         }
     }
 
@@ -342,8 +372,21 @@ public class PresentationScreenController  {
         flippingLabel.setVisible(false);
         answering = true;
         showButtons();
-        fillFace(questionFace);
-
+        fillFace(answerFace);
+        if(isMediaPlaying){
+            mediaPlayer.stop();
+            isMediaPlaying = false;
+        }
+        if(playSoundsAutomatically){
+            onSoundClicked();
+            mediaPlayer.setOnEndOfMedia(new Runnable() {
+                @Override
+                public void run() {
+                    onSoundClicked();
+                    onSoundClicked();
+                }
+            });
+        }
     }
 
     public void initSettings(){

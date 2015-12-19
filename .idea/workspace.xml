@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="292046df-81c4-46cd-af66-fcab720eb163" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AddScreenController.java" afterPath="$PROJECT_DIR$/src/sample/AddScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/BookScreenController.java" afterPath="$PROJECT_DIR$/src/sample/BookScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/EditOneScreenController.java" afterPath="$PROJECT_DIR$/src/sample/EditOneScreenController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/PresentationScreenController.java" afterPath="$PROJECT_DIR$/src/sample/PresentationScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Sounder.java" afterPath="$PROJECT_DIR$/src/sample/Sounder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/SounderScreenController.java" afterPath="$PROJECT_DIR$/src/sample/SounderScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/editOneScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/editOneScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="flashcardsCode2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,41 +68,59 @@
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="181" column="31" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
+              <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
               <folding>
                 <element signature="method#addCategory#0;class#Main#0" expanded="false" />
                 <element signature="method#getCategories#0;class#Main#0" expanded="false" />
                 <element signature="method#getLoadedCategories#0;class#Main#0" expanded="false" />
                 <element signature="method#saveCategories#0;class#Main#0" expanded="false" />
                 <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
+                <element signature="method#openAudioBook#0;class#Main#0" expanded="false" />
+                <element signature="method#openBook#0;class#Main#0" expanded="false" />
+                <element signature="method#backToLauncher#0;class#Main#0" expanded="false" />
+                <element signature="method#toEditScreen#0;class#Main#0" expanded="false" />
+                <element signature="method#toPresentationScreen#0;class#Main#0" expanded="false" />
+                <element signature="method#toEditOneScreen#0;class#Main#0" expanded="false" />
+                <element signature="method#setCategories#0;class#Main#0" expanded="false" />
+                <element signature="method#setNewCategories#0;class#Main#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PresentationScreenController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PresentationScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/PresentationScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="176" column="11" selection-start-line="176" selection-start-column="11" selection-end-line="176" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.8152174">
+              <caret line="385" column="37" selection-start-line="385" selection-start-column="37" selection-end-line="385" selection-end-column="37" />
               <folding>
-                <element signature="e#4522#4533#0" expanded="true" />
-                <element signature="e#10189#10190#0" expanded="true" />
-                <element signature="e#10251#10252#0" expanded="true" />
-                <element signature="e#10297#10298#0" expanded="true" />
-                <element signature="e#10349#10350#0" expanded="true" />
+                <element signature="method#saveSettings#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#onSettingsClicked#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#showButtons#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#getAllFlashcards#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="e#5416#5427#0" expanded="true" />
+                <element signature="method#rightAnswer#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#wrongAnswer#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#afterButtonClicked#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#updatePresentationStatus#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#init#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#getNextFlashcard#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#fillFace#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#getImage#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#initSettings#0;class#PresentationScreenController#0" expanded="false" />
+                <element signature="method#onRectClicked#0;class#PresentationScreenController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editOneScreen.fxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="editOneScreen.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/editOneScreen.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40236688">
+            <state vertical-scroll-proportion="-4.6896553">
               <caret line="71" column="152" selection-start-line="71" selection-start-column="152" selection-end-line="71" selection-end-column="152" />
               <folding />
             </state>
@@ -241,11 +252,11 @@
         <option value="$PROJECT_DIR$/src/sample/BookScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/Sounder.java" />
         <option value="$PROJECT_DIR$/src/sample/SounderScreenController.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/PresentationScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/AddScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/EditOneScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/editOneScreen.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/PresentationScreenController.java" />
       </list>
     </option>
   </component>
@@ -716,7 +727,7 @@
       <workItem from="1450292505243" duration="2636000" />
       <workItem from="1450300633935" duration="6432000" />
       <workItem from="1450340707466" duration="5543000" />
-      <workItem from="1450517162377" duration="4906000" />
+      <workItem from="1450517162377" duration="9880000" />
     </task>
     <task id="LOCAL-00001" summary="pokus o pridavanie flashcard">
       <created>1448979105151</created>
@@ -728,7 +739,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123724000" />
+    <option name="totallyTimeSpent" value="128698000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -740,22 +751,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64190686" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29180887" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32593855" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32423207" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2322239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -766,7 +778,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -787,7 +798,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -902,6 +913,14 @@
             <element signature="method#getLoadedCategories#0;class#Main#0" expanded="false" />
             <element signature="method#saveCategories#0;class#Main#0" expanded="false" />
             <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#openAudioBook#0;class#Main#0" expanded="false" />
+            <element signature="method#openBook#0;class#Main#0" expanded="false" />
+            <element signature="method#backToLauncher#0;class#Main#0" expanded="false" />
+            <element signature="method#toEditScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#toPresentationScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#toEditOneScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#setCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#setNewCategories#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -998,6 +1017,14 @@
             <element signature="method#getLoadedCategories#0;class#Main#0" expanded="false" />
             <element signature="method#saveCategories#0;class#Main#0" expanded="false" />
             <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#openAudioBook#0;class#Main#0" expanded="false" />
+            <element signature="method#openBook#0;class#Main#0" expanded="false" />
+            <element signature="method#backToLauncher#0;class#Main#0" expanded="false" />
+            <element signature="method#toEditScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#toPresentationScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#toEditOneScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#setCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#setNewCategories#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1096,6 +1123,14 @@
             <element signature="method#getLoadedCategories#0;class#Main#0" expanded="false" />
             <element signature="method#saveCategories#0;class#Main#0" expanded="false" />
             <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#openAudioBook#0;class#Main#0" expanded="false" />
+            <element signature="method#openBook#0;class#Main#0" expanded="false" />
+            <element signature="method#backToLauncher#0;class#Main#0" expanded="false" />
+            <element signature="method#toEditScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#toPresentationScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#toEditOneScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#setCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#setNewCategories#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1276,34 +1311,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/PresentationScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="176" column="11" selection-start-line="176" selection-start-column="11" selection-end-line="176" selection-end-column="11" />
-          <folding>
-            <element signature="e#4522#4533#0" expanded="true" />
-            <element signature="e#10189#10190#0" expanded="true" />
-            <element signature="e#10251#10252#0" expanded="true" />
-            <element signature="e#10297#10298#0" expanded="true" />
-            <element signature="e#10349#10350#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="181" column="31" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
-          <folding>
-            <element signature="method#addCategory#0;class#Main#0" expanded="false" />
-            <element signature="method#getCategories#0;class#Main#0" expanded="false" />
-            <element signature="method#getLoadedCategories#0;class#Main#0" expanded="false" />
-            <element signature="method#saveCategories#0;class#Main#0" expanded="false" />
-            <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AddScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1335,9 +1342,55 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40236688">
+        <state vertical-scroll-proportion="-4.6896553">
           <caret line="71" column="152" selection-start-line="71" selection-start-column="152" selection-end-line="71" selection-end-column="152" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+          <folding>
+            <element signature="method#addCategory#0;class#Main#0" expanded="false" />
+            <element signature="method#getCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#getLoadedCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#saveCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#loadCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#openAudioBook#0;class#Main#0" expanded="false" />
+            <element signature="method#openBook#0;class#Main#0" expanded="false" />
+            <element signature="method#backToLauncher#0;class#Main#0" expanded="false" />
+            <element signature="method#toEditScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#toPresentationScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#toEditOneScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#setCategories#0;class#Main#0" expanded="false" />
+            <element signature="method#setNewCategories#0;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/PresentationScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8152174">
+          <caret line="385" column="37" selection-start-line="385" selection-start-column="37" selection-end-line="385" selection-end-column="37" />
+          <folding>
+            <element signature="method#saveSettings#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#onSettingsClicked#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#showButtons#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#getAllFlashcards#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="e#5416#5427#0" expanded="true" />
+            <element signature="method#rightAnswer#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#wrongAnswer#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#afterButtonClicked#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#updatePresentationStatus#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#init#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#getNextFlashcard#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#fillFace#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#getImage#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#initSettings#0;class#PresentationScreenController#0" expanded="false" />
+            <element signature="method#onRectClicked#0;class#PresentationScreenController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
