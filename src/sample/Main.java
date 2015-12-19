@@ -43,6 +43,8 @@ public class Main extends Application implements Serializable{
     public static int idOfSelectedCategory = -1;
     public static int idOfSelectedFlashcard = -1;
     public static JavaSoundRecorder recorder = new JavaSoundRecorder();
+    public static double fontSize = 16;
+    public static boolean playSoundsAutomatically = true;
 
     public static Stage afterPresentationStage;
 
@@ -160,6 +162,33 @@ public class Main extends Application implements Serializable{
         out.close();
     }
 
+    public static void saveSettings() throws IOException {
+        FileOutputStream fos = new FileOutputStream("C:\\FlashCard\\settings.bin");
+        ObjectOutputStream out = new ObjectOutputStream(fos);
+        out.writeBoolean(playSoundsAutomatically);
+        out.writeDouble(fontSize);
+        out.flush();
+        fos.close();
+        out.close();
+    }
+
+    public static void loadSetting() throws IOException {
+        File binFile = new File("C:\\FlashCard\\settings.bin");
+        // create a bin file
+        if (!binFile.exists()) {
+            System.out.print("creating file: settings.bin ");
+            System.out.println(binFile.createNewFile());
+            saveSettings();
+        }
+
+        FileInputStream fos = new FileInputStream("C:\\FlashCard\\settings.bin");
+        ObjectInputStream out = new ObjectInputStream(fos);
+        playSoundsAutomatically = out.readBoolean();
+        fontSize = out.readDouble();
+        fos.close();
+        out.close();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -199,7 +228,8 @@ public class Main extends Application implements Serializable{
         editScreenController.init();
     }
 
-    public static void toPresentationScreen(){
+    public static void toPresentationScreen() throws IOException {
+        loadSetting();
         primStage.getScene().setRoot(presentationParent);
         presentationScreenController.showDialog();
         presentationScreenController.init();

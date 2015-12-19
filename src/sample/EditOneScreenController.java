@@ -100,7 +100,7 @@ public class EditOneScreenController {
                         saveFaceFile(input, "C:\\FlashCard\\Categories\\" + selected.getFlashcardDirectory());
                     }
                     else{
-                        JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " can't be added twice.", "Warning", JOptionPane.WARNING_MESSAGE);
+                        //JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " can't be added twice.", "Warning", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             }

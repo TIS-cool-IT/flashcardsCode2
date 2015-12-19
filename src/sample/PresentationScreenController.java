@@ -94,8 +94,8 @@ public class PresentationScreenController  {
     private Image sound2 = new Image("sound2.png");
 
     //settings
-    private boolean playSoundsAutomatically = true;
-    private double fontSize = 16;
+    //private boolean playSoundsAutomatically = true;
+    //private double fontSize = 16;
 
     // presentation status
     private int numberOfFlashcards = 0;
@@ -124,9 +124,13 @@ public class PresentationScreenController  {
     public void finishPresentation(){
         getAfterPresentationController().init();
         getPopupPresentationStage().show();
+        if(isMediaPlaying){
+            isMediaPlaying = false;
+            mediaPlayer.stop();
+        }
     }
 
-    public void saveSettings(){
+    public void saveSettings() throws IOException {
         playSoundsAutomatically = soundAutoCheckbox.isSelected();
         Object selectedItem = fontSizeComboBox.getSelectionModel().getSelectedItem();
         if ( selectedItem != null){
@@ -137,6 +141,9 @@ public class PresentationScreenController  {
         }
         label1.setFont(new Font(fontSize));
         label2.setFont(new Font(fontSize));
+        Main.saveSettings();
+        presentationGroup.setVisible(true);
+        settingsGroup.setVisible(false);
     }
 
     public void onSettingsClicked(){

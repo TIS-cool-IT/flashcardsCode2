@@ -117,7 +117,7 @@ public class LauncherScreenController {
         return false;
     }
 
-    public void presentationBtnClicked(){
+    public void presentationBtnClicked() throws IOException {
         if (savedSelectedCategoryId()) {
             System.out.println("btn clicked id:" + idOfSelectedCategory);
             toPresentationScreen();

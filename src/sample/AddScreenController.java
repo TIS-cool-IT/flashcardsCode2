@@ -1,21 +1,17 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 
 import java.io.*;
 
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,7 +74,7 @@ public class AddScreenController implements Serializable{
                         saveFaceFile(input, "C:\\FlashCard\\Categories\\" + card.getFlashcardDirectory());
                     }
                     else{
-                        JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " can't be added twice.", "Warning", JOptionPane.WARNING_MESSAGE);
+                        //JOptionPane.showMessageDialog(new JFrame(), "File "+ input.getName()+  " can't be added twice.", "Warning", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             }
