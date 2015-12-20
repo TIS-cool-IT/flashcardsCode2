@@ -66,30 +66,35 @@ public class LauncherScreenController {
 
     @FXML
     protected void deleteCategory() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete Category");
-        String s = "Do you want permanently delete category?";
-        alert.setContentText(s);
+        if (savedSelectedCategoryId()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Category");
+            String s = "Do you want permanently delete category?";
+            alert.setContentText(s);
 
-        Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-            System.out.println(table.getSelectionModel().getSelectedItem().getTitleOfCategory());
-            ArrayList<Category> al = Main.getCategories();
-            al.remove(table.getSelectionModel().getSelectedItem());
-            Main.setNewCategories(al);
+            if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+                System.out.println(table.getSelectionModel().getSelectedItem().getTitleOfCategory());
+                ArrayList<Category> al = Main.getCategories();
+                al.remove(table.getSelectionModel().getSelectedItem());
+                Main.setNewCategories(al);
 
-            // recursive deleting directories and files
-            File file = new File("C:\\FlashCard\\Categories\\" + table.getSelectionModel().getSelectedItem().getTitleOfCategory());
-            String[] children = file.list();
-            if (children != null) {
-                for (int i = 0; i < children.length; i++) {
-                    Category.deleteDirectory(new File(children[i]));
+                // recursive deleting directories and files
+                File file = new File("C:\\FlashCard\\Categories\\" + table.getSelectionModel().getSelectedItem().getTitleOfCategory());
+                String[] children = file.list();
+                if (children != null) {
+                    for (int i = 0; i < children.length; i++) {
+                        Category.deleteDirectory(new File(children[i]));
+                    }
                 }
-            }
-            Category.deleteDirectory(file);
+                Category.deleteDirectory(file);
 
-            init();
+                init();
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(new JFrame(), "Please, select category to delete", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
