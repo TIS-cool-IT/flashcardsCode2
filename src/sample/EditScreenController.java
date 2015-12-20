@@ -1,22 +1,15 @@
 package sample;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 
 import static sample.Main.*;
@@ -193,13 +186,21 @@ public class EditScreenController{
 
     public void init() {
         idCol.setStyle("-fx-alignment: CENTER;");
+        idCol.setSortable(false);
         tvQuestion.setStyle("-fx-alignment: CENTER;");
+        tvQuestion.setSortable(false);
         tvAnswer.setStyle("-fx-alignment: CENTER;");
+        tvAnswer.setSortable(false);
         tvQImage.setStyle("-fx-alignment: CENTER;");
+        tvQImage.setSortable(false);
         tvAImage.setStyle("-fx-alignment: CENTER;");
+        tvAImage.setSortable(false);
         tvQSound.setStyle("-fx-alignment: CENTER;");
+        tvQSound.setSortable(false);
         tvASound.setStyle("-fx-alignment: CENTER;");
+        tvASound.setSortable(false);
         tvReversed.setStyle("-fx-alignment: CENTER;");
+        tvReversed.setSortable(false);
 
         if (idOfSelectedCategory != -1) {
             System.out.println(idOfSelectedCategory);

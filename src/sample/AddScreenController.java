@@ -59,9 +59,9 @@ public class AddScreenController implements Serializable{
 
             Flashcard card = new Flashcard(Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size()+1, check.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), questionFace, answerFace);
 
-            if (check.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
+            /*if (check.isSelected()) { //ak je reversed true, vytvorim aj opacnu flashcard
                 new Flashcard(1, check.isSelected(), Main.getCategories().get(idOfSelectedCategory-1), answerFace, questionFace);
-            }
+            }*/
             ArrayList<Category> al = Main.getCategories();
 
             al.get(idOfSelectedCategory-1).addFlashcard(card);
@@ -79,7 +79,7 @@ public class AddScreenController implements Serializable{
                 }
             }
 
-            File record1 = new File("C:\\FlashCard\\tmp_files\\record1.wav");
+            /*File record1 = new File("C:\\FlashCard\\tmp_files\\record1.wav");
             File record2 = new File("C:\\FlashCard\\tmp_files\\record2.wav");
             File record3 = new File("C:\\FlashCard\\tmp_files\\record3.wav");
             File record4 = new File("C:\\FlashCard\\tmp_files\\record4.wav");
@@ -94,6 +94,24 @@ public class AddScreenController implements Serializable{
             }
             if(record4.exists()){
                 record4.delete();
+            }*/
+
+            File folder = new File("C:\\FlashCard\\tmp_files");
+            File[] listOfFiles = folder.listFiles();
+            ArrayList<File> toDelete = new ArrayList<>();
+            for (int i = 0; i < listOfFiles.length; i++) {
+                if (listOfFiles[i].isFile()) {
+                    if(listOfFiles[i].getName().contains("record")){
+                        toDelete.add(listOfFiles[i]);
+                    }
+                    if(listOfFiles[i].getName().contains("tmp_record")){
+                        toDelete.add(listOfFiles[i]);
+                    }
+                }
+            }
+
+            for(File subor : toDelete){
+                subor.delete();
             }
 
             // save txt files to directory

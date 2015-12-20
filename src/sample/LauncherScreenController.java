@@ -2,20 +2,13 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-import javax.security.auth.callback.Callback;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
-import java.net.URL;
 import java.util.*;
 
 import static sample.Main.*;
@@ -106,6 +99,9 @@ public class LauncherScreenController {
             FXMLLoader.load(getClass().getResource("editScreen.fxml"));
             toEditScreen();
         }
+        else{
+            JOptionPane.showMessageDialog(new JFrame(), "Please, select category to edit", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public boolean savedSelectedCategoryId() {
@@ -119,16 +115,26 @@ public class LauncherScreenController {
 
     public void presentationBtnClicked() throws IOException {
         if (savedSelectedCategoryId()) {
-            System.out.println("btn clicked id:" + idOfSelectedCategory);
-            toPresentationScreen();
+            if(Main.getCategories().get(idOfSelectedCategory-1).getFlashcards().size()==0){
+                JOptionPane.showMessageDialog(new JFrame(), "Category has 0 flashcards", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                toPresentationScreen();
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(new JFrame(), "Please, select category to presentation", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
 
     public void init() {
         idCol.setStyle("-fx-alignment: CENTER;");
+        idCol.setSortable(false);
         countCol.setStyle("-fx-alignment: CENTER;");
+        countCol.setSortable(false);
         titleCol.setStyle("-fx-alignment: CENTER;");
+        titleCol.setSortable(false);
         categories.removeAll();
         table.getItems().clear();
         try {

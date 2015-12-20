@@ -328,6 +328,8 @@ public class PresentationScreenController  {
     }
 
     public void fillFace(FlashcardFace face){
+        image21.setImage(null);
+        image22.setImage(null);
         actualFace = face;
         File i1 = face.getImages().get(0);
         File i2 = face.getImages().get(1);
@@ -340,6 +342,7 @@ public class PresentationScreenController  {
             image22.setImage(getImage(new File("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + i2.getName())));
         }
         else {
+            image11.setImage(null);
             System.out.println("1 or NONE image");
             rectTwoImages.setVisible(false);
             rectOneImage.setVisible(true);
