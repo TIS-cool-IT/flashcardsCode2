@@ -45,10 +45,14 @@ public class Main extends Application implements Serializable{
     public static EditOneScreenController editOneScreenController;
     public static LauncherScreenController launcherScreenController;
     public static BookScreenController bookScreenController;
+    public static AddScreenController addScreenController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        addParent = FXMLLoader.load(getClass().getResource("addscreen.fxml"));
+        //addParent = FXMLLoader.load(getClass().getResource("addscreen.fxml"));
+        FXMLLoader loade = new FXMLLoader(getClass().getResource("addscreen.fxml"));
+        addParent = loade.load();
+        addScreenController =  loade.getController();
 
         // presentation controller
         FXMLLoader loader = new FXMLLoader(getClass().getResource("presentationScreen.fxml"));
@@ -135,6 +139,10 @@ public class Main extends Application implements Serializable{
     public static void loadCategories() throws IOException {
         File binFile = new File("C:\\FlashCard\\categories.bin");
         // create a bin file
+        File directory = new File("C:\\FlashCard");
+        if(!directory.exists()){
+            directory.mkdir();
+        }
         if (!binFile.exists()) {
             System.out.print("creating file: categories.bin ");
             System.out.println(binFile.createNewFile());
@@ -227,6 +235,7 @@ public class Main extends Application implements Serializable{
 
     public static void toAddScreen(){
         primStage.getScene().setRoot(addParent);
+        addScreenController.clearFilesFields();
     }
 
     public static void toEditOneScreen(){

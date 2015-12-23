@@ -1,5 +1,6 @@
 package sample;
 
+import jAudioFeatureExtractor.jAudioTools.AudioSamples;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -8,6 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import java.io.File;
@@ -83,6 +86,23 @@ public class EditOneScreenController {
 
     public void saveChanges() throws IOException {
         System.out.println("Saving...");
+        TextField tf = (TextField) Main.getPrimaryStage().getScene().lookup("#InputQText");
+        TextField tf1 = (TextField) Main.getPrimaryStage().getScene().lookup("#InputAText");
+        if(tf.getText().equals("")){
+            if(inputFiles.get("BtnQImage1") == null && inputFiles.get("BtnQImage2") == null &&
+                    inputFiles.get("BtnQSound1") == null && inputFiles.get("BtnQSound2") == null){
+                JOptionPane.showMessageDialog(new JFrame(), "Flashcard must have question", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+        if(tf1.getText().equals("")){
+            if(inputFiles.get("BtnAImage1") == null && inputFiles.get("BtnAImage2") == null &&
+                    inputFiles.get("BtnASound1") == null && inputFiles.get("BtnASound2") == null){
+                JOptionPane.showMessageDialog(new JFrame(), "Flashcard must have answer", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+        }
 
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -360,19 +380,20 @@ public class EditOneScreenController {
         but.setText("Upload file");
     }
 
-
     private void chooseImage(String nameOfImage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                new FileChooser.ExtensionFilter("BMP", "*.bmp")
+        );
         File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
         fileChooser.setTitle("View Pictures");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
         );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png")
-        );
+
         if (selectedFile != null) {
             inputFiles.put(nameOfImage, selectedFile);
             Button but = (Button) Main.getPrimaryStage().getScene().lookup("#"+nameOfImage);
@@ -380,21 +401,32 @@ public class EditOneScreenController {
         }
     }
 
-    private void chooseSound(String nameOfSound) {
+    private void chooseSound(String nameOfSound) throws Exception {
+        String[] types = new String[3];
+        types[0] = "*.mp3";
+        types[1] = "*.wav";
+        types[2] = "*.au";
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Sounds", types)
+        );
         File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
         fileChooser.setTitle("View Sounds");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
         );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("MP3", "*.mp3")
-        );
         if (selectedFile != null) {
-            inputFiles.put(nameOfSound, selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#"+nameOfSound);
-            but.setText(selectedFile.getName());
+            AudioInputStream ais = AudioSystem.getAudioInputStream(selectedFile);
+            AudioSamples as = new AudioSamples(ais,"",false);
+            System.out.println(as.getDuration());
+            if(as.getDuration() > 600){
+                JOptionPane.showMessageDialog(new JFrame(), "Record has more than 10 minutes", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                inputFiles.put(nameOfSound, selectedFile);
+                Button but = (Button) Main.getPrimaryStage().getScene().lookup("#" + nameOfSound);
+                but.setText(selectedFile.getName());
+            }
         }
     }
 
@@ -409,12 +441,12 @@ public class EditOneScreenController {
     }
 
     @FXML
-    public void addQSound1() {
+    public void addQSound1() throws Exception {
         chooseSound("BtnQSound1");
     }
 
     @FXML
-    public void addQSound2() {
+    public void addQSound2() throws Exception {
         chooseSound("BtnQSound2");
     }
 
@@ -429,12 +461,12 @@ public class EditOneScreenController {
     }
 
     @FXML
-    public void addASound1() {
+    public void addASound1() throws Exception {
         chooseSound("BtnASound1");
     }
 
     @FXML
-    public void addASound2() {
+    public void addASound2() throws Exception {
         chooseSound("BtnASound2");
     }
 

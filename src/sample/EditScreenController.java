@@ -66,6 +66,7 @@ public class EditScreenController{
 
     public void openAddScreen(){
         toAddScreen();
+
     }
 
     public void openEditOneScreen() throws IOException {

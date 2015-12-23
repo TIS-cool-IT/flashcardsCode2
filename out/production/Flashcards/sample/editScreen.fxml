@@ -22,13 +22,13 @@
     <Group id="Group" BorderPane.alignment="CENTER">
       <children>
         <TextField id="nameOfCategory" fx:id="nameOfCategoryInput" layoutX="252.0" layoutY="43.0" prefHeight="35.0" prefWidth="480.0" promptText="Name of category" text="" />
-        <Button layoutX="426.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#openAddScreen" prefHeight="35.0" prefWidth="157.0" style="-fx-background-color: linear-gradient(#0BE21A, #08AF13);&#10;    -fx-background-radius: 30;&#10;    -fx-background-insets: 0;&#10;    -fx-text-fill: white;" text="Add new ">
+        <Button layoutX="426.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#openAddScreen" prefHeight="35.0" prefWidth="157.0" style="" text="Add new ">
           <font>
-            <Font size="18.0" fx:id="x1" />
+            <Font size="14.0" fx:id="x1" />
           </font>
         </Button>
-        <Button font="$x1" layoutX="426.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#openEditOneScreen" prefHeight="35.0" prefWidth="157.0" style="-fx-background-color: linear-gradient(#7ebcea, #2f4b8f);&#10;    -fx-background-radius: 30;&#10;    -fx-background-insets: 0;&#10;    -fx-text-fill: white;" text="Edit" />
-        <Button font="$x1" layoutX="426.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#deleteFlashcard" prefHeight="35.0" prefWidth="157.0" style="-fx-background-color: linear-gradient(#ff5400, #be1d00);&#10;    -fx-background-radius: 30;&#10;    -fx-background-insets: 0;&#10;    -fx-text-fill: white;" text="Delete Flashcard" />
+        <Button font="$x1" layoutX="426.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#openEditOneScreen" prefHeight="35.0" prefWidth="157.0" style="" text="Edit" />
+        <Button font="$x1" layoutX="426.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#deleteFlashcard" prefHeight="35.0" prefWidth="157.0" style="" text="Delete Flashcard" />
         <Label alignment="CENTER" cache="false" contentDisplay="LEFT" disable="false" focusTraversable="false" layoutX="116.0" layoutY="39.0" opacity="1.0" prefHeight="43.0" prefWidth="118.0" text="Name of category:" textAlignment="LEFT" underline="false" visible="true" wrapText="false">
           <font>
             <Font size="13.0" />
@@ -85,7 +85,7 @@
             </TableView>
           </children>
         </Pane>
-        <Button cancelButton="false" layoutX="741.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#saveChanges" prefHeight="35.0" prefWidth="141.0" style="-fx-background-color: &#10;        linear-gradient(#ffd65b, #e68400),&#10;        linear-gradient(#ffef84, #f2ba44),&#10;        linear-gradient(#ffea6a, #efaa22),&#10;        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),&#10;        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));&#10;    -fx-background-radius: 30;&#10;    -fx-background-insets: 0,1,2,3,0;&#10;    -fx-text-fill: #654b00;" text="Save changes" textAlignment="CENTER" textFill="BLACK">
+        <Button cancelButton="false" layoutX="741.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#saveChanges" prefHeight="35.0" prefWidth="141.0" style="" text="Save changes" textAlignment="CENTER" textFill="BLACK">
           <font>
             <Font size="16.0" fx:id="x2" />
           </font>

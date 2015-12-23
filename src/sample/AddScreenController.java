@@ -1,5 +1,6 @@
 package sample;
 
+import jAudioFeatureExtractor.jAudioTools.AudioSamples;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,7 +8,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
-import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.*;
 import javax.swing.*;
 
 import java.io.*;
@@ -79,24 +80,8 @@ public class AddScreenController implements Serializable{
                 }
             }
 
-            /*File record1 = new File("C:\\FlashCard\\tmp_files\\record1.wav");
-            File record2 = new File("C:\\FlashCard\\tmp_files\\record2.wav");
-            File record3 = new File("C:\\FlashCard\\tmp_files\\record3.wav");
-            File record4 = new File("C:\\FlashCard\\tmp_files\\record4.wav");
-            if(record1.exists()){
-                record1.delete();
-            }
-            if(record2.exists()){
-                record2.delete();
-            }
-            if(record3.exists()){
-                record3.delete();
-            }
-            if(record4.exists()){
-                record4.delete();
-            }*/
-
             File folder = new File("C:\\FlashCard\\tmp_files");
+            if(!folder.exists()) folder.mkdir();
             File[] listOfFiles = folder.listFiles();
             ArrayList<File> toDelete = new ArrayList<>();
             for (int i = 0; i < listOfFiles.length; i++) {
@@ -124,8 +109,8 @@ public class AddScreenController implements Serializable{
             inputQText.clear();
             inputAText.clear();
             inputFiles.clear();
+            System.out.println("*************HERE***********");
             clearFilesFields();
-
 
             toEditScreen();
         }
@@ -193,14 +178,15 @@ public class AddScreenController implements Serializable{
     private void chooseImage(String nameOfImage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                new FileChooser.ExtensionFilter("BMP", "*.bmp")
+        );
         File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
         fileChooser.setTitle("View Pictures");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png")
         );
         if (selectedFile != null) {
             inputFiles.put(nameOfImage, selectedFile);
@@ -209,21 +195,33 @@ public class AddScreenController implements Serializable{
         }
     }
 
-    private void chooseSound(String nameOfSound) {
+    private void chooseSound(String nameOfSound) throws Exception {
+        String[] types = new String[3];
+        types[0] = "*.mp3";
+        types[1] = "*.wav";
+        types[2] = "*.au";
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Sounds", types)
+        );
         File selectedFile =  fileChooser.showOpenDialog(getPrimaryStage());
         fileChooser.setTitle("View Sounds");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
         );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("MP3", "*.mp3")
-        );
+
         if (selectedFile != null) {
-            inputFiles.put(nameOfSound, selectedFile);
-            Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+nameOfSound);
-            but.setText(selectedFile.getName());
+            AudioInputStream ais = AudioSystem.getAudioInputStream(selectedFile);
+            AudioSamples as = new AudioSamples(ais,"",false);
+            System.out.println(as.getDuration());
+            if(as.getDuration() > 600){
+                JOptionPane.showMessageDialog(new JFrame(), "Record has more than 10 minutes", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                inputFiles.put(nameOfSound, selectedFile);
+                Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn" + nameOfSound);
+                but.setText(selectedFile.getName());
+            }
         }
     }
 
@@ -238,12 +236,12 @@ public class AddScreenController implements Serializable{
     }
 
     @FXML
-    public void addQSound1() {
+    public void addQSound1() throws Exception {
         chooseSound("QSound1");
     }
 
     @FXML
-    public void addQSound2() {
+    public void addQSound2() throws Exception {
         chooseSound("QSound2");
     }
 
@@ -258,12 +256,12 @@ public class AddScreenController implements Serializable{
     }
 
     @FXML
-    public void addASound1() {
+    public void addASound1() throws Exception {
         chooseSound("ASound1");
     }
 
     @FXML
-    public void addASound2() {
+    public void addASound2() throws Exception {
         chooseSound("ASound2");
     }
 
@@ -366,7 +364,11 @@ public class AddScreenController implements Serializable{
         }
     }
 
-    private void clearFilesFields() {
+    public void clearFilesFields() {
+        inputFiles = new HashMap<String, File>() {{
+            put("QImage1",null); put("QSound1", null); put("QImage2", null); put("QSound2", null);
+            put("AImage1",null); put("ASound1", null); put("AImage2", null); put("ASound2", null);
+        }};
         for (String inputFile : inputFiles.keySet()) {
             Button but = (Button) Main.getPrimaryStage().getScene().lookup("#Btn"+inputFile);
             but.setText("Upload file");
