@@ -276,6 +276,7 @@ public class PresentationScreenController  {
             for (int i = 0; i <allFlashcards.size(); i++){
                 System.out.println(i+ " " + allFlashcards.get(i).getQuestion().getText()  +  "   " + allFlashcards.get(i).getAnswer().getText());
             }
+            buttonsGroup.setVisible(false);
             startPresentation();
         }
     }
