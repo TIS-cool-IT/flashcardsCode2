@@ -184,18 +184,21 @@ public class PresentationScreenController  {
         if(!isMediaPlaying){
             if(actualFace.getSounds().size() > 0) {
                 if(firstRecordPlaying){
-                    if(actualFace.getSounds().size() > 1){
-                        File subor = actualFace.getSounds().get(1);
+                    File subor = actualFace.getSounds().get(1);
+                    if(subor != null) {
                         isMediaPlaying = true;
                         playRecords("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + subor.getName());
-                        firstRecordPlaying = false;
+
                     }
+                    firstRecordPlaying = false;
                 }
                 else {
                     File subor = actualFace.getSounds().get(0);
-                    isMediaPlaying = true;
-                    playRecords("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + subor.getName());
-                    firstRecordPlaying = true;
+                    if(subor != null) {
+                        isMediaPlaying = true;
+                        playRecords("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + subor.getName());
+                        firstRecordPlaying = true;
+                    }
                 }
             }
         }
