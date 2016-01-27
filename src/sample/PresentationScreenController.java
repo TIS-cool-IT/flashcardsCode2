@@ -16,6 +16,7 @@ import javafx.scene.text.Font;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -180,10 +181,14 @@ public class PresentationScreenController  {
         sound.setImage(sound1);
     }
 
-    public void onSoundClicked() {
+    public void onSoundClicked() throws IOException {
+        System.out.println("sdasda");
         if(!isMediaPlaying){
+            System.out.println("sdasda");
             if(actualFace.getSounds().size() > 0) {
+                System.out.println(actualFace.getSounds().size());
                 if(firstRecordPlaying){
+                    System.out.println("sdasda");
                     File subor = actualFace.getSounds().get(1);
                     if(subor != null) {
                         isMediaPlaying = true;
@@ -193,8 +198,11 @@ public class PresentationScreenController  {
                     firstRecordPlaying = false;
                 }
                 else {
+                    System.out.println("hraj druhy");
                     File subor = actualFace.getSounds().get(0);
+                    System.out.println(subor.getAbsolutePath());
                     if(subor != null) {
+                        System.out.println("plating");
                         isMediaPlaying = true;
                         playRecords("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + subor.getName());
                         firstRecordPlaying = true;
@@ -235,17 +243,17 @@ public class PresentationScreenController  {
         return allflashcards;
     }
 
-    public void rightAnswer(){
+    public void rightAnswer() throws IOException {
         correctAnswers++;
         afterButtonClicked();
     }
 
-    public void wrongAnswer(){
+    public void wrongAnswer() throws IOException {
         wrongAnswers++;
         afterButtonClicked();
     }
 
-    public void afterButtonClicked(){
+    public void afterButtonClicked() throws IOException {
         updatePresentationStatus();
         startPresentation();
         showButtons();
@@ -260,7 +268,7 @@ public class PresentationScreenController  {
     }
 
 
-    public void init() {
+    public void init() throws IOException {
         initSettings();
         correctAnswers = 0;
         wrongAnswers  = 0;
@@ -281,7 +289,7 @@ public class PresentationScreenController  {
         }
     }
 
-    public void startPresentation(){
+    public void startPresentation() throws IOException {
         if (actualFlashcardOrder >= numberOfAllFlashcards || numberOfAllFlashcards == usedIDinRandomOrder.size()){
             finishPresentation();
         }
@@ -291,17 +299,23 @@ public class PresentationScreenController  {
             );
             updatePresentationStatus();
             Flashcard flashcard = getNextFlashcard();
-            answerFace = flashcard.getAnswer();
-            questionFace = flashcard.getQuestion();
+
             actualFlashcard = flashcard;
+            answerFace = actualFlashcard.getAnswer();
+            questionFace = actualFlashcard.getQuestion();
             fillFace(questionFace);
             if(playSoundsAutomatically){
                 onSoundClicked();
-                mediaPlayer.setOnEndOfMedia(new Runnable() {
-                    @Override
-                    public void run() {
+                mediaPlayer.setOnEndOfMedia(() -> {
+                    try {
                         onSoundClicked();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
                         onSoundClicked();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 });
             }
@@ -382,7 +396,7 @@ public class PresentationScreenController  {
         return wr;
     }
 
-    private void continuePresentation() {
+    private void continuePresentation() throws IOException {
         flippingLabel.setVisible(false);
         answering = true;
         showButtons();
@@ -396,8 +410,16 @@ public class PresentationScreenController  {
             mediaPlayer.setOnEndOfMedia(new Runnable() {
                 @Override
                 public void run() {
-                    onSoundClicked();
-                    onSoundClicked();
+                    try {
+                        onSoundClicked();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        onSoundClicked();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
@@ -411,7 +433,7 @@ public class PresentationScreenController  {
     }
 
 
-    public void onRectClicked(){
+    public void onRectClicked() throws IOException {
         if (!answering) {
             continuePresentation();
         }
