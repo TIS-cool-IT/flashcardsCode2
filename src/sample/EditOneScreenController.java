@@ -168,7 +168,8 @@ public class EditOneScreenController {
             selected.setReversed(cb.isSelected());
 
             Main.saveCategories();
-            Main.toEditScreen();
+            JOptionPane.showMessageDialog(new JFrame(), "Flashcard was saved!");
+            //Main.toEditScreen();
         }
     }
 

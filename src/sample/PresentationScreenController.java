@@ -182,13 +182,9 @@ public class PresentationScreenController  {
     }
 
     public void onSoundClicked() throws IOException {
-        System.out.println("sdasda");
         if(!isMediaPlaying){
-            System.out.println("sdasda");
-            if(actualFace.getSounds().size() > 0) {
-                System.out.println(actualFace.getSounds().size());
+            if(actualFace.getSounds().get(0) != null || actualFace.getSounds().get(1) != null) {
                 if(firstRecordPlaying){
-                    System.out.println("sdasda");
                     File subor = actualFace.getSounds().get(1);
                     if(subor != null) {
                         isMediaPlaying = true;
@@ -198,11 +194,9 @@ public class PresentationScreenController  {
                     firstRecordPlaying = false;
                 }
                 else {
-                    System.out.println("hraj druhy");
                     File subor = actualFace.getSounds().get(0);
                     System.out.println(subor.getAbsolutePath());
                     if(subor != null) {
-                        System.out.println("plating");
                         isMediaPlaying = true;
                         playRecords("C:\\FlashCard\\Categories\\" + actualFlashcard.getFlashcardDirectory() + "\\" + subor.getName());
                         firstRecordPlaying = true;
@@ -432,14 +426,12 @@ public class PresentationScreenController  {
         fontSizeComboBox.setPromptText(String.valueOf(fontSize));
     }
 
-
     public void onRectClicked() throws IOException {
         if (!answering) {
             continuePresentation();
         }
 
     }
-
 
     public static int[] getAnswers(){
         return new int[] {correctAnswers,wrongAnswers};
